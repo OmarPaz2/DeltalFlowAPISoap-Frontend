@@ -1,0 +1,84 @@
+@model Front_ApiSoap_DentalFlow.Models.Appointment.AppointmentViewModel
+
+<div class="bg-info bg-opacity-50 p-4 rounded-4">
+
+    ```
+    <h2 class="mb-4">
+        Registrar Cita
+    </h2>
+
+    <form asp-action="Create" method="post">
+
+        @Html.AntiForgeryToken()
+
+        <div class="bg-info bg-opacity-25 p-4 rounded-4">
+
+            <div class="mb-3">
+                <label asp-for="PatientId" class="form-label">
+                    ID Paciente
+                </label>
+
+                <input asp-for="PatientId"
+                       class="form-control" />
+
+                <span asp-validation-for="PatientId"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DentistId" class="form-label">
+                    ID Odontólogo
+                </label>
+
+                <input asp-for="DentistId"
+                       class="form-control" />
+
+                <span asp-validation-for="DentistId"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Fecha" class="form-label">
+                    Fecha
+                </label>
+
+                <input asp-for="Fecha"
+                       type="date"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Hora" class="form-label">
+                    Hora
+                </label>
+
+                <input asp-for="Hora"
+                       type="time"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Motivo" class="form-label">
+                    Motivo
+                </label>
+
+                <input asp-for="Motivo"
+                       class="form-control" />
+            </div>
+
+            <button type="submit"
+                    class="btn btn-info text-white">
+                Guardar
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Volver
+            </a>
+
+        </div>
+
+    </form>
+    ```
+
+</div>

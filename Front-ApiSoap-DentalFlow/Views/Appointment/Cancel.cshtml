@@ -1,0 +1,48 @@
+﻿@model Front_ApiSoap_DentalFlow.Models.Appointment.AppointmentViewModel
+
+<div class="bg-info bg-opacity-50 p-4 rounded-4">
+
+    ```
+    <h2 class="text-danger mb-4">
+        Cancelar Cita
+    </h2>
+
+    <div class="bg-info bg-opacity-25 p-4 rounded-4">
+
+        <p>
+            ¿Desea cancelar esta cita?
+        </p>
+
+        <ul>
+            <li><strong>ID:</strong> @Model.Id</li>
+            <li><strong>Paciente:</strong> @Model.PatientId</li>
+            <li><strong>Odontólogo:</strong> @Model.DentistId</li>
+            <li><strong>Motivo:</strong> @Model.Motivo</li>
+        </ul>
+
+        <form asp-action="CancelConfirmed"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <input type="hidden"
+                   name="id"
+                   value="@Model.Id" />
+
+            <button type="submit"
+                    class="btn btn-danger">
+                Confirmar Cancelación
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Volver
+            </a>
+
+        </form>
+
+    </div>
+    ```
+
+</div>
+

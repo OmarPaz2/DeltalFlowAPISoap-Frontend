@@ -1,0 +1,64 @@
+﻿@model Front_ApiSoap_DentalFlow.Models.Tratamiento.TratamientoViewModel
+
+<div class="bg-info bg-opacity-50 p-4 rounded-4">
+
+    <h2 class="mb-4">
+        Registrar Tratamiento
+    </h2>
+
+    <form asp-action="Create" method="post">
+
+        @Html.AntiForgeryToken()
+
+        <div class="bg-info bg-opacity-25 p-4 rounded-4">
+
+            <div class="mb-3">
+                <label>ID Paciente</label>
+                <input asp-for="PacienteId" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>ID Odontólogo</label>
+                <input asp-for="OdontologoId" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Diagnóstico</label>
+                <input asp-for="Diagnostico" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Tipo Tratamiento</label>
+                <input asp-for="TipoTratamiento" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Costo Estimado</label>
+                <input asp-for="CostoEstimado" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Fecha Inicio</label>
+                <input asp-for="FechaInicio" type="date" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Cantidad Sesiones</label>
+                <input asp-for="CantSesiones" class="form-control" />
+            </div>
+
+            <button type="submit"
+                    class="btn btn-info text-white">
+                Guardar
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-info text-white">
+                Volver
+            </a>
+
+        </div>
+
+    </form>
+
+</div>

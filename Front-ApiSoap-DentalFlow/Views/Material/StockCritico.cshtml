@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Front_ApiSoap_DentalFlow.Models.Material.MaterialViewModel>
+
+<div class="bg-info bg-opacity-50 p-4 rounded-4 shadow">
+
+    ```
+    <h2 class="mb-4">
+        Materiales con Stock Crítico
+    </h2>
+
+    <a asp-action="Index"
+       class="btn btn-info text-white mb-3">
+        Volver al Inventario
+    </a>
+
+    <div class="bg-info bg-opacity-25 p-4 rounded-4">
+
+        <table class="table table-bordered table-hover">
+
+            <thead class="table-danger">
+
+                <tr>
+                    <th>Nombre</th>
+                    <th>Stock Actual</th>
+                    <th>Stock Mínimo</th>
+                    <th>Costo Unitario</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@item.Nombre</td>
+
+                        <td>
+                            <span class="badge bg-danger">
+                                @item.Stock
+                            </span>
+                        </td>
+
+                        <td>@item.StockMinimo</td>
+
+                        <td>S/. @item.CostoUnitario</td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+    ```
+
+</div>
+

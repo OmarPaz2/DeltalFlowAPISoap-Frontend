@@ -1,0 +1,166 @@
+﻿@model Front_ApiSoap_DentalFlow.Models.Tratamiento.TratamientoViewModel
+
+<div class="bg-info bg-opacity-50 p-4 rounded-4">
+
+    <h2 class="mb-4">
+        Consultar Tratamiento
+    </h2>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Error"]
+        </div>
+    }
+
+    <form asp-action="Details" method="post">
+
+        <div class="bg-info bg-opacity-25 p-4 rounded-4 mb-4">
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    ID Tratamiento o DNI Paciente
+                </label>
+
+                <input name="id"
+                       class="form-control" />
+
+            </div>
+
+            <button type="submit"
+                    class="btn btn-info text-white">
+                Buscar
+            </button>
+
+        </div>
+
+    </form>
+
+    @if (Model != null && Model.IdTratamiento > 0)
+    {
+        <div class="bg-white p-4 rounded-4 shadow-sm">
+
+            <h4 class="mb-3">
+                Información del Tratamiento
+            </h4>
+
+            <table class="table table-bordered">
+
+                <tr>
+                    <th>ID Tratamiento</th>
+                    <td>@Model.IdTratamiento</td>
+                </tr>
+
+                <tr>
+                    <th>Paciente</th>
+                    <td>@Model.NombresPaciente @Model.ApellidosPaciente</td>
+                </tr>
+
+                <tr>
+                    <th>DNI</th>
+                    <td>@Model.Dni</td>
+                </tr>
+
+                <tr>
+                    <th>Odontólogo</th>
+                    <td>@Model.NombresOdontologo @Model.ApellidosOdontologo</td>
+                </tr>
+
+                <tr>
+                    <th>Diagnóstico</th>
+                    <td>@Model.Diagnostico</td>
+                </tr>
+
+                <tr>
+                    <th>Tipo Tratamiento</th>
+                    <td>@Model.TipoTratamiento</td>
+                </tr>
+
+                <tr>
+                    <th>Costo Estimado</th>
+                    <td>S/. @Model.CostoEstimado</td>
+                </tr>
+
+                <tr>
+                    <th>Monto Pagado</th>
+                    <td>S/. @Model.MontoPagado</td>
+                </tr>
+
+                <tr>
+                    <th>Fecha Inicio</th>
+                    <td>@Model.FechaInicio.ToString("dd/MM/yyyy")</td>
+                </tr>
+
+                <tr>
+                    <th>Sesiones</th>
+                    <td>@Model.CantSesiones</td>
+                </tr>
+
+                <tr>
+                    <th>Sesiones Restantes</th>
+                    <td>@Model.SesionesRestantes</td>
+                </tr>
+
+                <tr>
+                    <th>Estado</th>
+                    <td>
+
+                        @if (Model.Estado == "Finalizado")
+                        {
+                            <span class="badge bg-success">
+                                @Model.Estado
+                            </span>
+                        }
+                        else if (Model.Estado == "Cancelado")
+                        {
+                            <span class="badge bg-danger">
+                                @Model.Estado
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">
+                                @Model.Estado
+                            </span>
+                        }
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Pagado</th>
+                    <td>
+
+                        @if (Model.Pagado)
+                        {
+                            <span class="badge bg-success">
+                                Sí
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">
+                                No
+                            </span>
+                        }
+
+                    </td>
+                </tr>
+
+            </table>
+
+            <a asp-action="EditEstado"
+               class="btn btn-info text-white">
+                Actualizar Estado
+            </a>
+
+            <a asp-action="Index"
+               class="btn btn-info text-white">
+                Volver
+            </a>
+
+        </div>
+    }
+
+</div>

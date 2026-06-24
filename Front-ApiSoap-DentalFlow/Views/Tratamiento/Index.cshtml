@@ -1,0 +1,64 @@
+﻿<div class="bg-info bg-opacity-50 p-4 rounded-4">
+
+    <h2 class="text-center mb-4">
+        Gestión de Tratamientos
+    </h2>
+
+    <div class="bg-info bg-opacity-25 p-4 rounded-4">
+
+        <div class="d-flex flex-wrap gap-2">
+
+            <a asp-controller="Tratamiento"
+               asp-action="Create"
+               class="btn btn-info text-white">
+                Registrar Tratamiento
+            </a>
+
+            <a asp-controller="Tratamiento"
+               asp-action="Details"
+               class="btn btn-info text-white">
+                Consultar Tratamiento
+            </a>
+
+            <a asp-controller="Tratamiento"
+               asp-action="EditEstado"
+               class="btn btn-info text-white">
+                Actualizar Estado
+            </a>
+
+            <a asp-controller="Pago"
+               asp-action="CreatePagoTratamiento"
+               class="btn btn-info text-white">
+                Registrar Pago
+            </a>
+
+            <a asp-controller="Pago"
+               asp-action="Details"
+               class="btn btn-info text-white">
+                Buscar Pago
+            </a>
+
+            <a asp-controller="Dashboard"
+               asp-action="Index"
+               class="btn btn-info text-white">
+                Dashboard
+            </a>
+
+        </div>
+
+        <hr />
+
+        <div class="alert alert-info mt-3">
+            Desde este módulo puedes:
+            <ul class="mb-0">
+                <li>Registrar tratamientos.</li>
+                <li>Consultar tratamientos existentes.</li>
+                <li>Actualizar estados (Planificado, En proceso, Finalizado, Cancelado).</li>
+                <li>Registrar pagos asociados al tratamiento.</li>
+                <li>Consultar pagos realizados.</li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>

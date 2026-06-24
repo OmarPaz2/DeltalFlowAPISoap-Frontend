@@ -1,0 +1,69 @@
+﻿@model Front_ApiSoap_DentalFlow.Models.Pago.PagoViewModel
+
+<div class="bg-info bg-opacity-50 p-4 rounded-4">
+
+    <h2 class="mb-4">Buscar Pago</h2>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    <form asp-action="Details" method="post">
+        <div class="bg-info bg-opacity-25 p-4 rounded-4 mb-4">
+
+            <div class="mb-3">
+                <label>ID Pago</label>
+                <input name="idPago" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-info text-white">
+                Buscar
+            </button>
+
+            <a asp-action="Index" class="btn btn-info text-white">
+                Volver
+            </a>
+
+        </div>
+    </form>
+
+    @if (Model != null && Model.IdPago > 0)
+    {
+        <div class="bg-white p-4 rounded-4 shadow-sm">
+
+            <table class="table table-bordered">
+                <tr>
+                    <th>ID Pago</th>
+                    <td>@Model.IdPago</td>
+                </tr>
+                <tr>
+                    <th>Razón</th>
+                    <td>@Model.Razon</td>
+                </tr>
+                <tr>
+                    <th>Paciente</th>
+                    <td>@Model.NombresPaciente @Model.ApellidosPaciente</td>
+                </tr>
+                <tr>
+                    <th>Especialidad</th>
+                    <td>@Model.NombreEspecialidad</td>
+                </tr>
+                <tr>
+                    <th>Monto</th>
+                    <td>S/. @Model.Monto</td>
+                </tr>
+                <tr>
+                    <th>Fecha</th>
+                    <td>@Model.Fecha</td>
+                </tr>
+                <tr>
+                    <th>Método de Pago</th>
+                    <td>@Model.MetodoPago</td>
+                </tr>
+            </table>
+
+        </div>
+    }
+
+</div>

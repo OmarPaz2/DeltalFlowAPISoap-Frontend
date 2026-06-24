@@ -1,0 +1,153 @@
+﻿@model Front_ApiSoap_DentalFlow.Models.Dashboard.DashboardViewModel
+
+<div class="bg-info bg-opacity-50 p-4 rounded-4">
+
+    <h2 class="text-center mb-4">
+        Dashboard Clínico DentalFlow
+    </h2>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Error"]
+        </div>
+    }
+
+    <div style="background-color:#343a40;"
+         class="p-4 rounded-4 shadow-lg">
+
+        <div class="row">
+
+            <!-- Citas -->
+
+            <div class="col-md-3 mb-3">
+
+                <div class="card shadow border-0 text-center h-100">
+
+                    <div class="card-body">
+
+                        <div style="font-size:60px;">
+                            📅
+                        </div>
+
+                        <h5 class="card-title mt-2">
+                            Citas del Día
+                        </h5>
+
+                        <h1 class="fw-bold text-primary">
+                            @Model.CitasDelDia
+                        </h1>
+
+                        <a asp-controller="Appointment"
+                           asp-action="Index"
+                           class="btn btn-info text-white mt-2">
+                            Ver Citas
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Tratamientos -->
+
+            <div class="col-md-3 mb-3">
+
+                <div class="card shadow border-0 text-center h-100">
+
+                    <div class="card-body">
+
+                        <div style="font-size:60px;">
+                            🦷
+                        </div>
+
+                        <h5 class="card-title mt-2">
+                            Tratamientos Activos
+                        </h5>
+
+                        <h1 class="fw-bold text-success">
+                            @Model.TratamientosActivos
+                        </h1>
+
+                        <a asp-controller="Tratamiento"
+                           asp-action="Index"
+                           class="btn btn-info text-white mt-2">
+                            Ver Tratamientos
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Pagos -->
+
+            <div class="col-md-3 mb-3">
+
+                <div class="card shadow border-0 text-center h-100">
+
+                    <div class="card-body">
+
+                        <div style="font-size:60px;">
+                            💳
+                        </div>
+
+                        <h5 class="card-title mt-2">
+                            Pagos Realizados
+                        </h5>
+
+                        <h1 class="fw-bold text-warning">
+                            @Model.PagosRealizados
+                        </h1>
+
+                        <a asp-controller="Pago"
+                           asp-action="Index"
+                           class="btn btn-info text-white mt-2">
+                            Ver Pagos
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Stock -->
+
+            <div class="col-md-3 mb-3">
+
+                <div class="card shadow border-0 text-center h-100">
+
+                    <div class="card-body">
+
+                        <div style="font-size:60px;">
+                            📦
+                        </div>
+
+                        <h5 class="card-title mt-2">
+                            Stock Crítico
+                        </h5>
+
+                        <h1 class="fw-bold text-danger">
+                            @Model.StockCritico
+                        </h1>
+
+                        <a asp-controller="Material"
+                           asp-action="StockCritico"
+                           class="btn btn-info text-white mt-2">
+                            Ver Stock
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

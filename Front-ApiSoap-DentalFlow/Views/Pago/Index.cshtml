@@ -1,0 +1,31 @@
+﻿<div class="bg-info bg-opacity-50 p-4 rounded-4">
+
+    <h2 class="text-center mb-4">Gestión de Pagos</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    <div class="bg-info bg-opacity-25 p-4 rounded-4">
+
+        <a asp-action="CreatePagoCita" class="btn btn-info text-white">
+            Pago de Cita
+        </a>
+
+        <a asp-action="CreatePagoTratamiento" class="btn btn-info text-white">
+            Pago de Tratamiento
+        </a>
+
+        <a asp-action="Details" class="btn btn-info text-white">
+            Buscar Pago
+        </a>
+
+    </div>
+
+</div>

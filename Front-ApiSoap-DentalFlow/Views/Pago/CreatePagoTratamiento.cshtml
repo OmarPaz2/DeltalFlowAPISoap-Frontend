@@ -1,0 +1,45 @@
+﻿@model Front_ApiSoap_DentalFlow.Models.Pago.PagoViewModel
+
+<div class="bg-info bg-opacity-50 p-4 rounded-4">
+
+    <h2 class="mb-4">Registrar Pago de Tratamiento</h2>
+
+    <form asp-action="CreatePagoTratamiento" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="bg-info bg-opacity-25 p-4 rounded-4">
+
+            <div class="mb-3">
+                <label>ID Tratamiento</label>
+                <input asp-for="IdReferencia" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Monto</label>
+                <input asp-for="Monto" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Método de Pago</label>
+                <select asp-for="MetodoPago" class="form-control">
+                    <option value="">Seleccione</option>
+                    <option value="Efectivo">Efectivo</option>
+                    <option value="Tarjeta">Tarjeta</option>
+                    <option value="Yape">Yape</option>
+                    <option value="Plin">Plin</option>
+                    <option value="Transferencia">Transferencia</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-info text-white">
+                Guardar
+            </button>
+
+            <a asp-action="Index" class="btn btn-info text-white">
+                Volver
+            </a>
+
+        </div>
+    </form>
+
+</div>

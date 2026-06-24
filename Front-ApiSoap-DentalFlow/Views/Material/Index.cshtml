@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Front_ApiSoap_DentalFlow.Models.Material.MaterialViewModel>
+
+<div class="bg-info bg-opacity-50 p-4 rounded-4">
+
+    <h2 class="mb-4 text-center">
+        Inventario de Materiales
+    </h2>
+
+    <div class="mb-3">
+        <a asp-action="Create" class="btn btn-info text-white">
+            Nuevo Material
+        </a>
+
+        <a asp-action="StockCritico" class="btn btn-info text-white">
+            Stock Crítico
+        </a>
+    </div>
+
+    <div class="bg-white p-4 rounded-4 shadow-sm">
+
+        <table class="table table-bordered table-hover">
+            <thead class="table-info">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Stock</th>
+                    <th>Stock mínimo</th>
+                    <th>Costo unitario</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="@(item.EsStockCritico ? "table-danger" : "")">
+                        <td>@item.Nombre</td>
+                        <td>@item.Stock</td>
+                        <td>@item.StockMinimo</td>
+                        <td>S/. @item.CostoUnitario</td>
+                        <td>
+                            @if (item.EsStockCritico)
+                            {
+                                <span class="badge bg-danger">Stock crítico</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">Normal</span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info text-white btn-sm">
+                                Editar
+                            </a>
+
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

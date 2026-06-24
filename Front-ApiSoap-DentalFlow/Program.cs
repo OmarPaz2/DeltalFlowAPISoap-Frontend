@@ -5,6 +5,12 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<moduloPaciente.PatientService, moduloPaciente.PatientServiceClient>();
 
+builder.Services.AddScoped<moduloMaterial.MaterialServiceImpl, moduloMaterial.MaterialServiceImplClient>();
+builder.Services.AddScoped<moduloCitas.AppointmentServiceClient>();
+builder.Services.AddScoped<servicioTratamiento.TratamientoServiceImplClient>();
+builder.Services.AddScoped<moduloPago.PagoServiceImplClient>();
+builder.Services.AddScoped<moduloDashboard.DashboardServiceImplClient>();
+
 
 var app = builder.Build();
 
@@ -21,7 +27,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Paciente}/{action=Index}/{id?}")
+    pattern: "{controller=Dashboard}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 

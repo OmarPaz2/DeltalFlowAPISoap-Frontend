@@ -1,0 +1,47 @@
+﻿<div class="bg-info bg-opacity-50 p-4 rounded-4">
+
+    <h2 class="mb-4">
+        Actualizar Estado
+    </h2>
+
+    <form asp-action="EditEstado" method="post">
+
+        @Html.AntiForgeryToken()
+
+        <div class="bg-info bg-opacity-25 p-4 rounded-4">
+
+            <div class="mb-3">
+                <label>ID Tratamiento</label>
+                <input name="idTratamiento"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Estado</label>
+
+                <select name="estado"
+                        class="form-control">
+
+                    <option>Planificado</option>
+                    <option>En proceso</option>
+                    <option>Finalizado</option>
+                    <option>Cancelado</option>
+
+                </select>
+            </div>
+
+            <button type="submit"
+                    class="btn btn-info text-white">
+                Actualizar
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-info text-white">
+                Volver
+            </a>
+
+        </div>
+
+    </form>
+
+</div>

@@ -1,0 +1,42 @@
+@model Front_ApiSoap_DentalFlow.Models.Material.MaterialViewModel
+
+<div class="bg-info bg-opacity-50 p-4 rounded-4 shadow">
+
+    ```
+    <h2 class="text-danger mb-4">
+        Eliminar Material
+    </h2>
+
+    <div class="bg-info bg-opacity-25 p-4 rounded-4">
+
+        <p>
+            ¿Desea eliminar el siguiente material?
+        </p>
+
+        <ul>
+            <li><strong>Nombre:</strong> @Model.Nombre</li>
+            <li><strong>Stock:</strong> @Model.Stock</li>
+            <li><strong>Stock Mínimo:</strong> @Model.StockMinimo</li>
+        </ul>
+
+        <form asp-action="DeleteConfirmed">
+
+            <input type="hidden"
+                   asp-for="Id" />
+
+            <button type="submit"
+                    class="btn btn-danger">
+                Eliminar
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Cancelar
+            </a>
+
+        </form>
+
+    </div>
+    ```
+
+</div>
