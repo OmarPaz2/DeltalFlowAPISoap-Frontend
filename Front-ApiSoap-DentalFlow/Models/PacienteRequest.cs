@@ -2,20 +2,20 @@
 {
     public class PacienteRequest
     {
-        private String dni { get; set; }
+        public string? dni { get; set; }
 
-        private String firstName { get; set; }
+        public string? firstName { get; set; }
 
-        private String lastName { get; set; }
+        public string? lastName { get; set; }
 
-        private DateOnly birthDate { get; set; }
+        public DateOnly? birthDate { get; set; }
 
-        private String gender { get; set; }
+        public string? gender { get; set; }
 
-        private String phone { get; set; }
+        public string? phone { get; set; }
 
-        private String email { get; set; }
+        public string? email { get; set; }
 
-        private String address { get; set; }
+        public string? address { get; set; }
     }
 }

@@ -1,0 +1,154 @@
+﻿@model Front_ApiSoap_DentalFlow.Models.PacienteRequest
+
+@{
+    PacienteResponse paciente = ViewBag.responseService as PacienteResponse;
+    ViewData["Title"] = "Create";
+}
+
+<h1>Registro de Pacientes</h1>
+
+<div class="container mt-4">
+    @if (ViewBag.MensajeError != null)
+    {
+        <div class="alert alert-danger bg-danger bg-opacity-10 text-danger border-0 p-3 rounded-4 mb-3 d-flex align-items-center shadow-sm" role="alert">
+           
+            <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+            <div>
+                <span class="fw-bold">Error:</span> @ViewBag.MensajeError
+            </div>
+        </div>
+    }
+    <div class="bg-info bg-opacity-25 p-4 rounded-4 shadow-sm">
+        <h2 class="mb-4 text-dark text-center fw-bold">Crear Nuevo Paciente</h2>
+
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="row g-3">
+                <!-- DNI -->
+                <div class="col-md-6">
+                    <label asp-for="dni" class="form-label fw-semibold">DNI</label>
+                    <input asp-for="dni" class="form-control" placeholder="Ingrese el DNI" required />
+                    <span asp-validation-for="dni" class="text-danger small"></span>
+                </div>
+
+                <!-- Nombre -->
+                <div class="col-md-6">
+                    <label asp-for="firstName" class="form-label fw-semibold">Nombre</label>
+                    <input asp-for="firstName" class="form-control" placeholder="Ingrese el nombre" required />
+                    <span asp-validation-for="firstName" class="text-danger small"></span>
+                </div>
+
+                <!-- Apellido -->
+                <div class="col-md-6">
+                    <label asp-for="lastName" class="form-label fw-semibold">Apellido</label>
+                    <input asp-for="lastName" class="form-control" placeholder="Ingrese el apellido" required />
+                    <span asp-validation-for="lastName" class="text-danger small"></span>
+                </div>
+
+                <!-- Fecha de Nacimiento -->
+                <div class="col-md-6">
+                    <label asp-for="birthDate" class="form-label fw-semibold">Fecha de Nacimiento</label>
+                    <!-- El tipo 'date' renderiza el calendario nativo compatible con DateOnly -->
+                    <input asp-for="birthDate" type="date" class="form-control" required />
+                    <span asp-validation-for="birthDate" class="text-danger small"></span>
+                </div>
+
+                <!-- Género -->
+                <div class="col-md-6">
+                    <label asp-for="gender" class="form-label fw-semibold">Género</label>
+                    <select asp-for="gender" class="form-select" required>
+                        <option value="">Seleccione...</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                    <span asp-validation-for="gender" class="text-danger small"></span>
+                </div>
+
+                <!-- Teléfono -->
+                <div class="col-md-6">
+                    <label asp-for="phone" class="form-label fw-semibold">Teléfono</label>
+                    <input asp-for="phone" type="tel" class="form-control" placeholder="Ej: +51 999999999" />
+                    <span asp-validation-for="phone" class="text-danger small"></span>
+                </div>
+
+                <!-- Correo Electrónico -->
+                <div class="col-md-6">
+                    <label asp-for="email" class="form-label fw-semibold">Correo Electrónico</label>
+                    <input asp-for="email" type="email" class="form-control" placeholder="ejemplo@correo.com" />
+                    <span asp-validation-for="email" class="text-danger small"></span>
+                </div>
+
+                <!-- Dirección -->
+                <div class="col-md-6">
+                    <label asp-for="address" class="form-label fw-semibold">Dirección</label>
+                    <input asp-for="address" class="form-control" placeholder="Dirección completa" />
+                    <span asp-validation-for="address" class="text-danger small"></span>
+                </div>
+            </div>
+
+            <!-- Sección de Acciones con el estilo de botón solicitado -->
+            <div class="mt-4 d-flex gap-2 justify-content-end">
+                <a asp-action="Index" class="btn btn-secondary px-4 py-2 rounded-4">Cancelar</a>
+                <button type="submit" class="btn bg-info bg-opacity-50 text-dark fw-bold px-4 py-2 rounded-4 border-0">
+                    Guardar Paciente
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (paciente != null && paciente.id !=0)
+{
+    <!-- Modal de Bootstrap que se activará automáticamente -->
+    <div class="modal fade" id="modalResultado" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            @* Aplicamos tu clase de fondo al contenedor del modal *@
+            <div class="modal-content p-4 rounded-4 border-0 shadow-lg" style="background-color: white">
+
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold text-dark">¡Paciente Registrado con Éxito!</h5>
+                </div>
+
+                <div class="modal-body text-dark">
+                    <p class="mb-3">Se han guardado en la base de datos los siguientes datos del paciente:</p>
+
+                    <ul class="list-group list-group-flush rounded-3 overflow-hidden">
+                        <li class="list-group-item bg-transparent border-bottom border-dark border-opacity-10"><strong><span class="fw-bold" style="color: #002d62 !important;">ID:</span></strong> @paciente.id</li>
+                        <li class="list-group-item bg-transparent border-bottom border-dark border-opacity-10"><strong><span class="fw-bold" style="color: #002d62 !important;">DNI:</span></strong> @paciente.dni</li>
+                        <li class="list-group-item bg-transparent border-bottom border-dark border-opacity-10"><strong><span class="fw-bold" style="color: #002d62 !important;">Nombre:</span></strong> @paciente.firstName @paciente.lastName</li>
+                        <li class="list-group-item bg-transparent border-bottom border-dark border-opacity-10"><strong><span class="fw-bold" style="color: #002d62 !important;">Email:</span></strong> @paciente.email</li>
+                        <li class="list-group-item bg-transparent border-bottom border-dark border-opacity-10"><strong><span class="fw-bold" style="color: #002d62 !important;">Teléfono:</span></strong> @paciente.phone</li>
+                        <li class="list-group-item bg-transparent border-bottom border-dark border-opacity-10"><strong><span class="fw-bold" style="color: #002d62 !important;">Email:</span></strong> @paciente.email</li>
+                        <li class="list-group-item bg-transparent border-0"><strong><span class="fw-bold" style="color: #002d62 !important;">Direccion:</span></strong> @paciente.address</li>
+                    </ul>
+                </div>
+
+                <div class="modal-footer border-0 justify-content-center gap-2 pt-3">
+                    <!-- Botón OK: Redirecciona a la misma acción GET para limpiar el formulario -->
+                    <a asp-action="Index" class="btn bg-info bg-opacity-50 p-3 rounded-4 fw-bold text-decoration-none text-dark flex-grow-1 text-center">
+                        OK
+                    </a>
+
+                    <!-- Botón Crear Cita: Envía el DNI o ID del modelo a la vista de citas -->
+                    <a asp-controller="Cita" asp-action="Crear" asp-route-pacienteDni="@paciente.id" class="btn bg-info bg-opacity-50 p-3 rounded-4 fw-bold text-decoration-none text-dark flex-grow-1 text-center">
+                        Crear Cita
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @* Script exclusivo para levantar el modal de inmediato tras la carga de la página *@
+    @section Scripts {
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var myModal = new bootstrap.Modal(document.getElementById('modalResultado'));
+                myModal.show();
+            });
+        </script>
+    }
+}
+

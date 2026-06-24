@@ -5,117 +5,165 @@
 }
 
 <h1>Index</h1>
+@if (TempData["MensajeError"] != null)
+    {
+<div class="alert alert-danger bg-danger bg-opacity-10 text-danger border-0 p-3 rounded-4 mb-3 d-flex align-items-center shadow-sm" role="alert">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+    <div>
+            <span class="fw-bold">Error:</span> @TempData["MensajeError"]
+    </div>
+</div>
+    }
+@if (TempData["MensajeSuccess"] != null)
+{
+    <div class="alert alert-info bg-info bg-opacity-25 border-0 p-3 rounded-4 mb-3 d-flex align-items-center shadow-sm" role="alert">
+        @* Cambiado a un icono de información celeste/azul *@
+        <i class="bi bi-info-circle-fill me-2 fs-5" style="color: #002d62 !important;"></i>
+        <div class="text-dark">
+            @* Título e inyección de la variable en azul marino *@
+            <span class="fw-bold" style="color: #002d62 !important;">Éxito:</span> @TempData["MensajeSuccess"]
+        </div>
 
-<div class="card mb-4 border-primaryShadow">
-    <div class="card-header bg-primary text-white">
-        <h5 class="mb-0"><i class="bi bi-search"></i> Criterios de Búsqueda de Pacientes</h5>
+    </div>
+}
+<div class="d-flex justify-content-end mb-3">
+    <a asp-action="Create" class="btn bg-info bg-opacity-50 p-3 rounded-4 fw-bold text-dark text-decoration-none shadow-sm d-inline-flex align-items-center gap-2">
+        <i class="bi bi-person-plus-fill fs-5"></i> Añadir nuevo Paciente
+    </a>
+</div>
+
+<div class="card mb-4 p-2 rounded-4 border-0 shadow-sm" style="background-color: #cff4fc !important;">
+    <div class="card-header bg-transparent border-0 pb-0">
+        @* Título principal utilizando el color Azul Marino que elegiste para los datos *@
+        <h5 class="mb-0 fw-bold" style="color: #002d62 !important;">
+            <i class="bi bi-search"></i> Criterios de Búsqueda de Pacientes
+        </h5>
     </div>
     <div class="card-body">
-        <form asp-controller="Paciente" asp-action="Buscar" method="get" id="searchForm" onsubmit="return validarCamposBusqueda()">
+        <form asp-controller="Paciente" asp-action="Index" method="get" id="searchForm" onsubmit="return validarCamposBusqueda()">
             <div class="row g-3">
                 <!-- Input: Nombre -->
                 <div class="col-md-3">
-                    <label for="nombre" class="form-label fw-bold">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ej: Juan" />
+                    <label for="nombre" class="form-label fw-bold text-dark">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control rounded-3 border-0 shadow-sm" placeholder="Ej: Juan" />
                 </div>
 
                 <!-- Input: Apellido -->
                 <div class="col-md-3">
-                    <label for="apellido" class="form-label fw-bold">Apellido</label>
-                    <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Ej: Pérez" />
+                    <label for="apellido" class="form-label fw-bold text-dark">Apellido</label>
+                    <input type="text" id="apellido" name="apellido" class="form-control rounded-3 border-0 shadow-sm" placeholder="Ej: Pérez" />
                 </div>
 
                 <!-- Input: DNI -->
                 <div class="col-md-3">
-                    <label for="dni" class="form-label fw-bold">DNI</label>
-                    <input type="text" id="dni" name="dni" class="form-control" placeholder="8 dígitos" maxlength="8" oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+                    <label for="dni" class="form-label fw-bold text-dark">DNI</label>
+                    <input type="text" id="dni" name="dni" class="form-control rounded-3 border-0 shadow-sm" placeholder="8 dígitos" maxlength="8" oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
                 </div>
 
-                <!-- Botón de Acción -->
+                <!-- Botón de Acción con tus Estilos -->
                 <div class="col-md-3 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary w-100 fw-bold">
+                    <button type="submit" class="btn bg-info bg-opacity-50 p-2 rounded-4 fw-bold text-dark w-100 border-0 shadow-sm">
                         <i class="bi bi-search"></i> Buscar Paciente
                     </button>
                 </div>
             </div>
-            <!-- Alerta oculta para errores de validación -->
-            <div id="validationAlert" class="alert alert-danger mt-3 d-none" role="alert">
-                Debe completar al menos un campo para realizar la búsqueda.
+
+            <!-- Alerta oculta con tu estilo personalizado de error (Tarjeta roja suave) -->
+            <div id="validationAlert" class="alert alert-danger bg-danger bg-opacity-10 text-danger border-0 p-3 rounded-4 mt-3 d-none shadow-sm" role="alert">
+                <span class="fw-bold">Error:</span> Debe completar al menos un campo para realizar la búsqueda.
             </div>
         </form>
     </div>
 </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.dni)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.firstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.lastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.birthDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.address)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(model => item.dni)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.firstName)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.lastName)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.birthDate)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.gender)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.phone)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.email)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.address)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="table-responsive rounded-4 shadow-sm bg-white p-3">
+    <table class="table table-hover align-middle mb-0">
+        <thead class="border-bottom border-dark border-opacity-10">
+            <tr class="text-dark">
+                <th class="fw-bold" style="color: #002d62 !important;">DNI</th>
+                <th class="fw-bold">NOMBRES</th>
+                <th class="fw-bold">APELLIDOS</th>
+                <th class="fw-bold">FECHA NAC.</th>
+                <th class="fw-bold">GENERO</th>
+                <th class="fw-bold">TELEFONO</th>
+                <th class="fw-bold">CORREO</th>
+                <th class="fw-bold">DIRECCION</th>
+                <th class="text-center fw-bold">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="border-bottom border-light">
+                    @* Resaltamos el DNI de la lista en Azul Marino para hacer juego con el modal *@
+                    <td class="fw-bold" style="color: #002d62 !important;">
+                        @Html.DisplayFor(model => item.dni)
+                    </td>
+                    <td>@Html.DisplayFor(model => item.firstName)</td>
+                    <td>@Html.DisplayFor(model => item.lastName)</td>
+                    <td>@Html.DisplayFor(model => item.birthDate)</td>
+                    <td>@Html.DisplayFor(model => item.gender)</td>
+                    <td>@Html.DisplayFor(model => item.phone)</td>
+                    <td>@Html.DisplayFor(model => item.email)</td>
+                    <td>@Html.DisplayFor(model => item.address)</td>
+                    <td class="text-center">
+                        <div class="d-flex justify-content-center gap-1">
+                            @* Enlaces de acción convertidos en pequeños botones con tu estilo de botones *@
+                            <a asp-action="Edit" asp-route-id="@item.id" class="btn bg-info bg-opacity-50 py-1 px-2 rounded-3 text-dark text-decoration-none btn-sm fw-bold small shadow-sm">
+                                <i class="bi bi-pencil-square">Editar</i>
+                            </a>                        
+                            <a class="btn bg-danger bg-opacity-10 py-1 px-2 rounded-3 text-danger text-decoration-none btn-sm fw-bold small shadow-sm"
+                               data-bs-toggle="modal"
+                               data-bs-target="#modalEliminacionConfirmar"
+                               onclick="verificarEliminacion('@item.dni', '@item.id')">
+                                <i class="bi bi-trash"></i> Eliminar
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal de Bootstrap para confirmar eliminación -->
+<div class="modal fade" id="modalEliminacionConfirmar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4 rounded-4 border-0 shadow-lg" style="background-color: white">
+
+            <div class="modal-header border-0 pb-0 justify-content-center">
+                <h5 class="modal-title fw-bold text-danger text-center">¿Confirmar Eliminación?</h5>
+            </div>
+
+            <div class="modal-body text-dark text-center fs-5 pt-3">
+                <p class="mb-0">
+                    Estás a punto de eliminar el paciente con DNI:
+                    <strong id="dniPacienteEliminar" class="fw-bold" style="color: #002d62 !important;"></strong>
+                </p>
+            </div>
+
+            <form asp-action="Delete" method="post" id="formEliminarPaciente">
+                @* Campo oculto para enviar el ID del paciente al controlador *@
+                <input type="hidden" id="idPacienteEliminar" name="id" value="" />
+
+                <div class="modal-footer border-0 justify-content-center gap-2 pt-4">
+                    <!-- Botón Cancelar: Recupera su tamaño e interactividad nativa -->
+                    <button type="button" class="btn bg-secondary bg-opacity-20 p-3 rounded-4 fw-bold text-dark flex-grow-1 text-center border-0" data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+
+                    <!-- Botón Eliminar: Mantiene los mismos estilos proporcionales -->
+                    <button type="submit" class="btn bg-danger bg-opacity-70 p-3 rounded-4 fw-bold text-white flex-grow-1 text-center border-0">
+                        Eliminar
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 
 @section Scripts {
     <script>
@@ -135,5 +183,20 @@
             alertBox.classList.add('d-none'); // Oculta la alerta si pasa la regla
             return true; // Permite enviar los datos al controlador
         }
+    </script>
+
+    <script>
+        function verificarEliminacion(dni,idPaciente) {
+            document.getElementById('dniPacienteEliminar').textContent = dni;
+
+
+                 document.getElementById('idPacienteEliminar').value = idPaciente;
+
+             var modalElement = document.getElementById('modalEliminacionConfirmar');
+        var myModal = new bootstrap.Modal.getOrCreateInstance(modalElement);
+        myModal.show();
+
+           }
+        
     </script>
 }
