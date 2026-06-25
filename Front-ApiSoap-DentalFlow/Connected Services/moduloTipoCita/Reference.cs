@@ -16,6 +16,18 @@ namespace moduloTipoCita
     public interface AppointmentTypeService
     {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.appointment.pe.dentalflow.com/AppointmentTypeService/updateTypeReq" +
+            "uest", ReplyAction="http://service.appointment.pe.dentalflow.com/AppointmentTypeService/updateTypeRes" +
+            "ponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<moduloTipoCita.updateTypeResponse> updateTypeAsync(moduloTipoCita.updateTypeRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.appointment.pe.dentalflow.com/AppointmentTypeService/findTypeReque" +
+            "st", ReplyAction="http://service.appointment.pe.dentalflow.com/AppointmentTypeService/findTypeRespo" +
+            "nse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<moduloTipoCita.findTypeResponse> findTypeAsync(moduloTipoCita.findTypeRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://service.appointment.pe.dentalflow.com/AppointmentTypeService/createAppoint" +
             "mentTypeRequest", ReplyAction="http://service.appointment.pe.dentalflow.com/AppointmentTypeService/createAppoint" +
             "mentTypeResponse")]
@@ -139,6 +151,95 @@ namespace moduloTipoCita
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.appointment.pe.dentalflow.com/")]
     public partial class localDateTime
     {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="updateType", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class updateTypeRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public long arg0;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public moduloTipoCita.appointmentType arg1;
+        
+        public updateTypeRequest()
+        {
+        }
+        
+        public updateTypeRequest(long arg0, moduloTipoCita.appointmentType arg1)
+        {
+            this.arg0 = arg0;
+            this.arg1 = arg1;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="updateTypeResponse", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class updateTypeResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string @return;
+        
+        public updateTypeResponse()
+        {
+        }
+        
+        public updateTypeResponse(string @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="findType", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class findTypeRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public long arg0;
+        
+        public findTypeRequest()
+        {
+        }
+        
+        public findTypeRequest(long arg0)
+        {
+            this.arg0 = arg0;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="findTypeResponse", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class findTypeResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public moduloTipoCita.appointmentType @return;
+        
+        public findTypeResponse()
+        {
+        }
+        
+        public findTypeResponse(moduloTipoCita.appointmentType @return)
+        {
+            this.@return = @return;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -269,6 +370,33 @@ namespace moduloTipoCita
         public AppointmentTypeServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<moduloTipoCita.updateTypeResponse> moduloTipoCita.AppointmentTypeService.updateTypeAsync(moduloTipoCita.updateTypeRequest request)
+        {
+            return base.Channel.updateTypeAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<moduloTipoCita.updateTypeResponse> updateTypeAsync(long arg0, moduloTipoCita.appointmentType arg1)
+        {
+            moduloTipoCita.updateTypeRequest inValue = new moduloTipoCita.updateTypeRequest();
+            inValue.arg0 = arg0;
+            inValue.arg1 = arg1;
+            return ((moduloTipoCita.AppointmentTypeService)(this)).updateTypeAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<moduloTipoCita.findTypeResponse> moduloTipoCita.AppointmentTypeService.findTypeAsync(moduloTipoCita.findTypeRequest request)
+        {
+            return base.Channel.findTypeAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<moduloTipoCita.findTypeResponse> findTypeAsync(long arg0)
+        {
+            moduloTipoCita.findTypeRequest inValue = new moduloTipoCita.findTypeRequest();
+            inValue.arg0 = arg0;
+            return ((moduloTipoCita.AppointmentTypeService)(this)).findTypeAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

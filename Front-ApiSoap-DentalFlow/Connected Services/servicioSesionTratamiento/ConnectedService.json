@@ -1,7 +1,7 @@
 {
   "ExtendedData": {
     "inputs": [
-      "http://localhost:1520/ws/sesionTratamiento?wsdl"
+      "http://localhost:1520/ws/Session?wsdl"
     ],
     "collectionTypes": [
       "System.Array",

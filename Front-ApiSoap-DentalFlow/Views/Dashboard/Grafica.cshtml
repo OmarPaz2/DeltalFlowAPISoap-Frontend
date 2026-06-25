@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Front_ApiSoap_DentalFlow.Models.Dashboard.PagosUltimos5MesesVM>
+
+    <h1>Grafica total de pagos mensuales</h1>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+
+   <div style="display: flex; justify-content: center; width: 100%;">
+    <div id="myChart" style="width: 100%; max-width: 900px; height: 600px;"></div>
+</div>
+
+
+    <script>
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        
+        function drawChart() {
+     
+            // Set Data
+        const data = new google.visualization.DataTable();
+        data.addColumn('string', 'Mes');
+        data.addColumn('number', 'Monto');
+        data.addColumn({ type: 'string', role: 'style' }); 
+          const producto = @Json.Serialize(Model);
+
+          const colores = ['#4285F4', '#DB4437', '#F4B400', '#0F9D58', '#AB47BC'];
+
+              for(let i = 0; i < producto.length; i++) {
+               data.addRow([producto[i].anio + '-' + producto[i].mes, Number(producto[i].totalPago) || 0, colores[i]]);
+              }
+
+        // Set Options
+        const options = {
+            title: 'Pagos de los Últimos 5 Meses',
+            hAxis: { title: 'Monto' },
+            vAxis: { title: 'Mes' }
+        };
+
+        // Draw
+        const chart = new google.visualization.BarChart(document.getElementById('myChart'));
+        chart.draw(data, options);
+
+        }
+    </script>
+
+

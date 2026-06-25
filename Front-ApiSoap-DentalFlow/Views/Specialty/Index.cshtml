@@ -1,0 +1,143 @@
+﻿@model IEnumerable<Front_ApiSoap_DentalFlow.Models.Specialty.SpecialtyVM>
+
+@{
+    ViewData["Title"] = "Especialidades";
+    int index = 0;
+}
+
+<h1>Especialidades</h1>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger bg-danger bg-opacity-10 text-danger border-0 p-3 rounded-4 mb-3 d-flex align-items-center shadow-sm" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+        <div><span class="fw-bold">Error:</span> @TempData["Error"]</div>
+    </div>
+}
+
+@if (TempData["MensajeSuccess"] != null)
+{
+    <div class="alert alert-info bg-info bg-opacity-25 border-0 p-3 rounded-4 mb-3 d-flex align-items-center shadow-sm" role="alert">
+        <i class="bi bi-info-circle-fill me-2 fs-5" style="color: #002d62 !important;"></i>
+        <div class="text-dark"><span class="fw-bold" style="color: #002d62 !important;">Éxito:</span> @TempData["MensajeSuccess"]</div>
+    </div>
+}
+
+<!-- Botón Añadir con llamada a JS -->
+<div class="d-flex justify-content-end mb-4">
+    <button onclick="abrirFormulario('@Url.Action("Create")', 'Nueva Especialidad')" class="btn bg-info bg-opacity-50 p-3 rounded-4 fw-bold text-dark border-0 shadow-sm d-inline-flex align-items-center gap-2">
+        <i class="bi bi-plus-circle-fill fs-5"></i> Añadir nueva Especialidad
+    </button>
+</div>
+
+<!-- Grid de Tarjetas -->
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    @if (Model == null || !Model.Any())
+    {
+        <div class="col-12 text-center text-muted py-4">No se encontraron especialidades registradas.</div>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            string claseFondo = (index % 2 == 0) 
+                ? "bg-info bg-opacity-50 p-4 rounded-4 h-100 border-0 shadow-sm d-flex flex-column justify-content-between" 
+                : "bg-info bg-opacity-25 p-4 rounded-4 h-100 border-0 shadow-sm d-flex flex-column justify-content-between";
+            index++;
+
+            <div class="col">
+                <div class="card @claseFondo">
+                    <div class="card-body p-0 mb-3">
+                        <div class="text-muted small fw-bold mb-1" style="color: #002d62 !important; opacity: 0.7;">ID: @item.id</div>
+                        <h4 class="card-title fw-bold text-dark mb-0">@item.name</h4>
+                    </div>
+                    
+                    <div class="d-flex gap-2 pt-2 border-top border-dark border-opacity-10">
+                        <!-- Botón Editar con llamada a JS pasando el ID dinámico -->
+                        <button onclick="abrirFormulario('@Url.Action("Edit", new { id = item.id })', 'Editar Especialidad')" class="btn bg-white py-2 px-3 rounded-3 text-dark btn-sm fw-bold shadow-sm flex-grow-1 text-center border-0">
+                            <i class="bi bi-pencil-square"></i> Editar
+                        </button>                        
+                        <a class="btn bg-danger bg-opacity-10 py-2 px-3 rounded-3 text-danger text-decoration-none btn-sm fw-bold shadow-sm flex-grow-1 text-center"
+                           onclick="verificarEliminacion('@item.name', '@item.id')">
+                            <i class="bi bi-trash"></i> Eliminar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<!-- MODAL ÚNICO PARA FORMULARIOS (CREAR Y EDITAR) -->
+<div class="modal fade" id="modalFormulario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4 rounded-4 border-0 shadow-lg" style="background-color: white">
+            <div class="modal-header border-0 pb-2 justify-content-center">
+                <h5 class="modal-title fw-bold text-dark text-center" id="modalFormularioTitulo">Formulario</h5>
+            </div>
+            <!-- Aquí el JavaScript inyectará dinámicamente el HTML de Create o Edit -->
+            <div class="modal-body pt-2" id="modalFormularioContenido">
+                <div class="text-center py-3">
+                    <div class="spinner-border text-info" role="status"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Confirmación de Eliminación -->
+<div class="modal fade" id="modalEliminacionConfirmar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4 rounded-4 border-0 shadow-lg" style="background-color: white">
+            <div class="modal-header border-0 pb-0 justify-content-center">
+                <h5 class="modal-title fw-bold text-danger text-center">¿Confirmar Eliminación?</h5>
+            </div>
+            <div class="modal-body text-dark text-center fs-5 pt-3">
+                <p class="mb-0">Estás a punto de eliminar la especialidad:<br /><strong id="nombreEspecialidadEliminar" class="fw-bold" style="color: #002d62 !important;"></strong></p>
+            </div>
+            <form asp-action="Delete" method="post" id="formEliminarEspecialidad">
+                <input type="hidden" id="idEspecialidadEliminar" name="id" value="" />
+                <div class="modal-footer border-0 justify-content-center gap-2 pt-4">
+                    <button type="button" class="btn bg-secondary bg-opacity-20 p-3 rounded-4 fw-bold text-dark flex-grow-1 text-center border-0" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn bg-danger bg-opacity-70 p-3 rounded-4 fw-bold text-white flex-grow-1 text-center border-0">Eliminar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Función AJAX para cargar los formularios dentro del modal
+        function abrirFormulario(url, titulo) {
+            document.getElementById('modalFormularioTitulo').innerText = titulo;
+            document.getElementById('modalFormularioContenido').innerHTML = `
+                <div class="text-center py-3"><div class="spinner-border text-info" role="status"></div></div>`;
+            
+            // Abrimos el modal visualmente primero
+            var modalElement = document.getElementById('modalFormulario');
+            var myModal = bootstrap.Modal.getOrCreateInstance(modalElement);
+            myModal.show();
+
+            // Petición AJAX al servidor para traer el PartialView
+            fetch(url)
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('modalFormularioContenido').innerHTML = html;
+                })
+                .catch(error => {
+                    document.getElementById('modalFormularioContenido').innerHTML = `
+                        <div class="alert alert-danger border-0 rounded-4">No se pudo cargar el formulario.</div>`;
+                });
+        }
+
+        function verificarEliminacion(nombre, idEspecialidad) {
+            document.getElementById('nombreEspecialidadEliminar').textContent = nombre;
+            document.getElementById('idEspecialidadEliminar').value = idEspecialidad;
+
+            var modalElement = document.getElementById('modalEliminacionConfirmar');
+            var myModal = bootstrap.Modal.getOrCreateInstance(modalElement);
+            myModal.show();
+        }
+    </script>
+}

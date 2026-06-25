@@ -16,7 +16,7 @@
     <div style="background-color:#343a40;"
          class="p-4 rounded-4 shadow-lg">
 
-        <div class="row">
+        <div class="row justify-content-center">
 
             <!-- Citas -->
 
@@ -27,7 +27,7 @@
                     <div class="card-body">
 
                         <div style="font-size:60px;">
-                            📅
+                              <img src="~/img/calendario.png" alt="citas del dia" style="width: 100px; height: auto;">
                         </div>
 
                         <h5 class="card-title mt-2">
@@ -59,7 +59,7 @@
                     <div class="card-body">
 
                         <div style="font-size:60px;">
-                            🦷
+                             <img src="~/img/tratamiento.png" alt="Tratamientos activos" style="width: 130px; height: auto;">
                         </div>
 
                         <h5 class="card-title mt-2">
@@ -91,7 +91,7 @@
                     <div class="card-body">
 
                         <div style="font-size:60px;">
-                            💳
+                             <img src="~/img/pago.png" alt="Historial de pagos del dia" style="width: 100px; height: auto;">
                         </div>
 
                         <h5 class="card-title mt-2">
@@ -123,7 +123,7 @@
                     <div class="card-body">
 
                         <div style="font-size:60px;">
-                            📦
+                             <img src="~/img/stock.png" alt="stock critico" style="width: 170px; height: auto;">
                         </div>
 
                         <h5 class="card-title mt-2">
@@ -140,13 +140,37 @@
                             Ver Stock
                         </a>
 
-                    </div>
-
-                </div>
+                    </div>                   
 
             </div>
 
         </div>
+
+         <div class="col-md-3 mb-3">
+
+                <div class="card shadow border-0 text-center h-100">
+
+                    <div class="card-body">
+
+                        <div style="font-size:60px;">
+                           <img src="~/img/grafico.png" alt="Gráfico de ganancias" style="width: 100px; height: auto;">
+                        </div>
+
+                        <h5 class="card-title mt-2">
+                            Ver ganacias ultimos 5 meses
+                        </h5>
+             
+
+                        <a asp-controller="Dashboard"
+                           asp-action="Grafica"
+                           class="btn btn-info text-white mt-2">
+                            Vizualizar
+                        </a>
+
+                    </div>
+
+                </div>
+                </div>
 
     </div>
 

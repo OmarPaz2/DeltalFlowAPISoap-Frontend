@@ -12,51 +12,71 @@ namespace servicioSesionTratamiento
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", ConfigurationName="servicioSesionTratamiento.SesionTratamientoServiceImpl")]
-    public interface SesionTratamientoServiceImpl
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", ConfigurationName="servicioSesionTratamiento.SesionTratamientoEndpoint")]
+    public interface SesionTratamientoEndpoint
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://impl.service.treatment.pe.dentalflow.com/SesionTratamientoServiceImpl/getA" +
-            "llSesionesByIdTratamientoRequest", ReplyAction="http://impl.service.treatment.pe.dentalflow.com/SesionTratamientoServiceImpl/getA" +
-            "llSesionesByIdTratamientoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/fechaRecomendad" +
+            "aRequest", ReplyAction="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/fechaRecomendad" +
+            "aResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<servicioSesionTratamiento.getAllSesionesByIdTratamientoResponse> getAllSesionesByIdTratamientoAsync(servicioSesionTratamiento.getAllSesionesByIdTratamientoRequest request);
+        System.Threading.Tasks.Task<servicioSesionTratamiento.fechaRecomendadaResponse> fechaRecomendadaAsync(servicioSesionTratamiento.fechaRecomendadaRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://impl.service.treatment.pe.dentalflow.com/SesionTratamientoServiceImpl/actu" +
-            "alizarSesionRequest", ReplyAction="http://impl.service.treatment.pe.dentalflow.com/SesionTratamientoServiceImpl/actu" +
-            "alizarSesionResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<servicioSesionTratamiento.actualizarSesionResponse> actualizarSesionAsync(servicioSesionTratamiento.actualizarSesionRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://impl.service.treatment.pe.dentalflow.com/SesionTratamientoServiceImpl/canc" +
-            "elarSesionRequest", ReplyAction="http://impl.service.treatment.pe.dentalflow.com/SesionTratamientoServiceImpl/canc" +
-            "elarSesionResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/cancelarSesionR" +
+            "equest", ReplyAction="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/cancelarSesionR" +
+            "esponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<servicioSesionTratamiento.cancelarSesionResponse> cancelarSesionAsync(servicioSesionTratamiento.cancelarSesionRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://impl.service.treatment.pe.dentalflow.com/SesionTratamientoServiceImpl/sesi" +
-            "onesParahoyRequest", ReplyAction="http://impl.service.treatment.pe.dentalflow.com/SesionTratamientoServiceImpl/sesi" +
-            "onesParahoyResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/actualizarSesio" +
+            "nRequest", ReplyAction="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/actualizarSesio" +
+            "nResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<servicioSesionTratamiento.sesionesParahoyResponse> sesionesParahoyAsync(servicioSesionTratamiento.sesionesParahoyRequest request);
+        System.Threading.Tasks.Task<servicioSesionTratamiento.actualizarSesionResponse> actualizarSesionAsync(servicioSesionTratamiento.actualizarSesionRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://impl.service.treatment.pe.dentalflow.com/SesionTratamientoServiceImpl/regi" +
-            "strarSesionRequest", ReplyAction="http://impl.service.treatment.pe.dentalflow.com/SesionTratamientoServiceImpl/regi" +
-            "strarSesionResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/registrarSesion" +
+            "Request", ReplyAction="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/registrarSesion" +
+            "Response")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<servicioSesionTratamiento.registrarSesionResponse> registrarSesionAsync(servicioSesionTratamiento.registrarSesionRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://impl.service.treatment.pe.dentalflow.com/SesionTratamientoServiceImpl/getS" +
-            "esionRequest", ReplyAction="http://impl.service.treatment.pe.dentalflow.com/SesionTratamientoServiceImpl/getS" +
-            "esionResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/sesionesParahoy" +
+            "Request", ReplyAction="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/sesionesParahoy" +
+            "Response")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<servicioSesionTratamiento.sesionesParahoyResponse> sesionesParahoyAsync(servicioSesionTratamiento.sesionesParahoyRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/marcarAsistenci" +
+            "aPacienteRequest", ReplyAction="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/marcarAsistenci" +
+            "aPacienteResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<servicioSesionTratamiento.marcarAsistenciaPacienteResponse> marcarAsistenciaPacienteAsync(servicioSesionTratamiento.marcarAsistenciaPacienteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/getSesionReques" +
+            "t", ReplyAction="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/getSesionRespon" +
+            "se")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<servicioSesionTratamiento.getSesionResponse> getSesionAsync(servicioSesionTratamiento.getSesionRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/getAllSesionesB" +
+            "yIdTratamientoRequest", ReplyAction="http://soap.treatment.pe.dentalflow.com/SesionTratamientoEndpoint/getAllSesionesB" +
+            "yIdTratamientoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<servicioSesionTratamiento.getAllSesionesByIdTratamientoResponse> getAllSesionesByIdTratamientoAsync(servicioSesionTratamiento.getAllSesionesByIdTratamientoRequest request);
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/")]
+    public partial class localTime
+    {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/")]
     public partial class sesionTratamientoResponseDto
     {
         
@@ -79,6 +99,8 @@ namespace servicioSesionTratamiento
         private string observacionesField;
         
         private string estadoField;
+        
+        private bool asistenciaPacienteField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
@@ -219,12 +241,26 @@ namespace servicioSesionTratamiento
                 this.estadoField = value;
             }
         }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
+        public bool asistenciaPaciente
+        {
+            get
+            {
+                return this.asistenciaPacienteField;
+            }
+            set
+            {
+                this.asistenciaPacienteField = value;
+            }
+        }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/")]
     public partial class sesionTratamientoRegisterRequestDto
     {
         
@@ -235,6 +271,8 @@ namespace servicioSesionTratamiento
         private decimal costoParcialField;
         
         private bool costoParcialFieldSpecified;
+        
+        private int tiempoDuracionField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
@@ -291,12 +329,26 @@ namespace servicioSesionTratamiento
                 this.costoParcialFieldSpecified = value;
             }
         }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public int tiempoDuracion
+        {
+            get
+            {
+                return this.tiempoDuracionField;
+            }
+            set
+            {
+                this.tiempoDuracionField = value;
+            }
+        }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/")]
     public partial class sesionTratamientoUpdateRequestDto
     {
         
@@ -336,87 +388,50 @@ namespace servicioSesionTratamiento
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllSesionesByIdTratamiento", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class getAllSesionesByIdTratamientoRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="fechaRecomendada", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class fechaRecomendadaRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int arg0;
         
-        public getAllSesionesByIdTratamientoRequest()
-        {
-        }
-        
-        public getAllSesionesByIdTratamientoRequest(int arg0)
-        {
-            this.arg0 = arg0;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllSesionesByIdTratamientoResponse", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class getAllSesionesByIdTratamientoResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public servicioSesionTratamiento.sesionTratamientoResponseDto[] @return;
-        
-        public getAllSesionesByIdTratamientoResponse()
-        {
-        }
-        
-        public getAllSesionesByIdTratamientoResponse(servicioSesionTratamiento.sesionTratamientoResponseDto[] @return)
-        {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarSesion", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class actualizarSesionRequest
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public servicioSesionTratamiento.sesionTratamientoUpdateRequestDto arg0;
+        public string arg1;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=2)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg1;
+        public string arg2;
         
-        public actualizarSesionRequest()
+        public fechaRecomendadaRequest()
         {
         }
         
-        public actualizarSesionRequest(servicioSesionTratamiento.sesionTratamientoUpdateRequestDto arg0, int arg1)
+        public fechaRecomendadaRequest(int arg0, string arg1, string arg2)
         {
             this.arg0 = arg0;
             this.arg1 = arg1;
+            this.arg2 = arg2;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarSesionResponse", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class actualizarSesionResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="fechaRecomendadaResponse", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class fechaRecomendadaResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string @return;
+        public servicioSesionTratamiento.localTime @return;
         
-        public actualizarSesionResponse()
+        public fechaRecomendadaResponse()
         {
         }
         
-        public actualizarSesionResponse(string @return)
+        public fechaRecomendadaResponse(servicioSesionTratamiento.localTime @return)
         {
             this.@return = @return;
         }
@@ -425,32 +440,32 @@ namespace servicioSesionTratamiento
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="cancelarSesion", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="cancelarSesion", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class cancelarSesionRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
+        public int idSesion;
         
         public cancelarSesionRequest()
         {
         }
         
-        public cancelarSesionRequest(int arg0)
+        public cancelarSesionRequest(int idSesion)
         {
-            this.arg0 = arg0;
+            this.idSesion = idSesion;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="cancelarSesionResponse", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="cancelarSesionResponse", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class cancelarSesionResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string @return;
         
@@ -467,31 +482,45 @@ namespace servicioSesionTratamiento
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="sesionesParahoy", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class sesionesParahoyRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarSesion", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class actualizarSesionRequest
     {
         
-        public sesionesParahoyRequest()
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idSesion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public servicioSesionTratamiento.sesionTratamientoUpdateRequestDto request;
+        
+        public actualizarSesionRequest()
         {
+        }
+        
+        public actualizarSesionRequest(int idSesion, servicioSesionTratamiento.sesionTratamientoUpdateRequestDto request)
+        {
+            this.idSesion = idSesion;
+            this.request = request;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="sesionesParahoyResponse", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class sesionesParahoyResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarSesionResponse", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class actualizarSesionResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public servicioSesionTratamiento.sesionTratamientoResponseDto[] @return;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string @return;
         
-        public sesionesParahoyResponse()
+        public actualizarSesionResponse()
         {
         }
         
-        public sesionesParahoyResponse(servicioSesionTratamiento.sesionTratamientoResponseDto[] @return)
+        public actualizarSesionResponse(string @return)
         {
             this.@return = @return;
         }
@@ -500,32 +529,32 @@ namespace servicioSesionTratamiento
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarSesion", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarSesion", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class registrarSesionRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public servicioSesionTratamiento.sesionTratamientoRegisterRequestDto arg0;
+        public servicioSesionTratamiento.sesionTratamientoRegisterRequestDto request;
         
         public registrarSesionRequest()
         {
         }
         
-        public registrarSesionRequest(servicioSesionTratamiento.sesionTratamientoRegisterRequestDto arg0)
+        public registrarSesionRequest(servicioSesionTratamiento.sesionTratamientoRegisterRequestDto request)
         {
-            this.arg0 = arg0;
+            this.request = request;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarSesionResponse", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarSesionResponse", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class registrarSesionResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string @return;
         
@@ -542,19 +571,66 @@ namespace servicioSesionTratamiento
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getSesion", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class getSesionRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="sesionesParahoy", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class sesionesParahoyRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
+        public int idOdontologo;
         
-        public getSesionRequest()
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool arg1;
+        
+        public sesionesParahoyRequest()
         {
         }
         
-        public getSesionRequest(int arg0)
+        public sesionesParahoyRequest(int idOdontologo, bool arg1)
+        {
+            this.idOdontologo = idOdontologo;
+            this.arg1 = arg1;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="sesionesParahoyResponse", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class sesionesParahoyResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public servicioSesionTratamiento.sesionTratamientoResponseDto[] @return;
+        
+        public sesionesParahoyResponse()
+        {
+        }
+        
+        public sesionesParahoyResponse(servicioSesionTratamiento.sesionTratamientoResponseDto[] @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="marcarAsistenciaPaciente", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class marcarAsistenciaPacienteRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int arg0;
+        
+        public marcarAsistenciaPacienteRequest()
+        {
+        }
+        
+        public marcarAsistenciaPacienteRequest(int arg0)
         {
             this.arg0 = arg0;
         }
@@ -563,11 +639,53 @@ namespace servicioSesionTratamiento
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getSesionResponse", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="marcarAsistenciaPacienteResponse", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class marcarAsistenciaPacienteResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string @return;
+        
+        public marcarAsistenciaPacienteResponse()
+        {
+        }
+        
+        public marcarAsistenciaPacienteResponse(string @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getSesion", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getSesionRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idSesion;
+        
+        public getSesionRequest()
+        {
+        }
+        
+        public getSesionRequest(int idSesion)
+        {
+            this.idSesion = idSesion;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getSesionResponse", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class getSesionResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public servicioSesionTratamiento.sesionTratamientoResponseDto @return;
         
@@ -581,14 +699,56 @@ namespace servicioSesionTratamiento
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public interface SesionTratamientoServiceImplChannel : servicioSesionTratamiento.SesionTratamientoServiceImpl, System.ServiceModel.IClientChannel
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllSesionesByIdTratamiento", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getAllSesionesByIdTratamientoRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idTratamiento;
+        
+        public getAllSesionesByIdTratamientoRequest()
+        {
+        }
+        
+        public getAllSesionesByIdTratamientoRequest(int idTratamiento)
+        {
+            this.idTratamiento = idTratamiento;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllSesionesByIdTratamientoResponse", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getAllSesionesByIdTratamientoResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public servicioSesionTratamiento.sesionTratamientoResponseDto[] @return;
+        
+        public getAllSesionesByIdTratamientoResponse()
+        {
+        }
+        
+        public getAllSesionesByIdTratamientoResponse(servicioSesionTratamiento.sesionTratamientoResponseDto[] @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    public interface SesionTratamientoEndpointChannel : servicioSesionTratamiento.SesionTratamientoEndpoint, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public partial class SesionTratamientoServiceImplClient : System.ServiceModel.ClientBase<servicioSesionTratamiento.SesionTratamientoServiceImpl>, servicioSesionTratamiento.SesionTratamientoServiceImpl
+    public partial class SesionTratamientoEndpointClient : System.ServiceModel.ClientBase<servicioSesionTratamiento.SesionTratamientoEndpoint>, servicioSesionTratamiento.SesionTratamientoEndpoint
     {
         
         /// <summary>
@@ -598,115 +758,145 @@ namespace servicioSesionTratamiento
         /// <param name="clientCredentials">Credenciales de cliente</param>
         static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
         
-        public SesionTratamientoServiceImplClient() : 
-                base(SesionTratamientoServiceImplClient.GetDefaultBinding(), SesionTratamientoServiceImplClient.GetDefaultEndpointAddress())
+        public SesionTratamientoEndpointClient() : 
+                base(SesionTratamientoEndpointClient.GetDefaultBinding(), SesionTratamientoEndpointClient.GetDefaultEndpointAddress())
         {
-            this.Endpoint.Name = EndpointConfiguration.SesionTratamientoServiceImplPort.ToString();
+            this.Endpoint.Name = EndpointConfiguration.SesionTratamientoEndpointPort.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public SesionTratamientoServiceImplClient(EndpointConfiguration endpointConfiguration) : 
-                base(SesionTratamientoServiceImplClient.GetBindingForEndpoint(endpointConfiguration), SesionTratamientoServiceImplClient.GetEndpointAddress(endpointConfiguration))
-        {
-            this.Endpoint.Name = endpointConfiguration.ToString();
-            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
-        }
-        
-        public SesionTratamientoServiceImplClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
-                base(SesionTratamientoServiceImplClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
+        public SesionTratamientoEndpointClient(EndpointConfiguration endpointConfiguration) : 
+                base(SesionTratamientoEndpointClient.GetBindingForEndpoint(endpointConfiguration), SesionTratamientoEndpointClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public SesionTratamientoServiceImplClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(SesionTratamientoServiceImplClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        public SesionTratamientoEndpointClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+                base(SesionTratamientoEndpointClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public SesionTratamientoServiceImplClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public SesionTratamientoEndpointClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(SesionTratamientoEndpointClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        {
+            this.Endpoint.Name = endpointConfiguration.ToString();
+            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
+        }
+        
+        public SesionTratamientoEndpointClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<servicioSesionTratamiento.getAllSesionesByIdTratamientoResponse> servicioSesionTratamiento.SesionTratamientoServiceImpl.getAllSesionesByIdTratamientoAsync(servicioSesionTratamiento.getAllSesionesByIdTratamientoRequest request)
+        System.Threading.Tasks.Task<servicioSesionTratamiento.fechaRecomendadaResponse> servicioSesionTratamiento.SesionTratamientoEndpoint.fechaRecomendadaAsync(servicioSesionTratamiento.fechaRecomendadaRequest request)
         {
-            return base.Channel.getAllSesionesByIdTratamientoAsync(request);
+            return base.Channel.fechaRecomendadaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<servicioSesionTratamiento.getAllSesionesByIdTratamientoResponse> getAllSesionesByIdTratamientoAsync(int arg0)
+        public System.Threading.Tasks.Task<servicioSesionTratamiento.fechaRecomendadaResponse> fechaRecomendadaAsync(int arg0, string arg1, string arg2)
         {
-            servicioSesionTratamiento.getAllSesionesByIdTratamientoRequest inValue = new servicioSesionTratamiento.getAllSesionesByIdTratamientoRequest();
-            inValue.arg0 = arg0;
-            return ((servicioSesionTratamiento.SesionTratamientoServiceImpl)(this)).getAllSesionesByIdTratamientoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<servicioSesionTratamiento.actualizarSesionResponse> servicioSesionTratamiento.SesionTratamientoServiceImpl.actualizarSesionAsync(servicioSesionTratamiento.actualizarSesionRequest request)
-        {
-            return base.Channel.actualizarSesionAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<servicioSesionTratamiento.actualizarSesionResponse> actualizarSesionAsync(servicioSesionTratamiento.sesionTratamientoUpdateRequestDto arg0, int arg1)
-        {
-            servicioSesionTratamiento.actualizarSesionRequest inValue = new servicioSesionTratamiento.actualizarSesionRequest();
+            servicioSesionTratamiento.fechaRecomendadaRequest inValue = new servicioSesionTratamiento.fechaRecomendadaRequest();
             inValue.arg0 = arg0;
             inValue.arg1 = arg1;
-            return ((servicioSesionTratamiento.SesionTratamientoServiceImpl)(this)).actualizarSesionAsync(inValue);
+            inValue.arg2 = arg2;
+            return ((servicioSesionTratamiento.SesionTratamientoEndpoint)(this)).fechaRecomendadaAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<servicioSesionTratamiento.cancelarSesionResponse> servicioSesionTratamiento.SesionTratamientoServiceImpl.cancelarSesionAsync(servicioSesionTratamiento.cancelarSesionRequest request)
+        System.Threading.Tasks.Task<servicioSesionTratamiento.cancelarSesionResponse> servicioSesionTratamiento.SesionTratamientoEndpoint.cancelarSesionAsync(servicioSesionTratamiento.cancelarSesionRequest request)
         {
             return base.Channel.cancelarSesionAsync(request);
         }
         
-        public System.Threading.Tasks.Task<servicioSesionTratamiento.cancelarSesionResponse> cancelarSesionAsync(int arg0)
+        public System.Threading.Tasks.Task<servicioSesionTratamiento.cancelarSesionResponse> cancelarSesionAsync(int idSesion)
         {
             servicioSesionTratamiento.cancelarSesionRequest inValue = new servicioSesionTratamiento.cancelarSesionRequest();
-            inValue.arg0 = arg0;
-            return ((servicioSesionTratamiento.SesionTratamientoServiceImpl)(this)).cancelarSesionAsync(inValue);
+            inValue.idSesion = idSesion;
+            return ((servicioSesionTratamiento.SesionTratamientoEndpoint)(this)).cancelarSesionAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<servicioSesionTratamiento.sesionesParahoyResponse> servicioSesionTratamiento.SesionTratamientoServiceImpl.sesionesParahoyAsync(servicioSesionTratamiento.sesionesParahoyRequest request)
+        System.Threading.Tasks.Task<servicioSesionTratamiento.actualizarSesionResponse> servicioSesionTratamiento.SesionTratamientoEndpoint.actualizarSesionAsync(servicioSesionTratamiento.actualizarSesionRequest request)
         {
-            return base.Channel.sesionesParahoyAsync(request);
+            return base.Channel.actualizarSesionAsync(request);
         }
         
-        public System.Threading.Tasks.Task<servicioSesionTratamiento.sesionesParahoyResponse> sesionesParahoyAsync()
+        public System.Threading.Tasks.Task<servicioSesionTratamiento.actualizarSesionResponse> actualizarSesionAsync(int idSesion, servicioSesionTratamiento.sesionTratamientoUpdateRequestDto request)
         {
-            servicioSesionTratamiento.sesionesParahoyRequest inValue = new servicioSesionTratamiento.sesionesParahoyRequest();
-            return ((servicioSesionTratamiento.SesionTratamientoServiceImpl)(this)).sesionesParahoyAsync(inValue);
+            servicioSesionTratamiento.actualizarSesionRequest inValue = new servicioSesionTratamiento.actualizarSesionRequest();
+            inValue.idSesion = idSesion;
+            inValue.request = request;
+            return ((servicioSesionTratamiento.SesionTratamientoEndpoint)(this)).actualizarSesionAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<servicioSesionTratamiento.registrarSesionResponse> servicioSesionTratamiento.SesionTratamientoServiceImpl.registrarSesionAsync(servicioSesionTratamiento.registrarSesionRequest request)
+        System.Threading.Tasks.Task<servicioSesionTratamiento.registrarSesionResponse> servicioSesionTratamiento.SesionTratamientoEndpoint.registrarSesionAsync(servicioSesionTratamiento.registrarSesionRequest request)
         {
             return base.Channel.registrarSesionAsync(request);
         }
         
-        public System.Threading.Tasks.Task<servicioSesionTratamiento.registrarSesionResponse> registrarSesionAsync(servicioSesionTratamiento.sesionTratamientoRegisterRequestDto arg0)
+        public System.Threading.Tasks.Task<servicioSesionTratamiento.registrarSesionResponse> registrarSesionAsync(servicioSesionTratamiento.sesionTratamientoRegisterRequestDto request)
         {
             servicioSesionTratamiento.registrarSesionRequest inValue = new servicioSesionTratamiento.registrarSesionRequest();
-            inValue.arg0 = arg0;
-            return ((servicioSesionTratamiento.SesionTratamientoServiceImpl)(this)).registrarSesionAsync(inValue);
+            inValue.request = request;
+            return ((servicioSesionTratamiento.SesionTratamientoEndpoint)(this)).registrarSesionAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<servicioSesionTratamiento.getSesionResponse> servicioSesionTratamiento.SesionTratamientoServiceImpl.getSesionAsync(servicioSesionTratamiento.getSesionRequest request)
+        System.Threading.Tasks.Task<servicioSesionTratamiento.sesionesParahoyResponse> servicioSesionTratamiento.SesionTratamientoEndpoint.sesionesParahoyAsync(servicioSesionTratamiento.sesionesParahoyRequest request)
+        {
+            return base.Channel.sesionesParahoyAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<servicioSesionTratamiento.sesionesParahoyResponse> sesionesParahoyAsync(int idOdontologo, bool arg1)
+        {
+            servicioSesionTratamiento.sesionesParahoyRequest inValue = new servicioSesionTratamiento.sesionesParahoyRequest();
+            inValue.idOdontologo = idOdontologo;
+            inValue.arg1 = arg1;
+            return ((servicioSesionTratamiento.SesionTratamientoEndpoint)(this)).sesionesParahoyAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<servicioSesionTratamiento.marcarAsistenciaPacienteResponse> servicioSesionTratamiento.SesionTratamientoEndpoint.marcarAsistenciaPacienteAsync(servicioSesionTratamiento.marcarAsistenciaPacienteRequest request)
+        {
+            return base.Channel.marcarAsistenciaPacienteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<servicioSesionTratamiento.marcarAsistenciaPacienteResponse> marcarAsistenciaPacienteAsync(int arg0)
+        {
+            servicioSesionTratamiento.marcarAsistenciaPacienteRequest inValue = new servicioSesionTratamiento.marcarAsistenciaPacienteRequest();
+            inValue.arg0 = arg0;
+            return ((servicioSesionTratamiento.SesionTratamientoEndpoint)(this)).marcarAsistenciaPacienteAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<servicioSesionTratamiento.getSesionResponse> servicioSesionTratamiento.SesionTratamientoEndpoint.getSesionAsync(servicioSesionTratamiento.getSesionRequest request)
         {
             return base.Channel.getSesionAsync(request);
         }
         
-        public System.Threading.Tasks.Task<servicioSesionTratamiento.getSesionResponse> getSesionAsync(int arg0)
+        public System.Threading.Tasks.Task<servicioSesionTratamiento.getSesionResponse> getSesionAsync(int idSesion)
         {
             servicioSesionTratamiento.getSesionRequest inValue = new servicioSesionTratamiento.getSesionRequest();
-            inValue.arg0 = arg0;
-            return ((servicioSesionTratamiento.SesionTratamientoServiceImpl)(this)).getSesionAsync(inValue);
+            inValue.idSesion = idSesion;
+            return ((servicioSesionTratamiento.SesionTratamientoEndpoint)(this)).getSesionAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<servicioSesionTratamiento.getAllSesionesByIdTratamientoResponse> servicioSesionTratamiento.SesionTratamientoEndpoint.getAllSesionesByIdTratamientoAsync(servicioSesionTratamiento.getAllSesionesByIdTratamientoRequest request)
+        {
+            return base.Channel.getAllSesionesByIdTratamientoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<servicioSesionTratamiento.getAllSesionesByIdTratamientoResponse> getAllSesionesByIdTratamientoAsync(int idTratamiento)
+        {
+            servicioSesionTratamiento.getAllSesionesByIdTratamientoRequest inValue = new servicioSesionTratamiento.getAllSesionesByIdTratamientoRequest();
+            inValue.idTratamiento = idTratamiento;
+            return ((servicioSesionTratamiento.SesionTratamientoEndpoint)(this)).getAllSesionesByIdTratamientoAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -723,7 +913,7 @@ namespace servicioSesionTratamiento
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.SesionTratamientoServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.SesionTratamientoEndpointPort))
             {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
@@ -737,27 +927,27 @@ namespace servicioSesionTratamiento
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.SesionTratamientoServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.SesionTratamientoEndpointPort))
             {
-                return new System.ServiceModel.EndpointAddress("http://localhost:1520/ws/sesionTratamiento");
+                return new System.ServiceModel.EndpointAddress("http://localhost:1520/ws/Session");
             }
             throw new System.InvalidOperationException(string.Format("No se pudo encontrar un punto de conexión con el nombre \"{0}\".", endpointConfiguration));
         }
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding()
         {
-            return SesionTratamientoServiceImplClient.GetBindingForEndpoint(EndpointConfiguration.SesionTratamientoServiceImplPort);
+            return SesionTratamientoEndpointClient.GetBindingForEndpoint(EndpointConfiguration.SesionTratamientoEndpointPort);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress()
         {
-            return SesionTratamientoServiceImplClient.GetEndpointAddress(EndpointConfiguration.SesionTratamientoServiceImplPort);
+            return SesionTratamientoEndpointClient.GetEndpointAddress(EndpointConfiguration.SesionTratamientoEndpointPort);
         }
         
         public enum EndpointConfiguration
         {
             
-            SesionTratamientoServiceImplPort,
+            SesionTratamientoEndpointPort,
         }
     }
 }

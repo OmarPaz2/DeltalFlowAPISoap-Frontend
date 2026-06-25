@@ -7,32 +7,44 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ServiceReference1
+namespace moduloclinicalStaff
 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://service.clinicalStaff.pe.dentalflow.com/", ConfigurationName="ServiceReference1.ClinicalStaffService")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://service.clinicalStaff.pe.dentalflow.com/", ConfigurationName="moduloclinicalStaff.ClinicalStaffService")]
     public interface ClinicalStaffService
     {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.clinicalStaff.pe.dentalflow.com/ClinicalStaffService/getAllDentist" +
+            "sBySpecialtyAndLastNameRequest", ReplyAction="http://service.clinicalStaff.pe.dentalflow.com/ClinicalStaffService/getAllDentist" +
+            "sBySpecialtyAndLastNameResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<moduloclinicalStaff.getAllDentistsBySpecialtyAndLastNameResponse> getAllDentistsBySpecialtyAndLastNameAsync(moduloclinicalStaff.getAllDentistsBySpecialtyAndLastNameRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.clinicalStaff.pe.dentalflow.com/ClinicalStaffService/updateDentist" +
+            "Request", ReplyAction="http://service.clinicalStaff.pe.dentalflow.com/ClinicalStaffService/updateDentist" +
+            "Response")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<moduloclinicalStaff.updateDentistResponse> updateDentistAsync(moduloclinicalStaff.updateDentistRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://service.clinicalStaff.pe.dentalflow.com/ClinicalStaffService/getDentistByI" +
             "dRequest", ReplyAction="http://service.clinicalStaff.pe.dentalflow.com/ClinicalStaffService/getDentistByI" +
             "dResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<ServiceReference1.getDentistByIdResponse> getDentistByIdAsync(ServiceReference1.getDentistByIdRequest request);
+        System.Threading.Tasks.Task<moduloclinicalStaff.getDentistByIdResponse> getDentistByIdAsync(moduloclinicalStaff.getDentistByIdRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.clinicalStaff.pe.dentalflow.com/ClinicalStaffService/getAllDentist" +
-            "sRequest", ReplyAction="http://service.clinicalStaff.pe.dentalflow.com/ClinicalStaffService/getAllDentist" +
-            "sResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.clinicalStaff.pe.dentalflow.com/ClinicalStaffService/getByIdUserRe" +
+            "quest", ReplyAction="http://service.clinicalStaff.pe.dentalflow.com/ClinicalStaffService/getByIdUserRe" +
+            "sponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<ServiceReference1.getAllDentistsResponse> getAllDentistsAsync(ServiceReference1.getAllDentistsRequest request);
+        System.Threading.Tasks.Task<moduloclinicalStaff.getByIdUserResponse> getByIdUserAsync(moduloclinicalStaff.getByIdUserRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://service.clinicalStaff.pe.dentalflow.com/ClinicalStaffService/createDentist" +
             "Request", ReplyAction="http://service.clinicalStaff.pe.dentalflow.com/ClinicalStaffService/createDentist" +
             "Response")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<ServiceReference1.createDentistResponse> createDentistAsync(ServiceReference1.createDentistRequest request);
+        System.Threading.Tasks.Task<moduloclinicalStaff.createDentistResponse> createDentistAsync(moduloclinicalStaff.createDentistRequest request);
     }
     
     /// <remarks/>
@@ -209,6 +221,214 @@ namespace ServiceReference1
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.clinicalStaff.pe.dentalflow.com/")]
     public partial class localDateTime
     {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.clinicalStaff.pe.dentalflow.com/")]
+    public partial class clinicalStaffResponseDto
+    {
+        
+        private string firstNameField;
+        
+        private int idField;
+        
+        private string lastNameField;
+        
+        private string licenseNumberField;
+        
+        private string phoneField;
+        
+        private int specialtyField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string firstName
+        {
+            get
+            {
+                return this.firstNameField;
+            }
+            set
+            {
+                this.firstNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public int id
+        {
+            get
+            {
+                return this.idField;
+            }
+            set
+            {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public string lastName
+        {
+            get
+            {
+                return this.lastNameField;
+            }
+            set
+            {
+                this.lastNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public string licenseNumber
+        {
+            get
+            {
+                return this.licenseNumberField;
+            }
+            set
+            {
+                this.licenseNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public string phone
+        {
+            get
+            {
+                return this.phoneField;
+            }
+            set
+            {
+                this.phoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public int specialty
+        {
+            get
+            {
+                return this.specialtyField;
+            }
+            set
+            {
+                this.specialtyField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.clinicalStaff.pe.dentalflow.com/")]
+    public partial class clinicalStaffDto
+    {
+        
+        private string firstNameField;
+        
+        private string lastNameField;
+        
+        private string licenseNumberField;
+        
+        private string phoneField;
+        
+        private int specialtyField;
+        
+        private int usuarioField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string firstName
+        {
+            get
+            {
+                return this.firstNameField;
+            }
+            set
+            {
+                this.firstNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string lastName
+        {
+            get
+            {
+                return this.lastNameField;
+            }
+            set
+            {
+                this.lastNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public string licenseNumber
+        {
+            get
+            {
+                return this.licenseNumberField;
+            }
+            set
+            {
+                this.licenseNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public string phone
+        {
+            get
+            {
+                return this.phoneField;
+            }
+            set
+            {
+                this.phoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public int specialty
+        {
+            get
+            {
+                return this.specialtyField;
+            }
+            set
+            {
+                this.specialtyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public int usuario
+        {
+            get
+            {
+                return this.usuarioField;
+            }
+            set
+            {
+                this.usuarioField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -446,6 +666,100 @@ namespace ServiceReference1
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllDentistsBySpecialtyAndLastName", WrapperNamespace="http://service.clinicalStaff.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getAllDentistsBySpecialtyAndLastNameRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.clinicalStaff.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string arg0;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.clinicalStaff.pe.dentalflow.com/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int arg1;
+        
+        public getAllDentistsBySpecialtyAndLastNameRequest()
+        {
+        }
+        
+        public getAllDentistsBySpecialtyAndLastNameRequest(string arg0, int arg1)
+        {
+            this.arg0 = arg0;
+            this.arg1 = arg1;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllDentistsBySpecialtyAndLastNameResponse", WrapperNamespace="http://service.clinicalStaff.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getAllDentistsBySpecialtyAndLastNameResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.clinicalStaff.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public moduloclinicalStaff.clinicalStaff[] @return;
+        
+        public getAllDentistsBySpecialtyAndLastNameResponse()
+        {
+        }
+        
+        public getAllDentistsBySpecialtyAndLastNameResponse(moduloclinicalStaff.clinicalStaff[] @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="updateDentist", WrapperNamespace="http://service.clinicalStaff.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class updateDentistRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.clinicalStaff.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int arg0;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.clinicalStaff.pe.dentalflow.com/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public moduloclinicalStaff.clinicalStaffDto arg1;
+        
+        public updateDentistRequest()
+        {
+        }
+        
+        public updateDentistRequest(int arg0, moduloclinicalStaff.clinicalStaffDto arg1)
+        {
+            this.arg0 = arg0;
+            this.arg1 = arg1;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="updateDentistResponse", WrapperNamespace="http://service.clinicalStaff.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class updateDentistResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.clinicalStaff.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public moduloclinicalStaff.clinicalStaffResponseDto @return;
+        
+        public updateDentistResponse()
+        {
+        }
+        
+        public updateDentistResponse(moduloclinicalStaff.clinicalStaffResponseDto @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="getDentistById", WrapperNamespace="http://service.clinicalStaff.pe.dentalflow.com/", IsWrapped=true)]
     public partial class getDentistByIdRequest
     {
@@ -473,13 +787,13 @@ namespace ServiceReference1
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.clinicalStaff.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public ServiceReference1.clinicalStaff @return;
+        public moduloclinicalStaff.clinicalStaff @return;
         
         public getDentistByIdResponse()
         {
         }
         
-        public getDentistByIdResponse(ServiceReference1.clinicalStaff @return)
+        public getDentistByIdResponse(moduloclinicalStaff.clinicalStaff @return)
         {
             this.@return = @return;
         }
@@ -488,31 +802,40 @@ namespace ServiceReference1
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllDentists", WrapperNamespace="http://service.clinicalStaff.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class getAllDentistsRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getByIdUser", WrapperNamespace="http://service.clinicalStaff.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getByIdUserRequest
     {
         
-        public getAllDentistsRequest()
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.clinicalStaff.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int arg0;
+        
+        public getByIdUserRequest()
         {
+        }
+        
+        public getByIdUserRequest(int arg0)
+        {
+            this.arg0 = arg0;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllDentistsResponse", WrapperNamespace="http://service.clinicalStaff.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class getAllDentistsResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getByIdUserResponse", WrapperNamespace="http://service.clinicalStaff.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getByIdUserResponse
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.clinicalStaff.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public ServiceReference1.clinicalStaff[] @return;
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public moduloclinicalStaff.clinicalStaffResponseDto @return;
         
-        public getAllDentistsResponse()
+        public getByIdUserResponse()
         {
         }
         
-        public getAllDentistsResponse(ServiceReference1.clinicalStaff[] @return)
+        public getByIdUserResponse(moduloclinicalStaff.clinicalStaffResponseDto @return)
         {
             this.@return = @return;
         }
@@ -573,26 +896,26 @@ namespace ServiceReference1
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.clinicalStaff.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public ServiceReference1.clinicalStaff @return;
+        public moduloclinicalStaff.clinicalStaff @return;
         
         public createDentistResponse()
         {
         }
         
-        public createDentistResponse(ServiceReference1.clinicalStaff @return)
+        public createDentistResponse(moduloclinicalStaff.clinicalStaff @return)
         {
             this.@return = @return;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public interface ClinicalStaffServiceChannel : ServiceReference1.ClinicalStaffService, System.ServiceModel.IClientChannel
+    public interface ClinicalStaffServiceChannel : moduloclinicalStaff.ClinicalStaffService, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public partial class ClinicalStaffServiceClient : System.ServiceModel.ClientBase<ServiceReference1.ClinicalStaffService>, ServiceReference1.ClinicalStaffService
+    public partial class ClinicalStaffServiceClient : System.ServiceModel.ClientBase<moduloclinicalStaff.ClinicalStaffService>, moduloclinicalStaff.ClinicalStaffService
     {
         
         /// <summary>
@@ -636,46 +959,75 @@ namespace ServiceReference1
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ServiceReference1.getDentistByIdResponse> ServiceReference1.ClinicalStaffService.getDentistByIdAsync(ServiceReference1.getDentistByIdRequest request)
+        System.Threading.Tasks.Task<moduloclinicalStaff.getAllDentistsBySpecialtyAndLastNameResponse> moduloclinicalStaff.ClinicalStaffService.getAllDentistsBySpecialtyAndLastNameAsync(moduloclinicalStaff.getAllDentistsBySpecialtyAndLastNameRequest request)
+        {
+            return base.Channel.getAllDentistsBySpecialtyAndLastNameAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<moduloclinicalStaff.getAllDentistsBySpecialtyAndLastNameResponse> getAllDentistsBySpecialtyAndLastNameAsync(string arg0, int arg1)
+        {
+            moduloclinicalStaff.getAllDentistsBySpecialtyAndLastNameRequest inValue = new moduloclinicalStaff.getAllDentistsBySpecialtyAndLastNameRequest();
+            inValue.arg0 = arg0;
+            inValue.arg1 = arg1;
+            return ((moduloclinicalStaff.ClinicalStaffService)(this)).getAllDentistsBySpecialtyAndLastNameAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<moduloclinicalStaff.updateDentistResponse> moduloclinicalStaff.ClinicalStaffService.updateDentistAsync(moduloclinicalStaff.updateDentistRequest request)
+        {
+            return base.Channel.updateDentistAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<moduloclinicalStaff.updateDentistResponse> updateDentistAsync(int arg0, moduloclinicalStaff.clinicalStaffDto arg1)
+        {
+            moduloclinicalStaff.updateDentistRequest inValue = new moduloclinicalStaff.updateDentistRequest();
+            inValue.arg0 = arg0;
+            inValue.arg1 = arg1;
+            return ((moduloclinicalStaff.ClinicalStaffService)(this)).updateDentistAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<moduloclinicalStaff.getDentistByIdResponse> moduloclinicalStaff.ClinicalStaffService.getDentistByIdAsync(moduloclinicalStaff.getDentistByIdRequest request)
         {
             return base.Channel.getDentistByIdAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ServiceReference1.getDentistByIdResponse> getDentistByIdAsync(int arg0)
+        public System.Threading.Tasks.Task<moduloclinicalStaff.getDentistByIdResponse> getDentistByIdAsync(int arg0)
         {
-            ServiceReference1.getDentistByIdRequest inValue = new ServiceReference1.getDentistByIdRequest();
+            moduloclinicalStaff.getDentistByIdRequest inValue = new moduloclinicalStaff.getDentistByIdRequest();
             inValue.arg0 = arg0;
-            return ((ServiceReference1.ClinicalStaffService)(this)).getDentistByIdAsync(inValue);
+            return ((moduloclinicalStaff.ClinicalStaffService)(this)).getDentistByIdAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ServiceReference1.getAllDentistsResponse> ServiceReference1.ClinicalStaffService.getAllDentistsAsync(ServiceReference1.getAllDentistsRequest request)
+        System.Threading.Tasks.Task<moduloclinicalStaff.getByIdUserResponse> moduloclinicalStaff.ClinicalStaffService.getByIdUserAsync(moduloclinicalStaff.getByIdUserRequest request)
         {
-            return base.Channel.getAllDentistsAsync(request);
+            return base.Channel.getByIdUserAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ServiceReference1.getAllDentistsResponse> getAllDentistsAsync()
+        public System.Threading.Tasks.Task<moduloclinicalStaff.getByIdUserResponse> getByIdUserAsync(int arg0)
         {
-            ServiceReference1.getAllDentistsRequest inValue = new ServiceReference1.getAllDentistsRequest();
-            return ((ServiceReference1.ClinicalStaffService)(this)).getAllDentistsAsync(inValue);
+            moduloclinicalStaff.getByIdUserRequest inValue = new moduloclinicalStaff.getByIdUserRequest();
+            inValue.arg0 = arg0;
+            return ((moduloclinicalStaff.ClinicalStaffService)(this)).getByIdUserAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ServiceReference1.createDentistResponse> ServiceReference1.ClinicalStaffService.createDentistAsync(ServiceReference1.createDentistRequest request)
+        System.Threading.Tasks.Task<moduloclinicalStaff.createDentistResponse> moduloclinicalStaff.ClinicalStaffService.createDentistAsync(moduloclinicalStaff.createDentistRequest request)
         {
             return base.Channel.createDentistAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ServiceReference1.createDentistResponse> createDentistAsync(int arg0, int arg1, string arg2, string arg3, string arg4, string arg5)
+        public System.Threading.Tasks.Task<moduloclinicalStaff.createDentistResponse> createDentistAsync(int arg0, int arg1, string arg2, string arg3, string arg4, string arg5)
         {
-            ServiceReference1.createDentistRequest inValue = new ServiceReference1.createDentistRequest();
+            moduloclinicalStaff.createDentistRequest inValue = new moduloclinicalStaff.createDentistRequest();
             inValue.arg0 = arg0;
             inValue.arg1 = arg1;
             inValue.arg2 = arg2;
             inValue.arg3 = arg3;
             inValue.arg4 = arg4;
             inValue.arg5 = arg5;
-            return ((ServiceReference1.ClinicalStaffService)(this)).createDentistAsync(inValue);
+            return ((moduloclinicalStaff.ClinicalStaffService)(this)).createDentistAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()

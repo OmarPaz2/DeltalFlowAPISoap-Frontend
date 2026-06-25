@@ -12,57 +12,57 @@ namespace moduloCitas
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", ConfigurationName="moduloCitas.AppointmentService")]
-    public interface AppointmentService
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", ConfigurationName="moduloCitas.AppointmentEndpoint")]
+    public interface AppointmentEndpoint
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.appointment.pe.dentalflow.com/AppointmentService/createAppointment" +
-            "Request", ReplyAction="http://service.appointment.pe.dentalflow.com/AppointmentService/createAppointment" +
-            "Response")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<moduloCitas.createAppointmentResponse> createAppointmentAsync(moduloCitas.createAppointmentRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.appointment.pe.dentalflow.com/AppointmentService/cancelAppointment" +
-            "Request", ReplyAction="http://service.appointment.pe.dentalflow.com/AppointmentService/cancelAppointment" +
-            "Response")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.appointment.pe.dentalflow.com/AppointmentEndpoint/cancelAppointmentRe" +
+            "quest", ReplyAction="http://soap.appointment.pe.dentalflow.com/AppointmentEndpoint/cancelAppointmentRe" +
+            "sponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloCitas.cancelAppointmentResponse> cancelAppointmentAsync(moduloCitas.cancelAppointmentRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.appointment.pe.dentalflow.com/AppointmentService/getAllAppointment" +
-            "sRequest", ReplyAction="http://service.appointment.pe.dentalflow.com/AppointmentService/getAllAppointment" +
-            "sResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.appointment.pe.dentalflow.com/AppointmentEndpoint/getAllAppointmentsR" +
+            "equest", ReplyAction="http://soap.appointment.pe.dentalflow.com/AppointmentEndpoint/getAllAppointmentsR" +
+            "esponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloCitas.getAllAppointmentsResponse> getAllAppointmentsAsync(moduloCitas.getAllAppointmentsRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.appointment.pe.dentalflow.com/AppointmentService/getAppointmentByI" +
-            "dRequest", ReplyAction="http://service.appointment.pe.dentalflow.com/AppointmentService/getAppointmentByI" +
-            "dResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.appointment.pe.dentalflow.com/AppointmentEndpoint/getAppointmentByIdR" +
+            "equest", ReplyAction="http://soap.appointment.pe.dentalflow.com/AppointmentEndpoint/getAppointmentByIdR" +
+            "esponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloCitas.getAppointmentByIdResponse> getAppointmentByIdAsync(moduloCitas.getAppointmentByIdRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.appointment.pe.dentalflow.com/AppointmentService/rescheduleAppoint" +
-            "mentRequest", ReplyAction="http://service.appointment.pe.dentalflow.com/AppointmentService/rescheduleAppoint" +
-            "mentResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.appointment.pe.dentalflow.com/AppointmentEndpoint/createAppointmentRe" +
+            "quest", ReplyAction="http://soap.appointment.pe.dentalflow.com/AppointmentEndpoint/createAppointmentRe" +
+            "sponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<moduloCitas.rescheduleAppointmentResponse> rescheduleAppointmentAsync(moduloCitas.rescheduleAppointmentRequest request);
+        System.Threading.Tasks.Task<moduloCitas.createAppointmentResponse> createAppointmentAsync(moduloCitas.createAppointmentRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.appointment.pe.dentalflow.com/AppointmentService/getAppointmentsBy" +
-            "PatientRequest", ReplyAction="http://service.appointment.pe.dentalflow.com/AppointmentService/getAppointmentsBy" +
-            "PatientResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.appointment.pe.dentalflow.com/AppointmentEndpoint/getAppointmentsByPa" +
+            "tientRequest", ReplyAction="http://soap.appointment.pe.dentalflow.com/AppointmentEndpoint/getAppointmentsByPa" +
+            "tientResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloCitas.getAppointmentsByPatientResponse> getAppointmentsByPatientAsync(moduloCitas.getAppointmentsByPatientRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.appointment.pe.dentalflow.com/AppointmentService/getAppointmentsBy" +
-            "DentistRequest", ReplyAction="http://service.appointment.pe.dentalflow.com/AppointmentService/getAppointmentsBy" +
-            "DentistResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.appointment.pe.dentalflow.com/AppointmentEndpoint/getAppointmentsByDe" +
+            "ntistRequest", ReplyAction="http://soap.appointment.pe.dentalflow.com/AppointmentEndpoint/getAppointmentsByDe" +
+            "ntistResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloCitas.getAppointmentsByDentistResponse> getAppointmentsByDentistAsync(moduloCitas.getAppointmentsByDentistRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.appointment.pe.dentalflow.com/AppointmentEndpoint/rescheduleAppointme" +
+            "ntRequest", ReplyAction="http://soap.appointment.pe.dentalflow.com/AppointmentEndpoint/rescheduleAppointme" +
+            "ntResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<moduloCitas.rescheduleAppointmentResponse> rescheduleAppointmentAsync(moduloCitas.rescheduleAppointmentRequest request);
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.appointment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/")]
     public partial class appointment
     {
         
@@ -294,7 +294,7 @@ namespace moduloCitas
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.appointment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/")]
     public partial class localDate
     {
     }
@@ -302,7 +302,7 @@ namespace moduloCitas
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.appointment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/")]
     public partial class patient
     {
         
@@ -470,7 +470,7 @@ namespace moduloCitas
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.appointment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/")]
     public partial class localDateTime
     {
     }
@@ -478,7 +478,7 @@ namespace moduloCitas
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.appointment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/")]
     public partial class localTime
     {
     }
@@ -486,7 +486,7 @@ namespace moduloCitas
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.appointment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/")]
     public partial class rol
     {
         
@@ -542,7 +542,7 @@ namespace moduloCitas
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.appointment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/")]
     public partial class usuario
     {
         
@@ -662,7 +662,7 @@ namespace moduloCitas
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.appointment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/")]
     public partial class specialty
     {
         
@@ -718,7 +718,7 @@ namespace moduloCitas
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.appointment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/")]
     public partial class clinicalStaff
     {
         
@@ -886,7 +886,7 @@ namespace moduloCitas
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.appointment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/")]
     public partial class appointmentType
     {
         
@@ -901,6 +901,10 @@ namespace moduloCitas
         private bool idFieldSpecified;
         
         private string nameField;
+        
+        private decimal priceField;
+        
+        private bool priceFieldSpecified;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
@@ -985,11 +989,39 @@ namespace moduloCitas
                 this.nameField = value;
             }
         }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public decimal price
+        {
+            get
+            {
+                return this.priceField;
+            }
+            set
+            {
+                this.priceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool priceSpecified
+        {
+            get
+            {
+                return this.priceFieldSpecified;
+            }
+            set
+            {
+                this.priceFieldSpecified = value;
+            }
+        }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.appointment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/")]
     public enum appointmentStatus
     {
         
@@ -1009,99 +1041,32 @@ namespace moduloCitas
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="createAppointment", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class createAppointmentRequest
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg1;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public long arg2;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=3)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string arg3;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=4)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string arg4;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=5)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string arg5;
-        
-        public createAppointmentRequest()
-        {
-        }
-        
-        public createAppointmentRequest(int arg0, int arg1, long arg2, string arg3, string arg4, string arg5)
-        {
-            this.arg0 = arg0;
-            this.arg1 = arg1;
-            this.arg2 = arg2;
-            this.arg3 = arg3;
-            this.arg4 = arg4;
-            this.arg5 = arg5;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="createAppointmentResponse", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class createAppointmentResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public moduloCitas.appointment @return;
-        
-        public createAppointmentResponse()
-        {
-        }
-        
-        public createAppointmentResponse(moduloCitas.appointment @return)
-        {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="cancelAppointment", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="cancelAppointment", WrapperNamespace="http://soap.appointment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class cancelAppointmentRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
+        public int appointmentId;
         
         public cancelAppointmentRequest()
         {
         }
         
-        public cancelAppointmentRequest(int arg0)
+        public cancelAppointmentRequest(int appointmentId)
         {
-            this.arg0 = arg0;
+            this.appointmentId = appointmentId;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="cancelAppointmentResponse", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="cancelAppointmentResponse", WrapperNamespace="http://soap.appointment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class cancelAppointmentResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloCitas.appointment @return;
         
@@ -1118,7 +1083,7 @@ namespace moduloCitas
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllAppointments", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllAppointments", WrapperNamespace="http://soap.appointment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class getAllAppointmentsRequest
     {
         
@@ -1130,11 +1095,11 @@ namespace moduloCitas
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllAppointmentsResponse", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllAppointmentsResponse", WrapperNamespace="http://soap.appointment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class getAllAppointmentsResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloCitas.appointment[] @return;
         
@@ -1151,32 +1116,32 @@ namespace moduloCitas
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAppointmentById", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAppointmentById", WrapperNamespace="http://soap.appointment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class getAppointmentByIdRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
+        public int id;
         
         public getAppointmentByIdRequest()
         {
         }
         
-        public getAppointmentByIdRequest(int arg0)
+        public getAppointmentByIdRequest(int id)
         {
-            this.arg0 = arg0;
+            this.id = id;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAppointmentByIdResponse", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAppointmentByIdResponse", WrapperNamespace="http://soap.appointment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class getAppointmentByIdResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloCitas.appointment @return;
         
@@ -1193,50 +1158,65 @@ namespace moduloCitas
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="rescheduleAppointment", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class rescheduleAppointmentRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="createAppointment", WrapperNamespace="http://soap.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class createAppointmentRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
+        public int patientId;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string arg1;
+        public int dentistId;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=2)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=2)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string arg2;
+        public long appointmentTypeId;
         
-        public rescheduleAppointmentRequest()
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string date;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string startTime;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string reason;
+        
+        public createAppointmentRequest()
         {
         }
         
-        public rescheduleAppointmentRequest(int arg0, string arg1, string arg2)
+        public createAppointmentRequest(int patientId, int dentistId, long appointmentTypeId, string date, string startTime, string reason)
         {
-            this.arg0 = arg0;
-            this.arg1 = arg1;
-            this.arg2 = arg2;
+            this.patientId = patientId;
+            this.dentistId = dentistId;
+            this.appointmentTypeId = appointmentTypeId;
+            this.date = date;
+            this.startTime = startTime;
+            this.reason = reason;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="rescheduleAppointmentResponse", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class rescheduleAppointmentResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="createAppointmentResponse", WrapperNamespace="http://soap.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class createAppointmentResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloCitas.appointment @return;
         
-        public rescheduleAppointmentResponse()
+        public createAppointmentResponse()
         {
         }
         
-        public rescheduleAppointmentResponse(moduloCitas.appointment @return)
+        public createAppointmentResponse(moduloCitas.appointment @return)
         {
             this.@return = @return;
         }
@@ -1245,32 +1225,32 @@ namespace moduloCitas
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAppointmentsByPatient", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAppointmentsByPatient", WrapperNamespace="http://soap.appointment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class getAppointmentsByPatientRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
+        public int patientId;
         
         public getAppointmentsByPatientRequest()
         {
         }
         
-        public getAppointmentsByPatientRequest(int arg0)
+        public getAppointmentsByPatientRequest(int patientId)
         {
-            this.arg0 = arg0;
+            this.patientId = patientId;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAppointmentsByPatientResponse", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAppointmentsByPatientResponse", WrapperNamespace="http://soap.appointment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class getAppointmentsByPatientResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloCitas.appointment[] @return;
         
@@ -1287,32 +1267,32 @@ namespace moduloCitas
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAppointmentsByDentist", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAppointmentsByDentist", WrapperNamespace="http://soap.appointment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class getAppointmentsByDentistRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
+        public int dentistId;
         
         public getAppointmentsByDentistRequest()
         {
         }
         
-        public getAppointmentsByDentistRequest(int arg0)
+        public getAppointmentsByDentistRequest(int dentistId)
         {
-            this.arg0 = arg0;
+            this.dentistId = dentistId;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAppointmentsByDentistResponse", WrapperNamespace="http://service.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAppointmentsByDentistResponse", WrapperNamespace="http://soap.appointment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class getAppointmentsByDentistResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.appointment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloCitas.appointment[] @return;
         
@@ -1326,14 +1306,66 @@ namespace moduloCitas
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public interface AppointmentServiceChannel : moduloCitas.AppointmentService, System.ServiceModel.IClientChannel
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="rescheduleAppointment", WrapperNamespace="http://soap.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class rescheduleAppointmentRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int appointmentId;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string newDate;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string newStartTime;
+        
+        public rescheduleAppointmentRequest()
+        {
+        }
+        
+        public rescheduleAppointmentRequest(int appointmentId, string newDate, string newStartTime)
+        {
+            this.appointmentId = appointmentId;
+            this.newDate = newDate;
+            this.newStartTime = newStartTime;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="rescheduleAppointmentResponse", WrapperNamespace="http://soap.appointment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class rescheduleAppointmentResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.appointment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public moduloCitas.appointment @return;
+        
+        public rescheduleAppointmentResponse()
+        {
+        }
+        
+        public rescheduleAppointmentResponse(moduloCitas.appointment @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    public interface AppointmentEndpointChannel : moduloCitas.AppointmentEndpoint, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public partial class AppointmentServiceClient : System.ServiceModel.ClientBase<moduloCitas.AppointmentService>, moduloCitas.AppointmentService
+    public partial class AppointmentEndpointClient : System.ServiceModel.ClientBase<moduloCitas.AppointmentEndpoint>, moduloCitas.AppointmentEndpoint
     {
         
         /// <summary>
@@ -1343,72 +1375,54 @@ namespace moduloCitas
         /// <param name="clientCredentials">Credenciales de cliente</param>
         static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
         
-        public AppointmentServiceClient() : 
-                base(AppointmentServiceClient.GetDefaultBinding(), AppointmentServiceClient.GetDefaultEndpointAddress())
+        public AppointmentEndpointClient() : 
+                base(AppointmentEndpointClient.GetDefaultBinding(), AppointmentEndpointClient.GetDefaultEndpointAddress())
         {
-            this.Endpoint.Name = EndpointConfiguration.AppointmentServiceImplPort.ToString();
+            this.Endpoint.Name = EndpointConfiguration.AppointmentEndpointPort.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public AppointmentServiceClient(EndpointConfiguration endpointConfiguration) : 
-                base(AppointmentServiceClient.GetBindingForEndpoint(endpointConfiguration), AppointmentServiceClient.GetEndpointAddress(endpointConfiguration))
-        {
-            this.Endpoint.Name = endpointConfiguration.ToString();
-            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
-        }
-        
-        public AppointmentServiceClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
-                base(AppointmentServiceClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
+        public AppointmentEndpointClient(EndpointConfiguration endpointConfiguration) : 
+                base(AppointmentEndpointClient.GetBindingForEndpoint(endpointConfiguration), AppointmentEndpointClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public AppointmentServiceClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(AppointmentServiceClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        public AppointmentEndpointClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+                base(AppointmentEndpointClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public AppointmentServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public AppointmentEndpointClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(AppointmentEndpointClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        {
+            this.Endpoint.Name = endpointConfiguration.ToString();
+            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
+        }
+        
+        public AppointmentEndpointClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloCitas.createAppointmentResponse> moduloCitas.AppointmentService.createAppointmentAsync(moduloCitas.createAppointmentRequest request)
-        {
-            return base.Channel.createAppointmentAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<moduloCitas.createAppointmentResponse> createAppointmentAsync(int arg0, int arg1, long arg2, string arg3, string arg4, string arg5)
-        {
-            moduloCitas.createAppointmentRequest inValue = new moduloCitas.createAppointmentRequest();
-            inValue.arg0 = arg0;
-            inValue.arg1 = arg1;
-            inValue.arg2 = arg2;
-            inValue.arg3 = arg3;
-            inValue.arg4 = arg4;
-            inValue.arg5 = arg5;
-            return ((moduloCitas.AppointmentService)(this)).createAppointmentAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloCitas.cancelAppointmentResponse> moduloCitas.AppointmentService.cancelAppointmentAsync(moduloCitas.cancelAppointmentRequest request)
+        System.Threading.Tasks.Task<moduloCitas.cancelAppointmentResponse> moduloCitas.AppointmentEndpoint.cancelAppointmentAsync(moduloCitas.cancelAppointmentRequest request)
         {
             return base.Channel.cancelAppointmentAsync(request);
         }
         
-        public System.Threading.Tasks.Task<moduloCitas.cancelAppointmentResponse> cancelAppointmentAsync(int arg0)
+        public System.Threading.Tasks.Task<moduloCitas.cancelAppointmentResponse> cancelAppointmentAsync(int appointmentId)
         {
             moduloCitas.cancelAppointmentRequest inValue = new moduloCitas.cancelAppointmentRequest();
-            inValue.arg0 = arg0;
-            return ((moduloCitas.AppointmentService)(this)).cancelAppointmentAsync(inValue);
+            inValue.appointmentId = appointmentId;
+            return ((moduloCitas.AppointmentEndpoint)(this)).cancelAppointmentAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloCitas.getAllAppointmentsResponse> moduloCitas.AppointmentService.getAllAppointmentsAsync(moduloCitas.getAllAppointmentsRequest request)
+        System.Threading.Tasks.Task<moduloCitas.getAllAppointmentsResponse> moduloCitas.AppointmentEndpoint.getAllAppointmentsAsync(moduloCitas.getAllAppointmentsRequest request)
         {
             return base.Channel.getAllAppointmentsAsync(request);
         }
@@ -1416,61 +1430,79 @@ namespace moduloCitas
         public System.Threading.Tasks.Task<moduloCitas.getAllAppointmentsResponse> getAllAppointmentsAsync()
         {
             moduloCitas.getAllAppointmentsRequest inValue = new moduloCitas.getAllAppointmentsRequest();
-            return ((moduloCitas.AppointmentService)(this)).getAllAppointmentsAsync(inValue);
+            return ((moduloCitas.AppointmentEndpoint)(this)).getAllAppointmentsAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloCitas.getAppointmentByIdResponse> moduloCitas.AppointmentService.getAppointmentByIdAsync(moduloCitas.getAppointmentByIdRequest request)
+        System.Threading.Tasks.Task<moduloCitas.getAppointmentByIdResponse> moduloCitas.AppointmentEndpoint.getAppointmentByIdAsync(moduloCitas.getAppointmentByIdRequest request)
         {
             return base.Channel.getAppointmentByIdAsync(request);
         }
         
-        public System.Threading.Tasks.Task<moduloCitas.getAppointmentByIdResponse> getAppointmentByIdAsync(int arg0)
+        public System.Threading.Tasks.Task<moduloCitas.getAppointmentByIdResponse> getAppointmentByIdAsync(int id)
         {
             moduloCitas.getAppointmentByIdRequest inValue = new moduloCitas.getAppointmentByIdRequest();
-            inValue.arg0 = arg0;
-            return ((moduloCitas.AppointmentService)(this)).getAppointmentByIdAsync(inValue);
+            inValue.id = id;
+            return ((moduloCitas.AppointmentEndpoint)(this)).getAppointmentByIdAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloCitas.rescheduleAppointmentResponse> moduloCitas.AppointmentService.rescheduleAppointmentAsync(moduloCitas.rescheduleAppointmentRequest request)
+        System.Threading.Tasks.Task<moduloCitas.createAppointmentResponse> moduloCitas.AppointmentEndpoint.createAppointmentAsync(moduloCitas.createAppointmentRequest request)
         {
-            return base.Channel.rescheduleAppointmentAsync(request);
+            return base.Channel.createAppointmentAsync(request);
         }
         
-        public System.Threading.Tasks.Task<moduloCitas.rescheduleAppointmentResponse> rescheduleAppointmentAsync(int arg0, string arg1, string arg2)
+        public System.Threading.Tasks.Task<moduloCitas.createAppointmentResponse> createAppointmentAsync(int patientId, int dentistId, long appointmentTypeId, string date, string startTime, string reason)
         {
-            moduloCitas.rescheduleAppointmentRequest inValue = new moduloCitas.rescheduleAppointmentRequest();
-            inValue.arg0 = arg0;
-            inValue.arg1 = arg1;
-            inValue.arg2 = arg2;
-            return ((moduloCitas.AppointmentService)(this)).rescheduleAppointmentAsync(inValue);
+            moduloCitas.createAppointmentRequest inValue = new moduloCitas.createAppointmentRequest();
+            inValue.patientId = patientId;
+            inValue.dentistId = dentistId;
+            inValue.appointmentTypeId = appointmentTypeId;
+            inValue.date = date;
+            inValue.startTime = startTime;
+            inValue.reason = reason;
+            return ((moduloCitas.AppointmentEndpoint)(this)).createAppointmentAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloCitas.getAppointmentsByPatientResponse> moduloCitas.AppointmentService.getAppointmentsByPatientAsync(moduloCitas.getAppointmentsByPatientRequest request)
+        System.Threading.Tasks.Task<moduloCitas.getAppointmentsByPatientResponse> moduloCitas.AppointmentEndpoint.getAppointmentsByPatientAsync(moduloCitas.getAppointmentsByPatientRequest request)
         {
             return base.Channel.getAppointmentsByPatientAsync(request);
         }
         
-        public System.Threading.Tasks.Task<moduloCitas.getAppointmentsByPatientResponse> getAppointmentsByPatientAsync(int arg0)
+        public System.Threading.Tasks.Task<moduloCitas.getAppointmentsByPatientResponse> getAppointmentsByPatientAsync(int patientId)
         {
             moduloCitas.getAppointmentsByPatientRequest inValue = new moduloCitas.getAppointmentsByPatientRequest();
-            inValue.arg0 = arg0;
-            return ((moduloCitas.AppointmentService)(this)).getAppointmentsByPatientAsync(inValue);
+            inValue.patientId = patientId;
+            return ((moduloCitas.AppointmentEndpoint)(this)).getAppointmentsByPatientAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloCitas.getAppointmentsByDentistResponse> moduloCitas.AppointmentService.getAppointmentsByDentistAsync(moduloCitas.getAppointmentsByDentistRequest request)
+        System.Threading.Tasks.Task<moduloCitas.getAppointmentsByDentistResponse> moduloCitas.AppointmentEndpoint.getAppointmentsByDentistAsync(moduloCitas.getAppointmentsByDentistRequest request)
         {
             return base.Channel.getAppointmentsByDentistAsync(request);
         }
         
-        public System.Threading.Tasks.Task<moduloCitas.getAppointmentsByDentistResponse> getAppointmentsByDentistAsync(int arg0)
+        public System.Threading.Tasks.Task<moduloCitas.getAppointmentsByDentistResponse> getAppointmentsByDentistAsync(int dentistId)
         {
             moduloCitas.getAppointmentsByDentistRequest inValue = new moduloCitas.getAppointmentsByDentistRequest();
-            inValue.arg0 = arg0;
-            return ((moduloCitas.AppointmentService)(this)).getAppointmentsByDentistAsync(inValue);
+            inValue.dentistId = dentistId;
+            return ((moduloCitas.AppointmentEndpoint)(this)).getAppointmentsByDentistAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<moduloCitas.rescheduleAppointmentResponse> moduloCitas.AppointmentEndpoint.rescheduleAppointmentAsync(moduloCitas.rescheduleAppointmentRequest request)
+        {
+            return base.Channel.rescheduleAppointmentAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<moduloCitas.rescheduleAppointmentResponse> rescheduleAppointmentAsync(int appointmentId, string newDate, string newStartTime)
+        {
+            moduloCitas.rescheduleAppointmentRequest inValue = new moduloCitas.rescheduleAppointmentRequest();
+            inValue.appointmentId = appointmentId;
+            inValue.newDate = newDate;
+            inValue.newStartTime = newStartTime;
+            return ((moduloCitas.AppointmentEndpoint)(this)).rescheduleAppointmentAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -1487,7 +1519,7 @@ namespace moduloCitas
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.AppointmentServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.AppointmentEndpointPort))
             {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
@@ -1501,7 +1533,7 @@ namespace moduloCitas
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.AppointmentServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.AppointmentEndpointPort))
             {
                 return new System.ServiceModel.EndpointAddress("http://localhost:1520/ws/Appointment");
             }
@@ -1510,18 +1542,18 @@ namespace moduloCitas
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding()
         {
-            return AppointmentServiceClient.GetBindingForEndpoint(EndpointConfiguration.AppointmentServiceImplPort);
+            return AppointmentEndpointClient.GetBindingForEndpoint(EndpointConfiguration.AppointmentEndpointPort);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress()
         {
-            return AppointmentServiceClient.GetEndpointAddress(EndpointConfiguration.AppointmentServiceImplPort);
+            return AppointmentEndpointClient.GetEndpointAddress(EndpointConfiguration.AppointmentEndpointPort);
         }
         
         public enum EndpointConfiguration
         {
             
-            AppointmentServiceImplPort,
+            AppointmentEndpointPort,
         }
     }
 }

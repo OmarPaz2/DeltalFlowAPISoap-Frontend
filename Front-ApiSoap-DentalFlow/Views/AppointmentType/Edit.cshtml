@@ -1,0 +1,33 @@
+﻿@model Front_ApiSoap_DentalFlow.Models.Appointment.AppointmentTypeVM
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    
+    <!-- Campo oculto mandatorio para retener el ID original -->
+    <input type="hidden" asp-for="id" />
+
+    <!-- Input: Nombre -->
+    <div class="mb-3">
+        <label asp-for="name" class="form-label fw-bold text-dark">Modificar Nombre</label>
+        <input asp-for="name" type="text" class="form-control rounded-3 border-1 shadow-sm" placeholder="Ej: Consulta General" required />
+        <span asp-validation-for="name" class="text-danger small"></span>
+    </div>
+
+    <!-- Input: Minutos -->
+    <div class="mb-3">
+        <label asp-for="minutos" class="form-label fw-bold text-dark">Modificar Duración (en minutos)</label>
+        <input asp-for="minutos" type="number" min="1" class="form-control rounded-3 border-1 shadow-sm" placeholder="Ej: 30" required />
+        <span asp-validation-for="minutos" class="text-danger small"></span>
+    </div>
+
+    <!-- Botonera idéntica en proporciones -->
+    <div class="modal-footer border-0 justify-content-center gap-2 pb-0 pe-0 ps-0 mt-4">
+        <button type="button" class="btn bg-secondary bg-opacity-20 p-3 rounded-4 fw-bold text-dark flex-grow-1 border-0" data-bs-dismiss="modal">
+            Cancelar
+        </button>
+        <button type="submit" class="btn bg-info bg-opacity-50 p-3 rounded-4 fw-bold text-dark flex-grow-1 border-0 shadow-sm">
+            Guardar Cambios
+        </button>
+    </div>
+</form>

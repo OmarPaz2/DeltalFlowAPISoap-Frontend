@@ -36,5 +36,33 @@ namespace Front_ApiSoap_DentalFlow.Controllers
                 return View(new DashboardViewModel());
             }
         }
+
+        public async Task<IActionResult> Grafica()
+        {
+            try
+            {
+                var response = await _dashboardService.obtenerPagosTotalesUltimos5MesesAsync();
+
+                var pagosUltimos5Meses = response.@return.Select(p => new PagosUltimos5MesesVM
+                {
+                    anio = p.anio,
+                    mes = GetMonthName(p.mes),
+                    totalPago = p.totalPago
+                }).ToList();
+                Console.WriteLine("PagosUltimos5Meses: " + pagosUltimos5Meses.Count);
+                return View(pagosUltimos5Meses);
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Error al cargar la gráfica: " + ex.Message;
+                return View(new List<PagosUltimos5MesesVM>());
+            }
+
+        }
+
+        private string GetMonthName(int month)
+        {
+            return new DateTime(1, month, 1).ToString("MMMM");
+        }
     }
 }

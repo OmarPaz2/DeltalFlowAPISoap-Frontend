@@ -16,6 +16,12 @@ namespace moduloEspecialidades
     public interface SpecialtyService
     {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.specialty.pe.dentalflow.com/SpecialtyService/deleteSpecialtyReques" +
+            "t", ReplyAction="http://service.specialty.pe.dentalflow.com/SpecialtyService/deleteSpecialtyRespon" +
+            "se")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<moduloEspecialidades.deleteSpecialtyResponse> deleteSpecialtyAsync(moduloEspecialidades.deleteSpecialtyRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://service.specialty.pe.dentalflow.com/SpecialtyService/createSpecialtyReques" +
             "t", ReplyAction="http://service.specialty.pe.dentalflow.com/SpecialtyService/createSpecialtyRespon" +
             "se")]
@@ -33,6 +39,48 @@ namespace moduloEspecialidades
             "onse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloEspecialidades.getAllSpecialtiesResponse> getAllSpecialtiesAsync(moduloEspecialidades.getAllSpecialtiesRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="deleteSpecialty", WrapperNamespace="http://service.specialty.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class deleteSpecialtyRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.specialty.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int arg0;
+        
+        public deleteSpecialtyRequest()
+        {
+        }
+        
+        public deleteSpecialtyRequest(int arg0)
+        {
+            this.arg0 = arg0;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="deleteSpecialtyResponse", WrapperNamespace="http://service.specialty.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class deleteSpecialtyResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.specialty.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string @return;
+        
+        public deleteSpecialtyResponse()
+        {
+        }
+        
+        public deleteSpecialtyResponse(string @return)
+        {
+            this.@return = @return;
+        }
     }
     
     /// <remarks/>
@@ -269,6 +317,19 @@ namespace moduloEspecialidades
         public SpecialtyServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<moduloEspecialidades.deleteSpecialtyResponse> moduloEspecialidades.SpecialtyService.deleteSpecialtyAsync(moduloEspecialidades.deleteSpecialtyRequest request)
+        {
+            return base.Channel.deleteSpecialtyAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<moduloEspecialidades.deleteSpecialtyResponse> deleteSpecialtyAsync(int arg0)
+        {
+            moduloEspecialidades.deleteSpecialtyRequest inValue = new moduloEspecialidades.deleteSpecialtyRequest();
+            inValue.arg0 = arg0;
+            return ((moduloEspecialidades.SpecialtyService)(this)).deleteSpecialtyAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

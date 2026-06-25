@@ -1,0 +1,20 @@
+﻿@model Front_ApiSoap_DentalFlow.Models.Specialty.SpecialtyVM
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+    
+    <div class="mb-3">
+        <label for="name" class="form-label fw-bold text-dark">Nombre de la Especialidad</label>
+        <input type="text" id="name" name="name" class="form-control rounded-3 border-1 shadow-sm" placeholder="Ej: Odontopediatría" required />
+    </div>
+
+    <!-- Botonera adaptada a tus estilos proporcionales -->
+    <div class="modal-footer border-0 justify-content-center gap-2 pb-0 pe-0 ps-0 mt-4">
+        <button type="button" class="btn bg-secondary bg-opacity-20 p-3 rounded-4 fw-bold text-dark flex-grow-1 border-0" data-bs-dismiss="modal">
+            Cancelar
+        </button>
+        <button type="submit" class="btn bg-info bg-opacity-50 p-3 rounded-4 fw-bold text-dark flex-grow-1 border-0 shadow-sm">
+            Registrar
+        </button>
+    </div>
+</form>

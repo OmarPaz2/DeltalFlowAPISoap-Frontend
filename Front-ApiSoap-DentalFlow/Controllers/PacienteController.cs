@@ -42,7 +42,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
                 else
                 {
                     getAllPatientsResponse paciente = await _patientService.getAllPatientsAsync(new getAllPatientsRequest());
-                    Console.WriteLine("pacientes cant: " + paciente.@return.Length);
+                    
                     var pacienteRpList = mappearPacienteRespose(paciente);
                     Console.WriteLine("pacientes cant MAPEADOS: " + pacienteRpList.ToList().Count);
                     return View("Index", pacienteRpList);

@@ -1,0 +1,141 @@
+﻿@model Front_ApiSoap_DentalFlow.Models.ClinicalStaffViewModel
+
+@{
+    ViewData["Title"] = "Editar Personal Clínico";
+}
+
+<h1>Edición de Personal Clínico</h1>
+
+<div class="container mt-4">
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger bg-danger bg-opacity-10 text-danger border-0 p-3 rounded-4 mb-3 d-flex align-items-center shadow-sm" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+            <div>
+                <span class="fw-bold">Error:</span> @ViewBag.ErrorMessage
+            </div>
+        </div>
+    }
+
+    <!-- Contenedor del formulario con tu color de fondo -->
+    <div class="bg-info bg-opacity-25 p-4 rounded-4 shadow-sm">
+        <h2 class="mb-4 text-dark text-center fw-bold">Modificar Datos del Dentista</h2>
+
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            @* Campo oculto para conservar el ID al guardar *@
+            <input type="hidden" asp-for="id" />
+
+            <div class="row g-3">
+                <!-- Nombre -->
+                <div class="col-md-6">
+                    <label asp-for="firstName" class="form-label fw-semibold">Nombre</label>
+                    <input asp-for="firstName" class="form-control rounded-3" placeholder="Ingrese el nombre" required />
+                    <span asp-validation-for="firstName" class="text-danger small"></span>
+                </div>
+
+                <!-- Apellido -->
+                <div class="col-md-6">
+                    <label asp-for="lastName" class="form-label fw-semibold">Apellido</label>
+                    <input asp-for="lastName" class="form-control rounded-3" placeholder="Ingrese el apellido" required />
+                    <span asp-validation-for="lastName" class="text-danger small"></span>
+                </div>
+
+                <!-- Número de Licencia / Colegiatura -->
+                <div class="col-md-6">
+                    <label asp-for="licenseNumber" class="form-label fw-semibold">Número de Licencia</label>
+                    <input asp-for="licenseNumber" class="form-control rounded-3" placeholder="Ej: COP 12345" required />
+                    <span asp-validation-for="licenseNumber" class="text-danger small"></span>
+                </div>
+
+                <!-- Teléfono -->
+                <div class="col-md-6">
+                    <label asp-for="phone" class="form-label fw-semibold">Teléfono</label>
+                    <input asp-for="phone" type="tel" class="form-control rounded-3" placeholder="Ej: +51 999999999" />
+                    <span asp-validation-for="phone" class="text-danger small"></span>
+                </div>
+
+                <!-- Especialidad (Texto plano según tu ViewModel actual) -->
+                <div class="col-md-6">
+                    <label asp-for="specialtyName" class="form-label fw-semibold">Especialidad</label>
+                    <input asp-for="specialtyName" class="form-control rounded-3" placeholder="Especialidad médica" required />
+                    <span asp-validation-for="specialtyName" class="text-danger small"></span>
+                </div>
+
+                <!-- Estado Disponible (Checkbox estilizado) -->
+                <div class="col-md-6 d-flex align-items-center mt-5">
+                    <div class="form-check form-switch">
+                        <input asp-for="disponible" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                        <label class="form-check-label fw-semibold ms-2" for="flexSwitchCheckDefault">Disponible para Citas</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="mt-4 d-flex gap-2 justify-content-end">
+                <a asp-action="Index" class="btn btn-secondary px-4 py-2 rounded-4 fw-bold">Cancelar</a>
+                <button type="submit" class="btn bg-info bg-opacity-50 text-dark fw-bold px-4 py-2 rounded-4 border-0 shadow-sm">
+                    Actualizar Datos
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@* --- MODAL DE ÉXITO DE EDICIÓN --- *@
+@if (ViewBag.datosActualizados != null)
+{
+    var datos = (Front_ApiSoap_DentalFlow.Models.ClinicalStaffViewModel)ViewBag.datosActualizados;
+    
+    <div class="modal fade" id="modalResultado" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-4 rounded-4 border-0 shadow-lg" style="background-color: white">
+
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold text-dark">¡Personal Actualizado con Éxito!</h5>
+                </div>
+
+                <div class="modal-body text-dark">
+                    <p class="mb-3">Se han modificado correctamente los datos del especialista:</p>
+
+                    <ul class="list-group list-group-flush rounded-3 overflow-hidden">
+                        <li class="list-group-item bg-transparent border-bottom border-dark border-opacity-10"><strong><span class="fw-bold" style="color: #002d62 !important;">ID:</span></strong> @datos.id</li>
+                        <li class="list-group-item bg-transparent border-bottom border-dark border-opacity-10"><strong><span class="fw-bold" style="color: #002d62 !important;">Especialista:</span></strong> @datos.firstName @datos.lastName</li>
+                        <li class="list-group-item bg-transparent border-bottom border-dark border-opacity-10"><strong><span class="fw-bold" style="color: #002d62 !important;">N° Licencia:</span></strong> @datos.licenseNumber</li>
+                        <li class="list-group-item bg-transparent border-bottom border-dark border-opacity-10"><strong><span class="fw-bold" style="color: #002d62 !important;">Especialidad:</span></strong> @datos.specialtyName</li>
+                        <li class="list-group-item bg-transparent border-bottom border-dark border-opacity-10"><strong><span class="fw-bold" style="color: #002d62 !important;">Teléfono:</span></strong> @datos.phone</li>
+                        <li class="list-group-item bg-transparent border-0">
+                            <strong><span class="fw-bold" style="color: #002d62 !important;">Estado:</span></strong> 
+                            <span class="badge @(datos.disponible ? "bg-success" : "bg-danger")">
+                                @(datos.disponible ? "Disponible" : "No Disponible")
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="modal-footer border-0 justify-content-center gap-2 pt-3">
+                    <a asp-action="Index" class="btn bg-info bg-opacity-50 p-3 rounded-4 fw-bold text-decoration-none text-dark flex-grow-1 text-center">
+                        Regresar al Personal
+                    </a>
+                    <a asp-controller="Horario" asp-action="Gestionar" asp-route-dentistaId="@datos.id" class="btn bg-info bg-opacity-50 p-3 rounded-4 fw-bold text-decoration-none text-dark flex-grow-1 text-center">
+                        Ver Horarios
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @if (ViewBag.datosActualizados != null)
+    {
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var myModal = new bootstrap.Modal(document.getElementById('modalResultado'));
+                myModal.show();
+            });
+        </script>
+    }
+}

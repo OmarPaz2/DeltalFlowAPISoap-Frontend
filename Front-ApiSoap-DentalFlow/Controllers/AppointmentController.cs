@@ -6,9 +6,9 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 {
     public class AppointmentController : Controller
     {
-        private readonly AppointmentServiceClient _appointmentService;
+        private readonly AppointmentEndpoint _appointmentService;
 
-        public AppointmentController(AppointmentServiceClient appointmentService)
+        public AppointmentController(AppointmentEndpoint appointmentService)
         {
             _appointmentService = appointmentService;
         }
@@ -17,7 +17,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         {
             try
             {
-                var response = await _appointmentService.getAllAppointmentsAsync();
+                var response = await _appointmentService.getAllAppointmentsAsync(new getAllAppointmentsRequest());
 
                 var lista = response.@return.Select(c => new AppointmentViewModel
                 {
@@ -69,13 +69,17 @@ namespace Front_ApiSoap_DentalFlow.Controllers
             {
                 long appointmentTypeId = 1;
 
+                var rq = new createAppointmentRequest
+                {
+                    appointmentTypeId = appointmentTypeId,
+                    date = model.Fecha.ToString("yyyy-MM-dd"),
+                    dentistId = model.DentistId,
+                    patientId = model.PatientId,
+                    reason = model.Motivo,
+                    startTime = model.Hora
+                };
                 await _appointmentService.createAppointmentAsync(
-                    model.PatientId,
-                    model.DentistId,
-                    appointmentTypeId,
-                    model.Fecha.ToString("yyyy-MM-dd"),
-                    model.Hora,
-                    model.Motivo
+                rq
                 );
 
                 TempData["Success"] = "Cita registrada correctamente";
@@ -92,7 +96,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         {
             try
             {
-                var response = await _appointmentService.getAppointmentByIdAsync(id);
+                var response = await _appointmentService.getAppointmentByIdAsync(new getAppointmentByIdRequest { id= id});
                 var c = response.@return;
 
                 var model = new AppointmentViewModel
@@ -135,7 +139,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         {
             try
             {
-                await _appointmentService.cancelAppointmentAsync(id);
+                await _appointmentService.cancelAppointmentAsync(new cancelAppointmentRequest { appointmentId=id});
 
                 TempData["Success"] = "Cita cancelada correctamente";
             }

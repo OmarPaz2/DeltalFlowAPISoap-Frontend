@@ -6,11 +6,15 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<moduloPaciente.PatientService, moduloPaciente.PatientServiceClient>();
 
 builder.Services.AddScoped<moduloMaterial.MaterialServiceImpl, moduloMaterial.MaterialServiceImplClient>();
-builder.Services.AddScoped<moduloCitas.AppointmentServiceClient>();
+builder.Services.AddScoped<moduloCitas.AppointmentEndpoint,moduloCitas.AppointmentEndpointClient>();
 builder.Services.AddScoped<servicioTratamiento.TratamientoServiceImplClient>();
 builder.Services.AddScoped<moduloPago.PagoServiceImplClient>();
 builder.Services.AddScoped<moduloDashboard.DashboardServiceImplClient>();
-
+builder.Services.AddScoped<moduloclinicalStaff.ClinicalStaffService,moduloclinicalStaff.ClinicalStaffServiceClient>();
+builder.Services.AddScoped<moduloEspecialidades.SpecialtyService,moduloEspecialidades.SpecialtyServiceClient>();
+builder.Services.AddScoped<moduloTipoCita.AppointmentTypeService, moduloTipoCita.AppointmentTypeServiceClient>();
+builder.Services.AddScoped<moduloTipoCita.AppointmentTypeService, moduloTipoCita.AppointmentTypeServiceClient>();
+builder.Services.AddScoped<servicioSesionTratamiento.SesionTratamientoEndpoint, servicioSesionTratamiento.SesionTratamientoEndpointClient>();
 
 var app = builder.Build();
 
@@ -27,7 +31,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Dashboard}/{action=Index}/{id?}")
+    pattern: "{controller=AppointmentType}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 

@@ -16,11 +16,89 @@ namespace moduloDashboard
     public interface DashboardServiceImpl
     {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://serviceImpl.dashboard.pe.dentalflow.com/DashboardServiceImpl/obtenerPagosT" +
+            "otalesUltimos5MesesRequest", ReplyAction="http://serviceImpl.dashboard.pe.dentalflow.com/DashboardServiceImpl/obtenerPagosT" +
+            "otalesUltimos5MesesResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<moduloDashboard.obtenerPagosTotalesUltimos5MesesResponse> obtenerPagosTotalesUltimos5MesesAsync(moduloDashboard.obtenerPagosTotalesUltimos5MesesRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://serviceImpl.dashboard.pe.dentalflow.com/DashboardServiceImpl/obtenerMetric" +
             "asRequest", ReplyAction="http://serviceImpl.dashboard.pe.dentalflow.com/DashboardServiceImpl/obtenerMetric" +
             "asResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloDashboard.obtenerMetricasResponse> obtenerMetricasAsync(moduloDashboard.obtenerMetricasRequest request);
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://serviceImpl.dashboard.pe.dentalflow.com/")]
+    public partial class pagoTotalMesDto
+    {
+        
+        private int anioField;
+        
+        private int mesField;
+        
+        private decimal totalPagoField;
+        
+        private bool totalPagoFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public int anio
+        {
+            get
+            {
+                return this.anioField;
+            }
+            set
+            {
+                this.anioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public int mes
+        {
+            get
+            {
+                return this.mesField;
+            }
+            set
+            {
+                this.mesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public decimal totalPago
+        {
+            get
+            {
+                return this.totalPagoField;
+            }
+            set
+            {
+                this.totalPagoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool totalPagoSpecified
+        {
+            get
+            {
+                return this.totalPagoFieldSpecified;
+            }
+            set
+            {
+                this.totalPagoFieldSpecified = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -162,6 +240,39 @@ namespace moduloDashboard
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerPagosTotalesUltimos5Meses", WrapperNamespace="http://serviceImpl.dashboard.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class obtenerPagosTotalesUltimos5MesesRequest
+    {
+        
+        public obtenerPagosTotalesUltimos5MesesRequest()
+        {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerPagosTotalesUltimos5MesesResponse", WrapperNamespace="http://serviceImpl.dashboard.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class obtenerPagosTotalesUltimos5MesesResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://serviceImpl.dashboard.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public moduloDashboard.pagoTotalMesDto[] @return;
+        
+        public obtenerPagosTotalesUltimos5MesesResponse()
+        {
+        }
+        
+        public obtenerPagosTotalesUltimos5MesesResponse(moduloDashboard.pagoTotalMesDto[] @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerMetricas", WrapperNamespace="http://serviceImpl.dashboard.pe.dentalflow.com/", IsWrapped=true)]
     public partial class obtenerMetricasRequest
     {
@@ -240,6 +351,18 @@ namespace moduloDashboard
         public DashboardServiceImplClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<moduloDashboard.obtenerPagosTotalesUltimos5MesesResponse> moduloDashboard.DashboardServiceImpl.obtenerPagosTotalesUltimos5MesesAsync(moduloDashboard.obtenerPagosTotalesUltimos5MesesRequest request)
+        {
+            return base.Channel.obtenerPagosTotalesUltimos5MesesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<moduloDashboard.obtenerPagosTotalesUltimos5MesesResponse> obtenerPagosTotalesUltimos5MesesAsync()
+        {
+            moduloDashboard.obtenerPagosTotalesUltimos5MesesRequest inValue = new moduloDashboard.obtenerPagosTotalesUltimos5MesesRequest();
+            return ((moduloDashboard.DashboardServiceImpl)(this)).obtenerPagosTotalesUltimos5MesesAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
