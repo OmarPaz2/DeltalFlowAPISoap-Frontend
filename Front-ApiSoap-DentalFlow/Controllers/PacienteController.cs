@@ -1,17 +1,13 @@
 ﻿using Front_ApiSoap_DentalFlow.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using moduloCitas;
 using moduloPaciente;
-using System.Collections;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
+
 namespace Front_ApiSoap_DentalFlow.Controllers
 {
-   // [Authorize]
     public class PacienteController : Controller
     {
-
         private readonly PatientEndpoint _patientService;
 
         public PacienteController(PatientEndpoint patientService)
@@ -19,142 +15,182 @@ namespace Front_ApiSoap_DentalFlow.Controllers
             _patientService = patientService;
         }
 
-       // [Authorize(Roles = "RECEPCIONISTA")]
+        private void AddSoapAuth()
+        {
+            var token = Request.Cookies["jwt_token"];
+            if (string.IsNullOrEmpty(token)) return;
+
+            var httpRequest = new HttpRequestMessageProperty();
+            httpRequest.Headers["Authorization"] = $"Bearer {token}";
+
+            OperationContext.Current.OutgoingMessageProperties[
+                HttpRequestMessageProperty.Name
+            ] = httpRequest;
+        }
+
+        private IDisposable CreateScope()
+        {
+            var channel = (IClientChannel)((ClientBase<PatientEndpoint>)_patientService).InnerChannel;
+            return new OperationContextScope(channel);
+        }
+
         public async Task<ActionResult> Index(string nombre, string dni, string apellido)
         {
             try
             {
-                IEnumerable<PacienteResponse> response = new List<PacienteResponse>();
                 if (dni != null || nombre != null || apellido != null)
                 {
-                    var parametros = new searchPatientRequest
+                    using (CreateScope())
                     {
+                        AddSoapAuth();
 
-                       nombre = nombre,
-                       apellido = apellido,
-                       dni = dni
-                    };
-                    searchPatientResponse paciente = await _patientService.searchPatientAsync(parametros);
+                        var parametros = new searchPatientRequest
+                        {
+                            nombre = nombre,
+                            apellido = apellido,
+                            dni = dni
+                        };
 
-                    var resultadoView = mappearPacienteResposeSearch(paciente);
-                    return View(resultadoView);
+                        searchPatientResponse paciente = await _patientService.searchPatientAsync(parametros);
+
+                        var resultadoView = mappearPacienteResposeSearch(paciente);
+                        return View(resultadoView);
+                    }
                 }
                 else
                 {
-                    getAllPatientsResponse paciente = await _patientService.getAllPatientsAsync(new getAllPatientsRequest());
-                    
-                    var pacienteRpList = mappearPacienteRespose(paciente);
-                    Console.WriteLine("pacientes cant MAPEADOS: " + pacienteRpList.ToList().Count);
-                    return View("Index", pacienteRpList);
+                    using (CreateScope())
+                    {
+                        AddSoapAuth();
+
+                        getAllPatientsResponse paciente = await _patientService.getAllPatientsAsync(
+                            new getAllPatientsRequest()
+                        );
+
+                        var pacienteRpList = mappearPacienteRespose(paciente);
+
+                        Console.WriteLine("pacientes cant MAPEADOS: " + pacienteRpList.ToList().Count);
+
+                        return View("Index", pacienteRpList);
+                    }
                 }
-
-
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, $"Error al conectar con el servicio SOAP: {ex.Message}");
-
+                return View(new List<PacienteResponse>());
             }
-            return View(new List<PacienteResponse>());
         }
 
-        
-
-        //[Authorize(Roles = "RECEPCIONISTA")]
         public ActionResult Create()
         {
             return View(new PacienteRequest());
         }
 
-        // POST: PacienteController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(PacienteRequest requestClient)
         {
             try
             {
-                Console.WriteLine(requestClient.birthDate.ToString());
-                string fechaFormateada = requestClient.birthDate?.ToString("yyyy-MM-dd") ?? string.Empty;
-                createPatientRequest requestService = new createPatientRequest
+                using (CreateScope())
                 {
-                   dni = requestClient.dni,
-                   address = requestClient.address,
-                    birthDate = fechaFormateada,
-                    email = requestClient.email,
-                    firstName = requestClient.firstName,
-                    gender = requestClient.gender,
-                    lastName = requestClient.lastName,
-                    phone = requestClient.phone
-                };
-                createPatientResponse response = await _patientService.createPatientAsync(requestService);
+                    AddSoapAuth();
 
-                PacienteResponse pacienteCreado = new PacienteResponse
-                {
-                    id = response.@return.id,
-                    dni = response.@return.dni,
-                    firstName = response.@return.firstName,
-                    lastName = response.@return.lastName,
-                    birthDate = DateOnly.Parse(response.@return.birthDate),
-                    gender = response.@return.gender,
-                    phone = response.@return.phone,
-                    address = response.@return.address,
-                    email = response.@return.email
-                };
+                    Console.WriteLine(requestClient.birthDate.ToString());
 
-                ViewBag.responseService = pacienteCreado;
-                return View(new PacienteRequest());
+                    string fechaFormateada = requestClient.birthDate?.ToString("yyyy-MM-dd") ?? string.Empty;
 
-                
+                    createPatientRequest requestService = new createPatientRequest
+                    {
+                        dni = requestClient.dni,
+                        address = requestClient.address,
+                        birthDate = fechaFormateada,
+                        email = requestClient.email,
+                        firstName = requestClient.firstName,
+                        gender = requestClient.gender,
+                        lastName = requestClient.lastName,
+                        phone = requestClient.phone
+                    };
+
+                    createPatientResponse response = await _patientService.createPatientAsync(requestService);
+
+                    PacienteResponse pacienteCreado = new PacienteResponse
+                    {
+                        id = response.@return.id,
+                        dni = response.@return.dni,
+                        firstName = response.@return.firstName,
+                        lastName = response.@return.lastName,
+                        birthDate = DateOnly.Parse(response.@return.birthDate),
+                        gender = response.@return.gender,
+                        phone = response.@return.phone,
+                        address = response.@return.address,
+                        email = response.@return.email
+                    };
+
+                    ViewBag.responseService = pacienteCreado;
+                    return View(new PacienteRequest());
+                }
             }
-            catch(FaultException soapEx)
+            catch (FaultException soapEx)
             {
                 ViewBag.MensajeError = soapEx.Reason.ToString();
                 return View(requestClient);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                ViewBag.MensajeError = "Oucrrio un error inesperado al hacer la solicitud";
+                ViewBag.MensajeError = "Ocurrio un error inesperado al hacer la solicitud";
                 return View(requestClient);
             }
-
         }
 
-        //[Authorize(Roles = "RECEPCIONISTA")]
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
             try
             {
-                var respose = _patientService.getPatientByIdAsync(new getPatientByIdRequest { id = id }).Result;
-
-                var paciente = new PacienteResponse
+                using (CreateScope())
                 {
-                    dni = respose.@return.dni,
-                    firstName = respose.@return.firstName,
-                    lastName = respose.@return.lastName,
-                    birthDate = DateOnly.Parse(respose.@return.birthDate),
-                    address = respose.@return.address,
-                    email = respose.@return.email,
-                    gender = respose.@return.gender,
-                    phone = respose.@return.phone
-                };
-   
-                return View(paciente);
+                    AddSoapAuth();
+
+                    var respose = await _patientService.getPatientByIdAsync(
+                        new getPatientByIdRequest { id = id }
+                    );
+
+                    var paciente = new PacienteResponse
+                    {
+                        id = respose.@return.id,
+                        dni = respose.@return.dni,
+                        firstName = respose.@return.firstName,
+                        lastName = respose.@return.lastName,
+                        birthDate = DateOnly.Parse(respose.@return.birthDate),
+                        address = respose.@return.address,
+                        email = respose.@return.email,
+                        gender = respose.@return.gender,
+                        phone = respose.@return.phone
+                    };
+
+                    return View(paciente);
+                }
             }
-            catch (FaultException soapEx) {
+            catch (FaultException soapEx)
+            {
                 TempData["MensajeError"] = soapEx.Reason.ToString();
                 return View(new PacienteResponse());
             }
         }
 
-        // POST: PacienteController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, PacienteRequest rq) 
+        public async Task<ActionResult> Edit(int id, PacienteRequest rq)
         {
             try
             {
-                var repsonse = await _patientService.updatePatientAsync(new updatePatientRequest
+                using (CreateScope())
                 {
-      
+                    AddSoapAuth();
+
+                    var repsonse = await _patientService.updatePatientAsync(new updatePatientRequest
+                    {
                         dni = rq.dni,
                         firstName = rq.firstName,
                         lastName = rq.lastName,
@@ -164,26 +200,26 @@ namespace Front_ApiSoap_DentalFlow.Controllers
                         gender = rq.gender,
                         phone = rq.phone,
                         id = id
-                        
-   
-                });
+                    });
 
-                var pacienteActualizado = new PacienteResponse
-                {
-                    id = repsonse.@return.id,
-                    dni = repsonse.@return.dni,
-                    firstName = repsonse.@return.firstName,
-                    lastName = repsonse.@return.lastName,
-                    birthDate = DateOnly.Parse(repsonse.@return.birthDate),
-                    address = repsonse.@return.address,
-                    phone = repsonse.@return.phone,
-                    gender = repsonse.@return.gender,
-                    email = repsonse.@return.email
-                };
-                ViewBag.EditExitoso = true;
-                return View(pacienteActualizado);
+                    var pacienteActualizado = new PacienteResponse
+                    {
+                        id = repsonse.@return.id,
+                        dni = repsonse.@return.dni,
+                        firstName = repsonse.@return.firstName,
+                        lastName = repsonse.@return.lastName,
+                        birthDate = DateOnly.Parse(repsonse.@return.birthDate),
+                        address = repsonse.@return.address,
+                        phone = repsonse.@return.phone,
+                        gender = repsonse.@return.gender,
+                        email = repsonse.@return.email
+                    };
+
+                    ViewBag.EditExitoso = true;
+                    return View(pacienteActualizado);
+                }
             }
-            catch(FaultException soapEx)
+            catch (FaultException soapEx)
             {
                 ViewBag.MensajeError = soapEx.Reason.ToString();
                 return View(rq);
@@ -200,29 +236,30 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         {
             try
             {
-                var deleteRq = new deletePatientRequest
+                using (CreateScope())
                 {
-                    id = id
-                };
-                var response = await _patientService.deletePatientAsync(deleteRq);
+                    AddSoapAuth();
 
-                
-                TempData["MensajeSuccess"] = response.@return;
-                return RedirectToAction(nameof(Index));
+                    var deleteRq = new deletePatientRequest
+                    {
+                        id = id
+                    };
+
+                    var response = await _patientService.deletePatientAsync(deleteRq);
+
+                    TempData["MensajeSuccess"] = response.@return;
+                    return RedirectToAction(nameof(Index));
+                }
             }
             catch (FaultException soapEx)
             {
                 TempData["MensajeError"] = soapEx.Reason.ToString();
-                return View("Index");
+                return RedirectToAction(nameof(Index));
             }
-           
         }
-
 
         private List<PacienteResponse> mappearPacienteResposeSearch(searchPatientResponse pacientes)
         {
-            
-            
             return pacientes.@return.Select(p => new PacienteResponse
             {
                 id = p.id,
@@ -239,21 +276,19 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 
         private List<PacienteResponse> mappearPacienteRespose(getAllPatientsResponse allPacientes)
         {
-
-
-            return allPacientes.@return.Select(p => 
+            return allPacientes.@return.Select(p =>
             {
                 if (!DateOnly.TryParseExact(p.birthDate, "yyyy-MM-dd", out DateOnly fechaParseada))
-            {
+                {
                     fechaParseada = DateOnly.MinValue;
-            }
+                }
+
                 return new PacienteResponse
                 {
                     id = p.id,
                     dni = p.dni,
                     firstName = p.firstName,
                     lastName = p.lastName,
-
                     birthDate = fechaParseada,
                     gender = p.gender,
                     phone = p.phone,
@@ -262,8 +297,5 @@ namespace Front_ApiSoap_DentalFlow.Controllers
                 };
             }).ToList();
         }
-
-
     }
-
 }

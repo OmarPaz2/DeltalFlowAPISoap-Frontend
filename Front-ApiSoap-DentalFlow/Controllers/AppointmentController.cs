@@ -1,6 +1,8 @@
 ﻿using Front_ApiSoap_DentalFlow.Models.Appointment;
 using Microsoft.AspNetCore.Mvc;
 using moduloCitas;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
 
 namespace Front_ApiSoap_DentalFlow.Controllers
 {
@@ -13,38 +15,62 @@ namespace Front_ApiSoap_DentalFlow.Controllers
             _appointmentService = appointmentService;
         }
 
+        private void AddSoapAuth()
+        {
+            var token = Request.Cookies["jwt_token"];
+            if (string.IsNullOrEmpty(token)) return;
+
+            var httpRequest = new HttpRequestMessageProperty();
+            httpRequest.Headers["Authorization"] = $"Bearer {token}";
+
+            OperationContext.Current.OutgoingMessageProperties[
+                HttpRequestMessageProperty.Name
+            ] = httpRequest;
+        }
+
+        private IDisposable CreateScope()
+        {
+            var channel = (IClientChannel)((ClientBase<AppointmentEndpoint>)_appointmentService).InnerChannel;
+            return new OperationContextScope(channel);
+        }
+
         public async Task<IActionResult> Index()
         {
             try
             {
-                var response = await _appointmentService.getAllAppointmentsAsync(new getAllAppointmentsRequest());
-
-                var lista = response.@return.Select(c => new AppointmentViewModel
+                using (CreateScope())
                 {
-                    Id = c.id,
+                    AddSoapAuth();
 
-                    PatientId = c.patient != null ? c.patient.id : 0,
-                    DentistId = c.dentist != null ? c.dentist.id : 0,
+                    var response = await _appointmentService.getAllAppointmentsAsync(new getAllAppointmentsRequest());
 
-                    NombrePaciente = c.patient != null
-                        ? $"{c.patient.firstName} {c.patient.lastName}"
-                        : "Sin paciente",
+                    var lista = response.@return.Select(c => new AppointmentViewModel
+                    {
+                        Id = c.id,
 
-                    NombreOdontologo = c.dentist != null
-                        ? $"{c.dentist.firstName} {c.dentist.lastName}"
-                        : "Sin odontólogo",
+                        PatientId = c.patient != null ? c.patient.id : 0,
+                        DentistId = c.dentist != null ? c.dentist.id : 0,
 
-                    TipoCita = c.appointmentType != null
-                        ? c.appointmentType.name
-                        : "Sin tipo",
+                        NombrePaciente = c.patient != null
+                            ? $"{c.patient.firstName} {c.patient.lastName}"
+                            : "Sin paciente",
 
-                    Monto = c.amount,
+                        NombreOdontologo = c.dentist != null
+                            ? $"{c.dentist.firstName} {c.dentist.lastName}"
+                            : "Sin odontólogo",
 
-                    Motivo = c.reason,
-                    Estado = c.status.ToString()
-                }).ToList();
+                        TipoCita = c.appointmentType != null
+                            ? c.appointmentType.name
+                            : "Sin tipo",
 
-                return View(lista);
+                        Monto = c.amount,
+
+                        Motivo = c.reason,
+                        Estado = c.status.ToString()
+                    }).ToList();
+
+                    return View(lista);
+                }
             }
             catch (Exception ex)
             {
@@ -67,20 +93,24 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 
             try
             {
-                long appointmentTypeId = 1;
-
-                var rq = new createAppointmentRequest
+                using (CreateScope())
                 {
-                    appointmentTypeId = appointmentTypeId,
-                    date = model.Fecha.ToString("yyyy-MM-dd"),
-                    dentistId = model.DentistId,
-                    patientId = model.PatientId,
-                    reason = model.Motivo,
-                    startTime = model.Hora
-                };
-                await _appointmentService.createAppointmentAsync(
-                rq
-                );
+                    AddSoapAuth();
+
+                    long appointmentTypeId = 1;
+
+                    var rq = new createAppointmentRequest
+                    {
+                        appointmentTypeId = appointmentTypeId,
+                        date = model.Fecha.ToString("yyyy-MM-dd"),
+                        dentistId = model.DentistId,
+                        patientId = model.PatientId,
+                        reason = model.Motivo,
+                        startTime = model.Hora
+                    };
+
+                    await _appointmentService.createAppointmentAsync(rq);
+                }
 
                 TempData["Success"] = "Cita registrada correctamente";
                 return RedirectToAction(nameof(Index));
@@ -96,35 +126,43 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         {
             try
             {
-                var response = await _appointmentService.getAppointmentByIdAsync(new getAppointmentByIdRequest { id= id});
-                var c = response.@return;
-
-                var model = new AppointmentViewModel
+                using (CreateScope())
                 {
-                    Id = c.id,
+                    AddSoapAuth();
 
-                    PatientId = c.patient != null ? c.patient.id : 0,
-                    DentistId = c.dentist != null ? c.dentist.id : 0,
+                    var response = await _appointmentService.getAppointmentByIdAsync(
+                        new getAppointmentByIdRequest { id = id }
+                    );
 
-                    NombrePaciente = c.patient != null
-                        ? $"{c.patient.firstName} {c.patient.lastName}"
-                        : "Sin paciente",
+                    var c = response.@return;
 
-                    NombreOdontologo = c.dentist != null
-                        ? $"{c.dentist.firstName} {c.dentist.lastName}"
-                        : "Sin odontólogo",
+                    var model = new AppointmentViewModel
+                    {
+                        Id = c.id,
 
-                    TipoCita = c.appointmentType != null
-                        ? c.appointmentType.name
-                        : "Sin tipo",
+                        PatientId = c.patient != null ? c.patient.id : 0,
+                        DentistId = c.dentist != null ? c.dentist.id : 0,
 
-                    Monto = c.amount,
+                        NombrePaciente = c.patient != null
+                            ? $"{c.patient.firstName} {c.patient.lastName}"
+                            : "Sin paciente",
 
-                    Motivo = c.reason,
-                    Estado = c.status.ToString()
-                };
+                        NombreOdontologo = c.dentist != null
+                            ? $"{c.dentist.firstName} {c.dentist.lastName}"
+                            : "Sin odontólogo",
 
-                return View(model);
+                        TipoCita = c.appointmentType != null
+                            ? c.appointmentType.name
+                            : "Sin tipo",
+
+                        Monto = c.amount,
+
+                        Motivo = c.reason,
+                        Estado = c.status.ToString()
+                    };
+
+                    return View(model);
+                }
             }
             catch (Exception ex)
             {
@@ -139,7 +177,14 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         {
             try
             {
-                await _appointmentService.cancelAppointmentAsync(new cancelAppointmentRequest { appointmentId=id});
+                using (CreateScope())
+                {
+                    AddSoapAuth();
+
+                    await _appointmentService.cancelAppointmentAsync(
+                        new cancelAppointmentRequest { appointmentId = id }
+                    );
+                }
 
                 TempData["Success"] = "Cita cancelada correctamente";
             }

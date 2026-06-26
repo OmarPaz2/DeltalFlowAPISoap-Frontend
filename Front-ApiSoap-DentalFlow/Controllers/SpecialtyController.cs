@@ -1,9 +1,8 @@
 ﻿using Front_ApiSoap_DentalFlow.Models.Specialty;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using moduloEspecialidades;
-using moduloPaciente;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
 
 namespace Front_ApiSoap_DentalFlow.Controllers
 {
@@ -16,42 +15,62 @@ namespace Front_ApiSoap_DentalFlow.Controllers
             _specialtyService = specialtyService;
         }
 
+        private void AddSoapAuth()
+        {
+            var token = Request.Cookies["jwt_token"];
+            if (string.IsNullOrEmpty(token)) return;
+
+            var httpRequest = new HttpRequestMessageProperty();
+            httpRequest.Headers["Authorization"] = $"Bearer {token}";
+
+            OperationContext.Current.OutgoingMessageProperties[
+                HttpRequestMessageProperty.Name
+            ] = httpRequest;
+        }
+
+        private IDisposable CreateScope()
+        {
+            var channel = (IClientChannel)((ClientBase<SpecialtyEndpoint>)_specialtyService).InnerChannel;
+            return new OperationContextScope(channel);
+        }
+
         public async Task<ActionResult> Index()
         {
             try
             {
-                var response = await _specialtyService.getAllSpecialtiesAsync(new getAllSpecialtiesRequest());
-
-                if (response == null || response.@return == null)
+                using (CreateScope())
                 {
-                   
-                    return View(new List<SpecialtyVM>());
+                    AddSoapAuth();
+
+                    var response = await _specialtyService.getAllSpecialtiesAsync(
+                        new getAllSpecialtiesRequest()
+                    );
+
+                    if (response == null || response.@return == null)
+                    {
+                        return View(new List<SpecialtyVM>());
+                    }
+
+                    List<SpecialtyVM> specialties = response.@return.Select(x => new SpecialtyVM
+                    {
+                        id = x.id,
+                        name = x.name
+                    }).ToList();
+
+                    return View(specialties);
                 }
-
-                List<SpecialtyVM>specialties =response.@return.Select(x => new SpecialtyVM
-                {
-                    id = x.id,
-                    name = x.name
-                }).ToList();
-
-                return View(specialties);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 TempData["Error"] = "Error al obtener las especialidades. Intente nuevamente mas tarde";
                 return View(new List<SpecialtyVM>());
             }
-
-            
         }
 
-
-        
         public ActionResult Create()
         {
-            //partialView trae el contenido hmtl de la pagina y lo coloca en la vista actual, sin recargar toda la página y sin asignarle el layaut
             return PartialView(new SpecialtyVM());
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -61,16 +80,20 @@ namespace Front_ApiSoap_DentalFlow.Controllers
             {
                 try
                 {
-
-                    var request = new createSpecialtyRequest
+                    using (CreateScope())
                     {
-                        name = name
-                    };
-                    var response = await _specialtyService.createSpecialtyAsync(request);
+                        AddSoapAuth();
+
+                        var request = new createSpecialtyRequest
+                        {
+                            name = name
+                        };
+
+                        await _specialtyService.createSpecialtyAsync(request);
+                    }
 
                     TempData["MensajeSuccess"] = "Especialidad creada correctamente";
                     return RedirectToAction(nameof(Index));
-
                 }
                 catch (FaultException fal)
                 {
@@ -82,74 +105,107 @@ namespace Front_ApiSoap_DentalFlow.Controllers
                     TempData["Error"] = "Error al crear la especialidad. Intente nuevamente mas tarde";
                     return RedirectToAction(nameof(Index));
                 }
-                }
+            }
+
             ViewBag.ErrorMessage = "El nombre de la especialidad no puede estar vacío.";
             return PartialView();
         }
 
-        
         public async Task<ActionResult> Edit(int id)
         {
-            var especilidad = await _specialtyService.getAllSpecialtiesAsync(new getAllSpecialtiesRequest());
-
-            var seleccion = especilidad.@return.FirstOrDefault(x => x.id == id);
-
-            var vm = new SpecialtyVM
+            try
             {
-                id = seleccion.id,
-                name = seleccion.name
-            };
+                using (CreateScope())
+                {
+                    AddSoapAuth();
 
-            return PartialView(vm);
+                    var especilidad = await _specialtyService.getAllSpecialtiesAsync(
+                        new getAllSpecialtiesRequest()
+                    );
+
+                    var seleccion = especilidad.@return.FirstOrDefault(x => x.id == id);
+
+                    if (seleccion == null)
+                    {
+                        TempData["Error"] = "Especialidad no encontrada";
+                        return RedirectToAction(nameof(Index));
+                    }
+
+                    var vm = new SpecialtyVM
+                    {
+                        id = seleccion.id,
+                        name = seleccion.name
+                    };
+
+                    return PartialView(vm);
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Error al buscar la especialidad";
+                return RedirectToAction(nameof(Index));
+            }
         }
 
-        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(SpecialtyVM model)
         {
             try
             {
-                var parametros = new updateSpecialtyRequest
+                using (CreateScope())
                 {
-                    id = model.id,
-                    name = model.name
-                };
+                    AddSoapAuth();
 
-                var resultado = await _specialtyService.updateSpecialtyAsync(parametros);
-                TempData["Success"] = resultado.@return;
-                return RedirectToAction(nameof(Index));
+                    var parametros = new updateSpecialtyRequest
+                    {
+                        id = model.id,
+                        name = model.name
+                    };
+
+                    var resultado = await _specialtyService.updateSpecialtyAsync(parametros);
+
+                    TempData["Success"] = resultado.@return;
+                    return RedirectToAction(nameof(Index));
+                }
             }
-            catch(FaultException soapEx)
+            catch (FaultException soapEx)
             {
                 ViewBag.MensajeError = soapEx.Reason.ToString();
                 return View(model);
             }
-            
+            catch (Exception ex)
+            {
+                ViewBag.MensajeError = "Error inesperado al actualizar la especialidad";
+                return View(model);
+            }
         }
 
-  
-        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Delete(int id)
         {
             try
             {
-                var deleteRq = new deleteSpecialtyRequest
+                using (CreateScope())
                 {
-                    arg0 = id
-                };
-                var response = await _specialtyService.deleteSpecialtyAsync(deleteRq);
+                    AddSoapAuth();
 
+                    var deleteRq = new deleteSpecialtyRequest
+                    {
+                        arg0 = id
+                    };
 
-                TempData["MensajeSuccess"] = response.@return;
-                return RedirectToAction(nameof(Index));
+                    var response = await _specialtyService.deleteSpecialtyAsync(deleteRq);
+
+                    TempData["MensajeSuccess"] = response.@return;
+                    return RedirectToAction(nameof(Index));
+                }
             }
             catch (FaultException soapEx)
             {
                 TempData["MensajeError"] = soapEx.Reason.ToString();
-                return View("Index");
+                return RedirectToAction(nameof(Index));
             }
         }
     }
