@@ -1,5 +1,17 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 var builder = WebApplication.CreateBuilder(args);
 
+// 1. Registrar el servicio de autenticación por Cookies
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.Cookie.Name = "jwt_token"; // El mismo nombre que usaste al crearla
+        options.ExpireTimeSpan = TimeSpan.FromHours(8);
+        options.LoginPath = "/Login"; // Ruta si el usuario no está autenticado
+    });
+
+builder.Services.AddControllers();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -25,7 +37,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
 }
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
