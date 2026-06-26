@@ -20,21 +20,21 @@ namespace servicioAuth
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<servicioAuth.loginResponse> loginAsync(servicioAuth.loginRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://soap.auth.pe.dentalflow.com/AuthEndpoint/disableUserRequest", ReplyAction="http://soap.auth.pe.dentalflow.com/AuthEndpoint/disableUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.auth.pe.dentalflow.com/AuthEndpoint/updateUserRequest", ReplyAction="http://soap.auth.pe.dentalflow.com/AuthEndpoint/updateUserResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<servicioAuth.disableUserResponse> disableUserAsync(servicioAuth.disableUserRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://soap.auth.pe.dentalflow.com/AuthEndpoint/getAllUsersRequest", ReplyAction="http://soap.auth.pe.dentalflow.com/AuthEndpoint/getAllUsersResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<servicioAuth.getAllUsersResponse> getAllUsersAsync(servicioAuth.getAllUsersRequest request);
+        System.Threading.Tasks.Task<servicioAuth.updateUserResponse> updateUserAsync(servicioAuth.updateUserRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://soap.auth.pe.dentalflow.com/AuthEndpoint/createUserRequest", ReplyAction="http://soap.auth.pe.dentalflow.com/AuthEndpoint/createUserResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<servicioAuth.createUserResponse> createUserAsync(servicioAuth.createUserRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://soap.auth.pe.dentalflow.com/AuthEndpoint/updateUserRequest", ReplyAction="http://soap.auth.pe.dentalflow.com/AuthEndpoint/updateUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.auth.pe.dentalflow.com/AuthEndpoint/getAllUsersRequest", ReplyAction="http://soap.auth.pe.dentalflow.com/AuthEndpoint/getAllUsersResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<servicioAuth.updateUserResponse> updateUserAsync(servicioAuth.updateUserRequest request);
+        System.Threading.Tasks.Task<servicioAuth.getAllUsersResponse> getAllUsersAsync(servicioAuth.getAllUsersRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.auth.pe.dentalflow.com/AuthEndpoint/disableUserRequest", ReplyAction="http://soap.auth.pe.dentalflow.com/AuthEndpoint/disableUserResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<servicioAuth.disableUserResponse> disableUserAsync(servicioAuth.disableUserRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -263,73 +263,55 @@ namespace servicioAuth
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="disableUser", WrapperNamespace="http://soap.auth.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class disableUserRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="updateUser", WrapperNamespace="http://soap.auth.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class updateUserRequest
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.auth.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int userId;
         
-        public disableUserRequest()
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.auth.pe.dentalflow.com/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string username;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.auth.pe.dentalflow.com/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int rolId;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.auth.pe.dentalflow.com/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool activo;
+        
+        public updateUserRequest()
         {
         }
         
-        public disableUserRequest(int userId)
+        public updateUserRequest(int userId, string username, int rolId, bool activo)
         {
             this.userId = userId;
+            this.username = username;
+            this.rolId = rolId;
+            this.activo = activo;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="disableUserResponse", WrapperNamespace="http://soap.auth.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class disableUserResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="updateUserResponse", WrapperNamespace="http://soap.auth.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class updateUserResponse
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.auth.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public servicioAuth.usuario @return;
         
-        public disableUserResponse()
+        public updateUserResponse()
         {
         }
         
-        public disableUserResponse(servicioAuth.usuario @return)
-        {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllUsers", WrapperNamespace="http://soap.auth.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class getAllUsersRequest
-    {
-        
-        public getAllUsersRequest()
-        {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllUsersResponse", WrapperNamespace="http://soap.auth.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class getAllUsersResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.auth.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public servicioAuth.usuario[] @return;
-        
-        public getAllUsersResponse()
-        {
-        }
-        
-        public getAllUsersResponse(servicioAuth.usuario[] @return)
+        public updateUserResponse(servicioAuth.usuario @return)
         {
             this.@return = @return;
         }
@@ -390,55 +372,73 @@ namespace servicioAuth
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="updateUser", WrapperNamespace="http://soap.auth.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class updateUserRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllUsers", WrapperNamespace="http://soap.auth.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getAllUsersRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.auth.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int userId;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.auth.pe.dentalflow.com/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string username;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.auth.pe.dentalflow.com/", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int rolId;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.auth.pe.dentalflow.com/", Order=3)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool activo;
-        
-        public updateUserRequest()
+        public getAllUsersRequest()
         {
-        }
-        
-        public updateUserRequest(int userId, string username, int rolId, bool activo)
-        {
-            this.userId = userId;
-            this.username = username;
-            this.rolId = rolId;
-            this.activo = activo;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="updateUserResponse", WrapperNamespace="http://soap.auth.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class updateUserResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllUsersResponse", WrapperNamespace="http://soap.auth.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getAllUsersResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.auth.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public servicioAuth.usuario[] @return;
+        
+        public getAllUsersResponse()
+        {
+        }
+        
+        public getAllUsersResponse(servicioAuth.usuario[] @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="disableUser", WrapperNamespace="http://soap.auth.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class disableUserRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.auth.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int userId;
+        
+        public disableUserRequest()
+        {
+        }
+        
+        public disableUserRequest(int userId)
+        {
+            this.userId = userId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="disableUserResponse", WrapperNamespace="http://soap.auth.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class disableUserResponse
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.auth.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public servicioAuth.usuario @return;
         
-        public updateUserResponse()
+        public disableUserResponse()
         {
         }
         
-        public updateUserResponse(servicioAuth.usuario @return)
+        public disableUserResponse(servicioAuth.usuario @return)
         {
             this.@return = @return;
         }
@@ -509,28 +509,19 @@ namespace servicioAuth
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<servicioAuth.disableUserResponse> servicioAuth.AuthEndpoint.disableUserAsync(servicioAuth.disableUserRequest request)
+        System.Threading.Tasks.Task<servicioAuth.updateUserResponse> servicioAuth.AuthEndpoint.updateUserAsync(servicioAuth.updateUserRequest request)
         {
-            return base.Channel.disableUserAsync(request);
+            return base.Channel.updateUserAsync(request);
         }
         
-        public System.Threading.Tasks.Task<servicioAuth.disableUserResponse> disableUserAsync(int userId)
+        public System.Threading.Tasks.Task<servicioAuth.updateUserResponse> updateUserAsync(int userId, string username, int rolId, bool activo)
         {
-            servicioAuth.disableUserRequest inValue = new servicioAuth.disableUserRequest();
+            servicioAuth.updateUserRequest inValue = new servicioAuth.updateUserRequest();
             inValue.userId = userId;
-            return ((servicioAuth.AuthEndpoint)(this)).disableUserAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<servicioAuth.getAllUsersResponse> servicioAuth.AuthEndpoint.getAllUsersAsync(servicioAuth.getAllUsersRequest request)
-        {
-            return base.Channel.getAllUsersAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<servicioAuth.getAllUsersResponse> getAllUsersAsync()
-        {
-            servicioAuth.getAllUsersRequest inValue = new servicioAuth.getAllUsersRequest();
-            return ((servicioAuth.AuthEndpoint)(this)).getAllUsersAsync(inValue);
+            inValue.username = username;
+            inValue.rolId = rolId;
+            inValue.activo = activo;
+            return ((servicioAuth.AuthEndpoint)(this)).updateUserAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -549,19 +540,28 @@ namespace servicioAuth
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<servicioAuth.updateUserResponse> servicioAuth.AuthEndpoint.updateUserAsync(servicioAuth.updateUserRequest request)
+        System.Threading.Tasks.Task<servicioAuth.getAllUsersResponse> servicioAuth.AuthEndpoint.getAllUsersAsync(servicioAuth.getAllUsersRequest request)
         {
-            return base.Channel.updateUserAsync(request);
+            return base.Channel.getAllUsersAsync(request);
         }
         
-        public System.Threading.Tasks.Task<servicioAuth.updateUserResponse> updateUserAsync(int userId, string username, int rolId, bool activo)
+        public System.Threading.Tasks.Task<servicioAuth.getAllUsersResponse> getAllUsersAsync()
         {
-            servicioAuth.updateUserRequest inValue = new servicioAuth.updateUserRequest();
+            servicioAuth.getAllUsersRequest inValue = new servicioAuth.getAllUsersRequest();
+            return ((servicioAuth.AuthEndpoint)(this)).getAllUsersAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<servicioAuth.disableUserResponse> servicioAuth.AuthEndpoint.disableUserAsync(servicioAuth.disableUserRequest request)
+        {
+            return base.Channel.disableUserAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<servicioAuth.disableUserResponse> disableUserAsync(int userId)
+        {
+            servicioAuth.disableUserRequest inValue = new servicioAuth.disableUserRequest();
             inValue.userId = userId;
-            inValue.username = username;
-            inValue.rolId = rolId;
-            inValue.activo = activo;
-            return ((servicioAuth.AuthEndpoint)(this)).updateUserAsync(inValue);
+            return ((servicioAuth.AuthEndpoint)(this)).disableUserAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()

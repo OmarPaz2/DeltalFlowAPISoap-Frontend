@@ -15,6 +15,7 @@ builder.Services.AddScoped<moduloEspecialidades.SpecialtyService,moduloEspeciali
 builder.Services.AddScoped<moduloTipoCita.AppointmentTypeService, moduloTipoCita.AppointmentTypeServiceClient>();
 builder.Services.AddScoped<moduloTipoCita.AppointmentTypeService, moduloTipoCita.AppointmentTypeServiceClient>();
 builder.Services.AddScoped<servicioSesionTratamiento.SesionTratamientoEndpoint, servicioSesionTratamiento.SesionTratamientoEndpointClient>();
+builder.Services.AddScoped<servicioAuth.AuthEndpoint, servicioAuth.AuthEndpointClient>();
 
 var app = builder.Build();
 
