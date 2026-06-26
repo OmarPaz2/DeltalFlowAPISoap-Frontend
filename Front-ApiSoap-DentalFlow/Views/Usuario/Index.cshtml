@@ -1,0 +1,59 @@
+﻿@model List<servicioAuth.usuario>
+
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="text-primary">Gestión de Usuarios</h3>
+        <a class="btn btn-success" href="/Usuario/Create">+ Nuevo Usuario</a>
+    </div>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+
+    <table class="table table-hover shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Rol</th>
+                <th>Estado</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var u in Model)
+            {
+                <tr>
+                    <td>@u.id</td>
+                    <td>@u.username</td>
+                    <td>@u.rol?.nombre</td>
+                    <td>
+                        @if (u.activo)
+                        {
+                            <span class="badge bg-success">Activo</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Inactivo</span>
+                        }
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-sm btn-warning" href="/Usuario/Edit/@u.id">Editar</a>
+
+                        <form method="post" action="/Usuario/Delete/@u.id" style="display:inline;">
+                            <button class="btn btn-sm btn-danger" onclick="return confirm('¿Eliminar usuario?')">
+                                Eliminar
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
