@@ -134,27 +134,47 @@ namespace Front_ApiSoap_DentalFlow.Controllers
             }
             }
 
-        // GET: SesionTratamientoController/Edit/5
+
+        /* public async Task<ActionResult> Edit(int id)
+         {
+             try
+             {
+                 var response = await _sesionTratamientoService.getSesionAsync(new getSesionRequest { idSesion = id });
+
+                 var responseVm = new SesionTratameintoVM
+                 {
+                     idSesion = response.@return.idSesion,
+                     costoParcial = response.@return.costoParcial,
+                     apellidoPaciente = response.@return.apellidoPaciente,
+                     asistenciaPaciente = response.@return.asistenciaPaciente,
+                     dni = response.@return.dni,
+                     estado = response.@return.estado,
+                     fechaProgramada = DateTime.Parse(response.@return.fechaProgramada),
+                     fechaRealizada = DateTime.Parse(response.@return.fechaRealizada),
+                     nombrePaciente = response.@return.nombrePaciente,
+                     observaciones = response.@return.observaciones
+                 };
+                 return View(responseVm);
+             }
+             catch (FaultException fault)
+             {
+                 TempData["ErrorMessage"] = fault.Reason.ToString();
+                 return RedirectToAction(nameof(Index));
+             }
+         }
+        */
+
         public async Task<ActionResult> Edit(int id)
         {
             try
             {
                 var response = await _sesionTratamientoService.getSesionAsync(new getSesionRequest { idSesion = id });
 
-                var responseVm = new SesionTratameintoVM
+                var responseVm = new FinalizarSesionVM
                 {
-                    idSesion = response.@return.idSesion,
-                    costoParcial = response.@return.costoParcial,
-                    apellidoPaciente = response.@return.apellidoPaciente,
-                    asistenciaPaciente = response.@return.asistenciaPaciente,
-                    dni = response.@return.dni,
-                    estado = response.@return.estado,
-                    fechaProgramada = DateTime.Parse(response.@return.fechaProgramada),
-                    fechaRealizada = DateTime.Parse(response.@return.fechaRealizada),
-                    nombrePaciente = response.@return.nombrePaciente,
-                    observaciones = response.@return.observaciones
+                 id = id,
                 };
-                return View(responseVm);
+                return PartialView(responseVm);
             }
             catch (FaultException fault)
             {
@@ -163,10 +183,9 @@ namespace Front_ApiSoap_DentalFlow.Controllers
             }
         }
 
-        // POST: SesionTratamientoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(DateTime fechaRealizada, string observaciones)
+        public async Task<ActionResult> Edit(FinalizarSesionVM model)
         {
             try
             {
@@ -174,9 +193,10 @@ namespace Front_ApiSoap_DentalFlow.Controllers
                 {
                     request = new sesionTratamientoUpdateRequestDto
                     {
-                        fechaRealizada = fechaRealizada.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture),
-                        observaciones = observaciones
-                    }
+                        fechaRealizada = model.fechaRealizada.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture),
+                        observaciones = model.observaciones
+                    },
+                    idSesion = model.id
                 };
 
                 var response = await _sesionTratamientoService.actualizarSesionAsync(rq);
