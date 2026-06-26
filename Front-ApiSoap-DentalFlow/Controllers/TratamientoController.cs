@@ -13,9 +13,29 @@ namespace Front_ApiSoap_DentalFlow.Controllers
             _tratamientoService = tratamientoService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string dni)
         {
-            return View();
+            var response = await _tratamientoService.getTratamientoAsync(new getTratamientoRequest(dni));
+
+            var VM = new TratamientoViewModel
+            {
+                IdTratamiento = response.@return.idTratamiento,
+                NombresPaciente = response.@return.nombresPaciente,
+                ApellidosPaciente = response.@return.apellidosPaciente,
+                Dni = response.@return.dni,
+                NombresOdontologo = response.@return.nombresOdontologo,
+                ApellidosOdontologo = response.@return.apellidosOdontologo,
+                Diagnostico = response.@return.diagnostico,
+                TipoTratamiento = response.@return.tipoTratamiento,
+                CostoEstimado = response.@return.costoEstimado,
+                FechaInicio = DateTime.TryParse(response.@return.fechaInicio, out var f) ? f : DateTime.Now,
+                CantSesiones = response.@return.cant_sesiones,
+                SesionesRestantes = response.@return.sesionesRestantes,
+                MontoPagado = response.@return.montoPagado,
+                Estado = response.@return.estado,
+                Pagado = response.@return.pagado
+            };
+            return View(VM);
         }
 
         public IActionResult Create()

@@ -1,64 +1,133 @@
-﻿<div class="bg-info bg-opacity-50 p-4 rounded-4">
+﻿@model Front_ApiSoap_DentalFlow.Models.Tratamiento.TratamientoViewModel
 
-    <h2 class="text-center mb-4">
-        Gestión de Tratamientos
-    </h2>
+@{
+    ViewData["Title"] = "Tratamiento del Paciente";
+}
 
-    <div class="bg-info bg-opacity-25 p-4 rounded-4">
+<h1 class="mb-4">Seguimiento de Tratamientos</h1>
 
-        <div class="d-flex flex-wrap gap-2">
-
-            <a asp-controller="Tratamiento"
-               asp-action="Create"
-               class="btn btn-info text-white">
-                Registrar Tratamiento
-            </a>
-
-            <a asp-controller="Tratamiento"
-               asp-action="Details"
-               class="btn btn-info text-white">
-                Consultar Tratamiento
-            </a>
-
-            <a asp-controller="Tratamiento"
-               asp-action="EditEstado"
-               class="btn btn-info text-white">
-                Actualizar Estado
-            </a>
-
-            <a asp-controller="Pago"
-               asp-action="CreatePagoTratamiento"
-               class="btn btn-info text-white">
-                Registrar Pago
-            </a>
-
-            <a asp-controller="Pago"
-               asp-action="Details"
-               class="btn btn-info text-white">
-                Buscar Pago
-            </a>
-
-            <a asp-controller="Dashboard"
-               asp-action="Index"
-               class="btn btn-info text-white">
-                Dashboard
-            </a>
-
-        </div>
-
-        <hr />
-
-        <div class="alert alert-info mt-3">
-            Desde este módulo puedes:
-            <ul class="mb-0">
-                <li>Registrar tratamientos.</li>
-                <li>Consultar tratamientos existentes.</li>
-                <li>Actualizar estados (Planificado, En proceso, Finalizado, Cancelado).</li>
-                <li>Registrar pagos asociados al tratamiento.</li>
-                <li>Consultar pagos realizados.</li>
-            </ul>
-        </div>
-
+<div class="container p-0">
+    <!-- SECCIÓN DEL BUSCADOR POR DNI -->
+    <div class="bg-light p-4 rounded-4 shadow-sm mb-4">
+        <h5 class="fw-bold text-dark mb-3"><i class="bi bi-search me-2"></i>Buscar Tratamiento Activo</h5>
+        <form asp-action="Index" method="get" class="row g-2 align-items-center">
+            <div class="col-md-8 col-sm-9">
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0 rounded-start-3 text-muted">
+                        <i class="bi bi-card-text"></i>
+                    </span>
+                    <input type="text" name="dni" value="@Model?.Dni" class="form-control border-start-0 rounded-end-3 p-2"
+                           placeholder="Ingrese el DNI del paciente (Ej: 77123456)" required autocomplete="off" />
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-3 d-grid">
+                <button type="submit" class="btn bg-info bg-opacity-50 text-dark fw-bold p-2 rounded-3 border-0 shadow-sm">
+                    Buscar Paciente
+                </button>
+            </div>
+        </form>
     </div>
 
+    <!-- SECCIÓN DE RESULTADOS (FORMATO GRID / CARD) -->
+    <div class="row">
+        @if (Model == null || Model.IdTratamiento == 0)
+        {
+            <div class="col-12 text-center text-muted py-5 bg-white rounded-4 shadow-sm">
+                <i class="bi bi-folder-x fs-1 text-opacity-25 text-dark d-block mb-2"></i>
+                <span>No hay información en pantalla. Ingrese un DNI válido para consultar el estado del tratamiento.</span>
+            </div>
+        }
+        else
+        {
+            <!-- Tarjeta Principal del Tratamiento -->
+            <div class="col-12 col-md-8 col-lg-6 mx-auto">
+                <div class="card bg-info bg-opacity-25 p-4 rounded-4 h-100 border-0 shadow-sm d-flex flex-column justify-content-between">
+
+                    <div class="card-body p-0 mb-3">
+                        <!-- Cabecera de la Tarjeta -->
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div class="text-muted small fw-bold" style="color: #002d62 !important; opacity: 0.7;">
+                                TRATAMIENTO ID: @Model.IdTratamiento
+                            </div>
+                            <span class="badge @(Model.Pagado ? "bg-success" : "bg-warning") bg-opacity-25 text-dark rounded-pill px-3 py-1 small fw-bold">
+                                <i class="bi @(Model.Pagado ? "bi-cash-coin text-success" : "bi-exclamation-circle-fill text-warning") me-1"></i>
+                                @(Model.Pagado ? "Totalmente Pagado" : "Saldo Pendiente")
+                            </span>
+                        </div>
+
+                        <!-- Datos del Paciente -->
+                        <h3 class="card-title fw-bold text-dark mb-1">@Model.NombresPaciente @Model.ApellidosPaciente</h3>
+                        <div class="text-muted small fw-semibold mb-4"><i class="bi bi-person-vcard me-1"></i> DNI: @Model.Dni</div>
+
+                        <!-- Grid Interno de Detalles -->
+                        <div class="d-flex flex-column gap-2 text-dark bg-white bg-opacity-50 p-3 rounded-3 shadow-sm mb-3">
+                            <div><i class="bi bi-heart-pulse-fill text-danger me-2"></i><strong>Especialidad/Tipo:</strong> @Model.TipoTratamiento</div>
+                            <div><i class="bi bi-person-badge me-2"></i><strong>Odontólogo:</strong> Dr(a). @Model.NombresOdontologo @Model.ApellidosOdontologo</div>
+                            <div><i class="bi bi-calendar3 me-2"></i><strong>Fecha de Inicio:</strong> @Model.FechaInicio.ToString("dd/MM/yyyy")</div>
+                            <div><i class="bi bi-journal-medical me-2"></i><strong>Diagnóstico:</strong> <span class="fst-italic text-secondary">"@Model.Diagnostico"</span></div>
+                        </div>
+
+                        <!-- Estado de Sesiones y Finanzas -->
+                        <div class="row g-2 text-center text-dark mb-2">
+                            <div class="col-6">
+                                <div class="bg-white bg-opacity-50 p-2 rounded-3">
+                                    <div class="small text-muted fw-bold">Sesiones (Prog / Rest)</div>
+                                    <span class="fs-5 fw-bold">@Model.CantSesiones / @Model.SesionesRestantes</span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-white bg-opacity-50 p-2 rounded-3">
+                                    <div class="small text-muted fw-bold">Estado General</div>
+                                    <span class="badge bg-dark bg-opacity-10 text-dark fw-bold mt-1 px-2 py-1 rounded-pill">@Model.Estado</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-2 text-center text-dark">
+                            <div class="col-6">
+                                <div class="bg-white bg-opacity-50 p-2 rounded-3">
+                                    <div class="small text-muted fw-bold">Costo Estimado</div>
+                                    <span class="fs-5 fw-bold text-primary">S/ @Model.CostoEstimado.ToString("F2")</span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-white bg-opacity-50 p-2 rounded-3">
+                                    <div class="small text-muted fw-bold">Monto Pagado</div>
+                                    <span class="fs-5 fw-bold text-success">S/ @Model.MontoPagado.ToString("F2")</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BOTONERA DE ACCIONES -->
+                    <div class="d-flex gap-2 pt-3 border-top border-dark border-opacity-10 mt-3">
+
+                        <!-- Botón Ver Sesiones (Apunta a SesionTratamiento/Index pasando asistencia como null de forma nativa) -->
+                        <a asp-controller="SesionTratamiento"
+                           asp-action="Index"
+                           asp-route-idTratamiento="@Model.IdTratamiento"
+                           asp-route-asistencia=""
+                           class="btn bg-white py-3 px-3 rounded-3 text-dark btn-sm fw-bold shadow-sm flex-grow-1 text-center border-0 d-inline-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-calendar-week text-primary fs-5"></i> Ver Sesiones
+                        </a>
+
+                        <!-- Botón Registrar Pago -->
+                        <a asp-controller="Pago"
+                           asp-action="Registrar"
+                           asp-route-idTratamiento="@Model.IdTratamiento"
+                           class="btn bg-dark bg-opacity-10 py-3 px-3 rounded-3 text-dark btn-sm fw-bold shadow-sm flex-grow-1 text-center border-0 d-inline-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-cash-stack text-success fs-5"></i> Registrar Pago
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

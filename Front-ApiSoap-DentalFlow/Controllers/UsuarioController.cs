@@ -9,7 +9,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
     public class UsuarioController : Controller
     {
         private readonly AuthEndpoint _authEndpoint;
-
+        
         public UsuarioController(AuthEndpoint authEndpoint)
         {
             _authEndpoint = authEndpoint;
@@ -40,12 +40,12 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         {
             try
             {
-                var request = new getAllUsersRequest();
+               
 
                 using (CreateScope())
                 {
                     AddSoapAuth();
-
+                    var request = new getAllUsersRequest();
                     var response = await _authEndpoint.getAllUsersAsync(request);
 
                     var usuarios = response.@return?.ToList() ?? new List<usuario>();

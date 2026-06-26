@@ -1,0 +1,28 @@
+﻿@model Front_ApiSoap_DentalFlow.Models.Tratamiento.FinalizarSesionVM
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="id" />
+
+    <div class="mb-3">
+        <label asp-for="fechaRealizada" class="form-label fw-bold text-dark">Fecha y Hora de Cierre</label>
+        <input type="datetime-local" asp-for="fechaRealizada" class="form-control rounded-3 border-1 shadow-sm" required />
+        <span asp-validation-for="fechaRealizada" class="text-danger small"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="observaciones" class="form-label fw-bold text-dark">Evolución / Observaciones de la Sesión</label>
+        <textarea asp-for="observaciones" class="form-control rounded-3 border-1 shadow-sm" rows="4" placeholder="Escribe el avance del tratamiento, materiales usados o indicaciones..." required></textarea>
+        <span asp-validation-for="observaciones" class="text-danger small"></span>
+    </div>
+
+    <div class="modal-footer border-0 justify-content-center gap-2 pb-0 pe-0 ps-0 mt-4">
+        <button type="button" class="btn bg-secondary bg-opacity-20 p-3 rounded-4 fw-bold text-dark flex-grow-1 border-0" data-bs-dismiss="modal">
+            Cancelar
+        </button>
+        <button type="submit" class="btn bg-info bg-opacity-50 p-3 rounded-4 fw-bold text-dark flex-grow-1 border-0 shadow-sm">
+            Finalizar Sesión
+        </button>
+    </div>
+</form>
