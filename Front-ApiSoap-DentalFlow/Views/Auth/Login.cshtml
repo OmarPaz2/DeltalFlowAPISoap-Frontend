@@ -1,0 +1,127 @@
+﻿@model Front_ApiSoap_DentalFlow.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #F5F7F8;
+    }
+
+    .login-wrapper {
+        min-height: 100vh;
+    }
+
+    .login-card {
+        width: 420px;
+        background: #7ED3E6;
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+
+    .login-inner {
+        background: white;
+        border-radius: 20px;
+    }
+
+    .form-control {
+        border-radius: 14px;
+        padding: 14px;
+        border: 1px solid #d9d9d9;
+        transition: .3s;
+    }
+
+        .form-control:focus {
+            border-color: #20B6D9;
+            box-shadow: 0 0 0 .15rem rgba(32,182,217,.25);
+        }
+
+    .btn-login {
+        background-color: #20B6D9;
+        border: none;
+        border-radius: 14px;
+        padding: 14px;
+        font-weight: 600;
+        transition: .3s;
+    }
+
+        .btn-login:hover {
+            background-color: #18a3c3;
+        }
+
+    .logo-circle {
+        width: 75px;
+        height: 75px;
+        background: #BFEAF2;
+        border-radius: 50%;
+        font-size: 28px;
+    }
+
+    .text-main {
+        color: #2C2C2C;
+    }
+</style>
+
+<div class="container-fluid login-wrapper d-flex justify-content-center align-items-center">
+
+    <div class="login-card p-4">
+
+        <div class="login-inner p-4">
+
+            <div class="d-flex justify-content-center mb-3">
+                <div class="logo-circle d-flex justify-content-center align-items-center">
+                    🦷
+                </div>
+            </div>
+
+            <div class="text-center mb-4">
+                <h2 class="fw-bold text-main">DentalFlow</h2>
+                <p class="text-muted mb-0">Inicia sesión para continuar</p>
+            </div>
+
+            <form asp-controller="Auth" asp-action="Login" method="post">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="alert alert-danger rounded-4 mb-3">
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Codigo" class="form-label fw-semibold text-main"></label>
+                    <input asp-for="Codigo"
+                           class="form-control"
+                           placeholder="Ingrese su código" />
+                    <span asp-validation-for="Codigo" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Clave" class="form-label fw-semibold text-main"></label>
+                    <input asp-for="Clave"
+                           class="form-control"
+                           placeholder="Ingrese su contraseña" />
+                    <span asp-validation-for="Clave" class="form-control" />
+                    <span asp-validation-for="Clave" class="text-danger small"></span>
+                </div>
+
+                <button type="submit" class="btn btn-login text-white w-100">
+                    Ingresar
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

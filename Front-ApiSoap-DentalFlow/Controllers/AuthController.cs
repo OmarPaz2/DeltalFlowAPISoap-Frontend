@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Front_ApiSoap_DentalFlow.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using servicioAuth;
 
 namespace Front_ApiSoap_DentalFlow.Controllers
 {
-    
-
-    
     public class AuthController : Controller
     {
         private readonly AuthEndpoint _authEndpoint;
@@ -15,78 +12,60 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         {
             _authEndpoint = authEndpoint;
         }
-        public ActionResult Index()
+
+        [HttpGet]
+        public IActionResult Login()
         {
-            return View();
+            return View(new LoginViewModel());
         }
 
-        // GET: AuthController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: AuthController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: AuthController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
+        public async Task<IActionResult> Login(LoginViewModel model)
+            {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (!ModelState.IsValid)
+                    return View(model);
+
+                var request = new loginRequest
+                {
+                    username = model.Codigo,
+                    password = model.Clave
+                };
+
+                var response = await _authEndpoint.loginAsync(request);
+
+                var jwt = response.@return;
+
+                if (string.IsNullOrWhiteSpace(jwt))
+                {
+                    ModelState.AddModelError("", "Credenciales inválidas");
+                    return View(model);
+                }
+
+                Response.Cookies.Append("jwt_token", jwt, new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = false,
+                    SameSite = SameSiteMode.Strict,
+                    Expires = DateTimeOffset.UtcNow.AddHours(8)
+                });
+
+                return RedirectToAction("Index", "Dashboard");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ModelState.AddModelError("", $"Error de autenticación: {ex.Message}");
+                return View(model);
             }
         }
 
-        // GET: AuthController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: AuthController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Logout()
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: AuthController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: AuthController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            Response.Cookies.Delete("jwt_token");
+            return RedirectToAction("Login");
         }
     }
 }
