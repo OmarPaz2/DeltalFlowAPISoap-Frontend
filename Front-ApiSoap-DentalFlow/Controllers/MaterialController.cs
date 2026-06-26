@@ -6,9 +6,9 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 {
     public class MaterialController : Controller
     {
-        private readonly MaterialServiceImpl _materialService;
+        private readonly MaterialEndpoint _materialService;
 
-        public MaterialController(MaterialServiceImpl materialService)
+        public MaterialController(MaterialEndpoint materialService)
         {
             _materialService = materialService;
         }
@@ -51,18 +51,15 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 
             try
             {
-                var nuevo = new material
+
+                var rq = new materialCreateRequest
                 {
                     nombre = model.Nombre,
-                    stock = model.Stock,
-                    stockSpecified = true,
-                    stockMinimo = model.StockMinimo,
-                    stockMinimoSpecified = true,
                     costoUnitario = model.CostoUnitario,
-                    costoUnitarioSpecified = true
+                    stock = model.Stock,
+                    stockMinimo = model.StockMinimo
                 };
-
-                await _materialService.materialCreateAsync(new materialCreateRequest(nuevo));
+                await _materialService.materialCreateAsync(rq);
 
                 TempData["Success"] = "Material registrado correctamente";
                 return RedirectToAction(nameof(Index));
@@ -108,20 +105,16 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 
             try
             {
-                var actualizado = new material
+                var actualizado = new materialUpdateRequest
                 {
-                    id = model.Id,
-                    idSpecified = true,
-                    nombre = model.Nombre,
-                    stock = model.Stock,
-                    stockSpecified = true,
+                   id = model.Id,
                     stockMinimo = model.StockMinimo,
-                    stockMinimoSpecified = true,
+                    stock = model.Stock,
                     costoUnitario = model.CostoUnitario,
-                    costoUnitarioSpecified = true
+                    nombre = model.Nombre
                 };
 
-                await _materialService.materialUpdateAsync(new materialUpdateRequest(model.Id, actualizado));
+                await _materialService.materialUpdateAsync(actualizado);
 
                 TempData["Success"] = "Material actualizado correctamente";
                 return RedirectToAction(nameof(Index));

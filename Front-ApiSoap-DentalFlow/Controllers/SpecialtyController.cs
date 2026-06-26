@@ -9,9 +9,9 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 {
     public class SpecialtyController : Controller
     {
-        private readonly SpecialtyService _specialtyService;
+        private readonly SpecialtyEndpoint _specialtyService;
 
-        public SpecialtyController(SpecialtyService specialtyService)
+        public SpecialtyController(SpecialtyEndpoint specialtyService)
         {
             _specialtyService = specialtyService;
         }
@@ -64,7 +64,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 
                     var request = new createSpecialtyRequest
                     {
-                        arg0 = name
+                        name = name
                     };
                     var response = await _specialtyService.createSpecialtyAsync(request);
 
@@ -112,8 +112,8 @@ namespace Front_ApiSoap_DentalFlow.Controllers
             {
                 var parametros = new updateSpecialtyRequest
                 {
-                    arg0 = model.id,
-                    arg1 = model.name
+                    id = model.id,
+                    name = model.name
                 };
 
                 var resultado = await _specialtyService.updateSpecialtyAsync(parametros);

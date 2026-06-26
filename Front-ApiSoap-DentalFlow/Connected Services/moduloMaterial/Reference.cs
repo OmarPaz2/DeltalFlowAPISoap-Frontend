@@ -12,43 +12,31 @@ namespace moduloMaterial
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://serviceImpl.material.pe.dentalflow.com/", ConfigurationName="moduloMaterial.MaterialServiceImpl")]
-    public interface MaterialServiceImpl
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://soap.material.pe.dentalflow.com/", ConfigurationName="moduloMaterial.MaterialEndpoint")]
+    public interface MaterialEndpoint
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://serviceImpl.material.pe.dentalflow.com/MaterialServiceImpl/materialUpdateR" +
-            "equest", ReplyAction="http://serviceImpl.material.pe.dentalflow.com/MaterialServiceImpl/materialUpdateR" +
-            "esponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<moduloMaterial.materialUpdateResponse> materialUpdateAsync(moduloMaterial.materialUpdateRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://serviceImpl.material.pe.dentalflow.com/MaterialServiceImpl/materialGetAllR" +
-            "equest", ReplyAction="http://serviceImpl.material.pe.dentalflow.com/MaterialServiceImpl/materialGetAllR" +
-            "esponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.material.pe.dentalflow.com/MaterialEndpoint/materialGetAllRequest", ReplyAction="http://soap.material.pe.dentalflow.com/MaterialEndpoint/materialGetAllResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloMaterial.materialGetAllResponse> materialGetAllAsync(moduloMaterial.materialGetAllRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://serviceImpl.material.pe.dentalflow.com/MaterialServiceImpl/materialDeleteR" +
-            "equest", ReplyAction="http://serviceImpl.material.pe.dentalflow.com/MaterialServiceImpl/materialDeleteR" +
-            "esponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.material.pe.dentalflow.com/MaterialEndpoint/materialUpdateRequest", ReplyAction="http://soap.material.pe.dentalflow.com/MaterialEndpoint/materialUpdateResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<moduloMaterial.materialUpdateResponse> materialUpdateAsync(moduloMaterial.materialUpdateRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.material.pe.dentalflow.com/MaterialEndpoint/materialDeleteRequest", ReplyAction="http://soap.material.pe.dentalflow.com/MaterialEndpoint/materialDeleteResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloMaterial.materialDeleteResponse> materialDeleteAsync(moduloMaterial.materialDeleteRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://serviceImpl.material.pe.dentalflow.com/MaterialServiceImpl/stockCriticoReq" +
-            "uest", ReplyAction="http://serviceImpl.material.pe.dentalflow.com/MaterialServiceImpl/stockCriticoRes" +
-            "ponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.material.pe.dentalflow.com/MaterialEndpoint/stockCriticoRequest", ReplyAction="http://soap.material.pe.dentalflow.com/MaterialEndpoint/stockCriticoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloMaterial.stockCriticoResponse> stockCriticoAsync(moduloMaterial.stockCriticoRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://serviceImpl.material.pe.dentalflow.com/MaterialServiceImpl/materialCreateR" +
-            "equest", ReplyAction="http://serviceImpl.material.pe.dentalflow.com/MaterialServiceImpl/materialCreateR" +
-            "esponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.material.pe.dentalflow.com/MaterialEndpoint/materialCreateRequest", ReplyAction="http://soap.material.pe.dentalflow.com/MaterialEndpoint/materialCreateResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloMaterial.materialCreateResponse> materialCreateAsync(moduloMaterial.materialCreateRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://serviceImpl.material.pe.dentalflow.com/MaterialServiceImpl/materialGetById" +
-            "Request", ReplyAction="http://serviceImpl.material.pe.dentalflow.com/MaterialServiceImpl/materialGetById" +
-            "Response")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.material.pe.dentalflow.com/MaterialEndpoint/materialGetByIdRequest", ReplyAction="http://soap.material.pe.dentalflow.com/MaterialEndpoint/materialGetByIdResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloMaterial.materialGetByIdResponse> materialGetByIdAsync(moduloMaterial.materialGetByIdRequest request);
     }
@@ -56,7 +44,7 @@ namespace moduloMaterial
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://serviceImpl.material.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.material.pe.dentalflow.com/")]
     public partial class material
     {
         
@@ -208,54 +196,7 @@ namespace moduloMaterial
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="materialUpdate", WrapperNamespace="http://serviceImpl.material.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class materialUpdateRequest
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://serviceImpl.material.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://serviceImpl.material.pe.dentalflow.com/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public moduloMaterial.material arg1;
-        
-        public materialUpdateRequest()
-        {
-        }
-        
-        public materialUpdateRequest(int arg0, moduloMaterial.material arg1)
-        {
-            this.arg0 = arg0;
-            this.arg1 = arg1;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="materialUpdateResponse", WrapperNamespace="http://serviceImpl.material.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class materialUpdateResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://serviceImpl.material.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string @return;
-        
-        public materialUpdateResponse()
-        {
-        }
-        
-        public materialUpdateResponse(string @return)
-        {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="materialGetAll", WrapperNamespace="http://serviceImpl.material.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="materialGetAll", WrapperNamespace="http://soap.material.pe.dentalflow.com/", IsWrapped=true)]
     public partial class materialGetAllRequest
     {
         
@@ -267,11 +208,11 @@ namespace moduloMaterial
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="materialGetAllResponse", WrapperNamespace="http://serviceImpl.material.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="materialGetAllResponse", WrapperNamespace="http://soap.material.pe.dentalflow.com/", IsWrapped=true)]
     public partial class materialGetAllResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://serviceImpl.material.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloMaterial.material[] @return;
         
@@ -288,32 +229,94 @@ namespace moduloMaterial
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="materialDelete", WrapperNamespace="http://serviceImpl.material.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class materialDeleteRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="materialUpdate", WrapperNamespace="http://soap.material.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class materialUpdateRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://serviceImpl.material.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
+        public int id;
         
-        public materialDeleteRequest()
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string nombre;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int stock;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int stockMinimo;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public decimal costoUnitario;
+        
+        public materialUpdateRequest()
         {
         }
         
-        public materialDeleteRequest(int arg0)
+        public materialUpdateRequest(int id, string nombre, int stock, int stockMinimo, decimal costoUnitario)
         {
-            this.arg0 = arg0;
+            this.id = id;
+            this.nombre = nombre;
+            this.stock = stock;
+            this.stockMinimo = stockMinimo;
+            this.costoUnitario = costoUnitario;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="materialDeleteResponse", WrapperNamespace="http://serviceImpl.material.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="materialUpdateResponse", WrapperNamespace="http://soap.material.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class materialUpdateResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string @return;
+        
+        public materialUpdateResponse()
+        {
+        }
+        
+        public materialUpdateResponse(string @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="materialDelete", WrapperNamespace="http://soap.material.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class materialDeleteRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int id;
+        
+        public materialDeleteRequest()
+        {
+        }
+        
+        public materialDeleteRequest(int id)
+        {
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="materialDeleteResponse", WrapperNamespace="http://soap.material.pe.dentalflow.com/", IsWrapped=true)]
     public partial class materialDeleteResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://serviceImpl.material.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string @return;
         
@@ -330,7 +333,7 @@ namespace moduloMaterial
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="stockCritico", WrapperNamespace="http://serviceImpl.material.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="stockCritico", WrapperNamespace="http://soap.material.pe.dentalflow.com/", IsWrapped=true)]
     public partial class stockCriticoRequest
     {
         
@@ -342,11 +345,11 @@ namespace moduloMaterial
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="stockCriticoResponse", WrapperNamespace="http://serviceImpl.material.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="stockCriticoResponse", WrapperNamespace="http://soap.material.pe.dentalflow.com/", IsWrapped=true)]
     public partial class stockCriticoResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://serviceImpl.material.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloMaterial.material[] @return;
         
@@ -363,32 +366,47 @@ namespace moduloMaterial
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="materialCreate", WrapperNamespace="http://serviceImpl.material.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="materialCreate", WrapperNamespace="http://soap.material.pe.dentalflow.com/", IsWrapped=true)]
     public partial class materialCreateRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://serviceImpl.material.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public moduloMaterial.material arg0;
+        public string nombre;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int stock;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int stockMinimo;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public decimal costoUnitario;
         
         public materialCreateRequest()
         {
         }
         
-        public materialCreateRequest(moduloMaterial.material arg0)
+        public materialCreateRequest(string nombre, int stock, int stockMinimo, decimal costoUnitario)
         {
-            this.arg0 = arg0;
+            this.nombre = nombre;
+            this.stock = stock;
+            this.stockMinimo = stockMinimo;
+            this.costoUnitario = costoUnitario;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="materialCreateResponse", WrapperNamespace="http://serviceImpl.material.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="materialCreateResponse", WrapperNamespace="http://soap.material.pe.dentalflow.com/", IsWrapped=true)]
     public partial class materialCreateResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://serviceImpl.material.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloMaterial.material @return;
         
@@ -405,32 +423,32 @@ namespace moduloMaterial
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="materialGetById", WrapperNamespace="http://serviceImpl.material.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="materialGetById", WrapperNamespace="http://soap.material.pe.dentalflow.com/", IsWrapped=true)]
     public partial class materialGetByIdRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://serviceImpl.material.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
+        public int id;
         
         public materialGetByIdRequest()
         {
         }
         
-        public materialGetByIdRequest(int arg0)
+        public materialGetByIdRequest(int id)
         {
-            this.arg0 = arg0;
+            this.id = id;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="materialGetByIdResponse", WrapperNamespace="http://serviceImpl.material.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="materialGetByIdResponse", WrapperNamespace="http://soap.material.pe.dentalflow.com/", IsWrapped=true)]
     public partial class materialGetByIdResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://serviceImpl.material.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.material.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloMaterial.material @return;
         
@@ -445,13 +463,13 @@ namespace moduloMaterial
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public interface MaterialServiceImplChannel : moduloMaterial.MaterialServiceImpl, System.ServiceModel.IClientChannel
+    public interface MaterialEndpointChannel : moduloMaterial.MaterialEndpoint, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public partial class MaterialServiceImplClient : System.ServiceModel.ClientBase<moduloMaterial.MaterialServiceImpl>, moduloMaterial.MaterialServiceImpl
+    public partial class MaterialEndpointClient : System.ServiceModel.ClientBase<moduloMaterial.MaterialEndpoint>, moduloMaterial.MaterialEndpoint
     {
         
         /// <summary>
@@ -461,55 +479,41 @@ namespace moduloMaterial
         /// <param name="clientCredentials">Credenciales de cliente</param>
         static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
         
-        public MaterialServiceImplClient() : 
-                base(MaterialServiceImplClient.GetDefaultBinding(), MaterialServiceImplClient.GetDefaultEndpointAddress())
+        public MaterialEndpointClient() : 
+                base(MaterialEndpointClient.GetDefaultBinding(), MaterialEndpointClient.GetDefaultEndpointAddress())
         {
-            this.Endpoint.Name = EndpointConfiguration.MaterialServiceImplPort.ToString();
+            this.Endpoint.Name = EndpointConfiguration.MaterialEndpointPort.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public MaterialServiceImplClient(EndpointConfiguration endpointConfiguration) : 
-                base(MaterialServiceImplClient.GetBindingForEndpoint(endpointConfiguration), MaterialServiceImplClient.GetEndpointAddress(endpointConfiguration))
-        {
-            this.Endpoint.Name = endpointConfiguration.ToString();
-            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
-        }
-        
-        public MaterialServiceImplClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
-                base(MaterialServiceImplClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
+        public MaterialEndpointClient(EndpointConfiguration endpointConfiguration) : 
+                base(MaterialEndpointClient.GetBindingForEndpoint(endpointConfiguration), MaterialEndpointClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public MaterialServiceImplClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(MaterialServiceImplClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        public MaterialEndpointClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+                base(MaterialEndpointClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public MaterialServiceImplClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public MaterialEndpointClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(MaterialEndpointClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        {
+            this.Endpoint.Name = endpointConfiguration.ToString();
+            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
+        }
+        
+        public MaterialEndpointClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloMaterial.materialUpdateResponse> moduloMaterial.MaterialServiceImpl.materialUpdateAsync(moduloMaterial.materialUpdateRequest request)
-        {
-            return base.Channel.materialUpdateAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<moduloMaterial.materialUpdateResponse> materialUpdateAsync(int arg0, moduloMaterial.material arg1)
-        {
-            moduloMaterial.materialUpdateRequest inValue = new moduloMaterial.materialUpdateRequest();
-            inValue.arg0 = arg0;
-            inValue.arg1 = arg1;
-            return ((moduloMaterial.MaterialServiceImpl)(this)).materialUpdateAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloMaterial.materialGetAllResponse> moduloMaterial.MaterialServiceImpl.materialGetAllAsync(moduloMaterial.materialGetAllRequest request)
+        System.Threading.Tasks.Task<moduloMaterial.materialGetAllResponse> moduloMaterial.MaterialEndpoint.materialGetAllAsync(moduloMaterial.materialGetAllRequest request)
         {
             return base.Channel.materialGetAllAsync(request);
         }
@@ -517,24 +521,41 @@ namespace moduloMaterial
         public System.Threading.Tasks.Task<moduloMaterial.materialGetAllResponse> materialGetAllAsync()
         {
             moduloMaterial.materialGetAllRequest inValue = new moduloMaterial.materialGetAllRequest();
-            return ((moduloMaterial.MaterialServiceImpl)(this)).materialGetAllAsync(inValue);
+            return ((moduloMaterial.MaterialEndpoint)(this)).materialGetAllAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloMaterial.materialDeleteResponse> moduloMaterial.MaterialServiceImpl.materialDeleteAsync(moduloMaterial.materialDeleteRequest request)
+        System.Threading.Tasks.Task<moduloMaterial.materialUpdateResponse> moduloMaterial.MaterialEndpoint.materialUpdateAsync(moduloMaterial.materialUpdateRequest request)
+        {
+            return base.Channel.materialUpdateAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<moduloMaterial.materialUpdateResponse> materialUpdateAsync(int id, string nombre, int stock, int stockMinimo, decimal costoUnitario)
+        {
+            moduloMaterial.materialUpdateRequest inValue = new moduloMaterial.materialUpdateRequest();
+            inValue.id = id;
+            inValue.nombre = nombre;
+            inValue.stock = stock;
+            inValue.stockMinimo = stockMinimo;
+            inValue.costoUnitario = costoUnitario;
+            return ((moduloMaterial.MaterialEndpoint)(this)).materialUpdateAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<moduloMaterial.materialDeleteResponse> moduloMaterial.MaterialEndpoint.materialDeleteAsync(moduloMaterial.materialDeleteRequest request)
         {
             return base.Channel.materialDeleteAsync(request);
         }
         
-        public System.Threading.Tasks.Task<moduloMaterial.materialDeleteResponse> materialDeleteAsync(int arg0)
+        public System.Threading.Tasks.Task<moduloMaterial.materialDeleteResponse> materialDeleteAsync(int id)
         {
             moduloMaterial.materialDeleteRequest inValue = new moduloMaterial.materialDeleteRequest();
-            inValue.arg0 = arg0;
-            return ((moduloMaterial.MaterialServiceImpl)(this)).materialDeleteAsync(inValue);
+            inValue.id = id;
+            return ((moduloMaterial.MaterialEndpoint)(this)).materialDeleteAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloMaterial.stockCriticoResponse> moduloMaterial.MaterialServiceImpl.stockCriticoAsync(moduloMaterial.stockCriticoRequest request)
+        System.Threading.Tasks.Task<moduloMaterial.stockCriticoResponse> moduloMaterial.MaterialEndpoint.stockCriticoAsync(moduloMaterial.stockCriticoRequest request)
         {
             return base.Channel.stockCriticoAsync(request);
         }
@@ -542,33 +563,36 @@ namespace moduloMaterial
         public System.Threading.Tasks.Task<moduloMaterial.stockCriticoResponse> stockCriticoAsync()
         {
             moduloMaterial.stockCriticoRequest inValue = new moduloMaterial.stockCriticoRequest();
-            return ((moduloMaterial.MaterialServiceImpl)(this)).stockCriticoAsync(inValue);
+            return ((moduloMaterial.MaterialEndpoint)(this)).stockCriticoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloMaterial.materialCreateResponse> moduloMaterial.MaterialServiceImpl.materialCreateAsync(moduloMaterial.materialCreateRequest request)
+        System.Threading.Tasks.Task<moduloMaterial.materialCreateResponse> moduloMaterial.MaterialEndpoint.materialCreateAsync(moduloMaterial.materialCreateRequest request)
         {
             return base.Channel.materialCreateAsync(request);
         }
         
-        public System.Threading.Tasks.Task<moduloMaterial.materialCreateResponse> materialCreateAsync(moduloMaterial.material arg0)
+        public System.Threading.Tasks.Task<moduloMaterial.materialCreateResponse> materialCreateAsync(string nombre, int stock, int stockMinimo, decimal costoUnitario)
         {
             moduloMaterial.materialCreateRequest inValue = new moduloMaterial.materialCreateRequest();
-            inValue.arg0 = arg0;
-            return ((moduloMaterial.MaterialServiceImpl)(this)).materialCreateAsync(inValue);
+            inValue.nombre = nombre;
+            inValue.stock = stock;
+            inValue.stockMinimo = stockMinimo;
+            inValue.costoUnitario = costoUnitario;
+            return ((moduloMaterial.MaterialEndpoint)(this)).materialCreateAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloMaterial.materialGetByIdResponse> moduloMaterial.MaterialServiceImpl.materialGetByIdAsync(moduloMaterial.materialGetByIdRequest request)
+        System.Threading.Tasks.Task<moduloMaterial.materialGetByIdResponse> moduloMaterial.MaterialEndpoint.materialGetByIdAsync(moduloMaterial.materialGetByIdRequest request)
         {
             return base.Channel.materialGetByIdAsync(request);
         }
         
-        public System.Threading.Tasks.Task<moduloMaterial.materialGetByIdResponse> materialGetByIdAsync(int arg0)
+        public System.Threading.Tasks.Task<moduloMaterial.materialGetByIdResponse> materialGetByIdAsync(int id)
         {
             moduloMaterial.materialGetByIdRequest inValue = new moduloMaterial.materialGetByIdRequest();
-            inValue.arg0 = arg0;
-            return ((moduloMaterial.MaterialServiceImpl)(this)).materialGetByIdAsync(inValue);
+            inValue.id = id;
+            return ((moduloMaterial.MaterialEndpoint)(this)).materialGetByIdAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -585,7 +609,7 @@ namespace moduloMaterial
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.MaterialServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.MaterialEndpointPort))
             {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
@@ -599,7 +623,7 @@ namespace moduloMaterial
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.MaterialServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.MaterialEndpointPort))
             {
                 return new System.ServiceModel.EndpointAddress("http://localhost:1520/ws/Material");
             }
@@ -608,18 +632,18 @@ namespace moduloMaterial
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding()
         {
-            return MaterialServiceImplClient.GetBindingForEndpoint(EndpointConfiguration.MaterialServiceImplPort);
+            return MaterialEndpointClient.GetBindingForEndpoint(EndpointConfiguration.MaterialEndpointPort);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress()
         {
-            return MaterialServiceImplClient.GetEndpointAddress(EndpointConfiguration.MaterialServiceImplPort);
+            return MaterialEndpointClient.GetEndpointAddress(EndpointConfiguration.MaterialEndpointPort);
         }
         
         public enum EndpointConfiguration
         {
             
-            MaterialServiceImplPort,
+            MaterialEndpointPort,
         }
     }
 }

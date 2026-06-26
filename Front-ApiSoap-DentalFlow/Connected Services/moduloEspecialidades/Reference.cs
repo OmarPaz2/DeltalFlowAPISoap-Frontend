@@ -12,81 +12,36 @@ namespace moduloEspecialidades
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://service.specialty.pe.dentalflow.com/", ConfigurationName="moduloEspecialidades.SpecialtyService")]
-    public interface SpecialtyService
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://soap.specialty.pe.dentalflow.com/", ConfigurationName="moduloEspecialidades.SpecialtyEndpoint")]
+    public interface SpecialtyEndpoint
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.specialty.pe.dentalflow.com/SpecialtyService/deleteSpecialtyReques" +
-            "t", ReplyAction="http://service.specialty.pe.dentalflow.com/SpecialtyService/deleteSpecialtyRespon" +
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.specialty.pe.dentalflow.com/SpecialtyEndpoint/getAllSpecialtiesReques" +
+            "t", ReplyAction="http://soap.specialty.pe.dentalflow.com/SpecialtyEndpoint/getAllSpecialtiesRespon" +
             "se")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<moduloEspecialidades.getAllSpecialtiesResponse> getAllSpecialtiesAsync(moduloEspecialidades.getAllSpecialtiesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.specialty.pe.dentalflow.com/SpecialtyEndpoint/deleteSpecialtyRequest", ReplyAction="http://soap.specialty.pe.dentalflow.com/SpecialtyEndpoint/deleteSpecialtyResponse" +
+            "")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloEspecialidades.deleteSpecialtyResponse> deleteSpecialtyAsync(moduloEspecialidades.deleteSpecialtyRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.specialty.pe.dentalflow.com/SpecialtyService/createSpecialtyReques" +
-            "t", ReplyAction="http://service.specialty.pe.dentalflow.com/SpecialtyService/createSpecialtyRespon" +
-            "se")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<moduloEspecialidades.createSpecialtyResponse> createSpecialtyAsync(moduloEspecialidades.createSpecialtyRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.specialty.pe.dentalflow.com/SpecialtyService/updateSpecialtyReques" +
-            "t", ReplyAction="http://service.specialty.pe.dentalflow.com/SpecialtyService/updateSpecialtyRespon" +
-            "se")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.specialty.pe.dentalflow.com/SpecialtyEndpoint/updateSpecialtyRequest", ReplyAction="http://soap.specialty.pe.dentalflow.com/SpecialtyEndpoint/updateSpecialtyResponse" +
+            "")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloEspecialidades.updateSpecialtyResponse> updateSpecialtyAsync(moduloEspecialidades.updateSpecialtyRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.specialty.pe.dentalflow.com/SpecialtyService/getAllSpecialtiesRequ" +
-            "est", ReplyAction="http://service.specialty.pe.dentalflow.com/SpecialtyService/getAllSpecialtiesResp" +
-            "onse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.specialty.pe.dentalflow.com/SpecialtyEndpoint/createSpecialtyRequest", ReplyAction="http://soap.specialty.pe.dentalflow.com/SpecialtyEndpoint/createSpecialtyResponse" +
+            "")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<moduloEspecialidades.getAllSpecialtiesResponse> getAllSpecialtiesAsync(moduloEspecialidades.getAllSpecialtiesRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="deleteSpecialty", WrapperNamespace="http://service.specialty.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class deleteSpecialtyRequest
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.specialty.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
-        
-        public deleteSpecialtyRequest()
-        {
-        }
-        
-        public deleteSpecialtyRequest(int arg0)
-        {
-            this.arg0 = arg0;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="deleteSpecialtyResponse", WrapperNamespace="http://service.specialty.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class deleteSpecialtyResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.specialty.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string @return;
-        
-        public deleteSpecialtyResponse()
-        {
-        }
-        
-        public deleteSpecialtyResponse(string @return)
-        {
-            this.@return = @return;
-        }
+        System.Threading.Tasks.Task<moduloEspecialidades.createSpecialtyResponse> createSpecialtyAsync(moduloEspecialidades.createSpecialtyRequest request);
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.specialty.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.specialty.pe.dentalflow.com/")]
     public partial class specialty
     {
         
@@ -142,7 +97,7 @@ namespace moduloEspecialidades
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.specialty.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.specialty.pe.dentalflow.com/")]
     public partial class localDateTime
     {
     }
@@ -150,40 +105,31 @@ namespace moduloEspecialidades
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="createSpecialty", WrapperNamespace="http://service.specialty.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class createSpecialtyRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllSpecialties", WrapperNamespace="http://soap.specialty.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getAllSpecialtiesRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.specialty.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string arg0;
-        
-        public createSpecialtyRequest()
+        public getAllSpecialtiesRequest()
         {
-        }
-        
-        public createSpecialtyRequest(string arg0)
-        {
-            this.arg0 = arg0;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="createSpecialtyResponse", WrapperNamespace="http://service.specialty.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class createSpecialtyResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllSpecialtiesResponse", WrapperNamespace="http://soap.specialty.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getAllSpecialtiesResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.specialty.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public moduloEspecialidades.specialty @return;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.specialty.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public moduloEspecialidades.specialty[] @return;
         
-        public createSpecialtyResponse()
+        public getAllSpecialtiesResponse()
         {
         }
         
-        public createSpecialtyResponse(moduloEspecialidades.specialty @return)
+        public getAllSpecialtiesResponse(moduloEspecialidades.specialty[] @return)
         {
             this.@return = @return;
         }
@@ -192,37 +138,79 @@ namespace moduloEspecialidades
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="updateSpecialty", WrapperNamespace="http://service.specialty.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class updateSpecialtyRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="deleteSpecialty", WrapperNamespace="http://soap.specialty.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class deleteSpecialtyRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.specialty.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.specialty.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int arg0;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.specialty.pe.dentalflow.com/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string arg1;
-        
-        public updateSpecialtyRequest()
+        public deleteSpecialtyRequest()
         {
         }
         
-        public updateSpecialtyRequest(int arg0, string arg1)
+        public deleteSpecialtyRequest(int arg0)
         {
             this.arg0 = arg0;
-            this.arg1 = arg1;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="updateSpecialtyResponse", WrapperNamespace="http://service.specialty.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="deleteSpecialtyResponse", WrapperNamespace="http://soap.specialty.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class deleteSpecialtyResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.specialty.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string @return;
+        
+        public deleteSpecialtyResponse()
+        {
+        }
+        
+        public deleteSpecialtyResponse(string @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="updateSpecialty", WrapperNamespace="http://soap.specialty.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class updateSpecialtyRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.specialty.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int id;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.specialty.pe.dentalflow.com/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string name;
+        
+        public updateSpecialtyRequest()
+        {
+        }
+        
+        public updateSpecialtyRequest(int id, string name)
+        {
+            this.id = id;
+            this.name = name;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="updateSpecialtyResponse", WrapperNamespace="http://soap.specialty.pe.dentalflow.com/", IsWrapped=true)]
     public partial class updateSpecialtyResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.specialty.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.specialty.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloEspecialidades.specialty @return;
         
@@ -239,44 +227,53 @@ namespace moduloEspecialidades
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllSpecialties", WrapperNamespace="http://service.specialty.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class getAllSpecialtiesRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="createSpecialty", WrapperNamespace="http://soap.specialty.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class createSpecialtyRequest
     {
         
-        public getAllSpecialtiesRequest()
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.specialty.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string name;
+        
+        public createSpecialtyRequest()
         {
+        }
+        
+        public createSpecialtyRequest(string name)
+        {
+            this.name = name;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllSpecialtiesResponse", WrapperNamespace="http://service.specialty.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class getAllSpecialtiesResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="createSpecialtyResponse", WrapperNamespace="http://soap.specialty.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class createSpecialtyResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.specialty.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public moduloEspecialidades.specialty[] @return;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.specialty.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public moduloEspecialidades.specialty @return;
         
-        public getAllSpecialtiesResponse()
+        public createSpecialtyResponse()
         {
         }
         
-        public getAllSpecialtiesResponse(moduloEspecialidades.specialty[] @return)
+        public createSpecialtyResponse(moduloEspecialidades.specialty @return)
         {
             this.@return = @return;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public interface SpecialtyServiceChannel : moduloEspecialidades.SpecialtyService, System.ServiceModel.IClientChannel
+    public interface SpecialtyEndpointChannel : moduloEspecialidades.SpecialtyEndpoint, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public partial class SpecialtyServiceClient : System.ServiceModel.ClientBase<moduloEspecialidades.SpecialtyService>, moduloEspecialidades.SpecialtyService
+    public partial class SpecialtyEndpointClient : System.ServiceModel.ClientBase<moduloEspecialidades.SpecialtyEndpoint>, moduloEspecialidades.SpecialtyEndpoint
     {
         
         /// <summary>
@@ -286,41 +283,53 @@ namespace moduloEspecialidades
         /// <param name="clientCredentials">Credenciales de cliente</param>
         static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
         
-        public SpecialtyServiceClient() : 
-                base(SpecialtyServiceClient.GetDefaultBinding(), SpecialtyServiceClient.GetDefaultEndpointAddress())
+        public SpecialtyEndpointClient() : 
+                base(SpecialtyEndpointClient.GetDefaultBinding(), SpecialtyEndpointClient.GetDefaultEndpointAddress())
         {
-            this.Endpoint.Name = EndpointConfiguration.SpecialtyServiceImplPort.ToString();
+            this.Endpoint.Name = EndpointConfiguration.SpecialtyEndpointPort.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public SpecialtyServiceClient(EndpointConfiguration endpointConfiguration) : 
-                base(SpecialtyServiceClient.GetBindingForEndpoint(endpointConfiguration), SpecialtyServiceClient.GetEndpointAddress(endpointConfiguration))
-        {
-            this.Endpoint.Name = endpointConfiguration.ToString();
-            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
-        }
-        
-        public SpecialtyServiceClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
-                base(SpecialtyServiceClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
+        public SpecialtyEndpointClient(EndpointConfiguration endpointConfiguration) : 
+                base(SpecialtyEndpointClient.GetBindingForEndpoint(endpointConfiguration), SpecialtyEndpointClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public SpecialtyServiceClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(SpecialtyServiceClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        public SpecialtyEndpointClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+                base(SpecialtyEndpointClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public SpecialtyServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public SpecialtyEndpointClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(SpecialtyEndpointClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        {
+            this.Endpoint.Name = endpointConfiguration.ToString();
+            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
+        }
+        
+        public SpecialtyEndpointClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloEspecialidades.deleteSpecialtyResponse> moduloEspecialidades.SpecialtyService.deleteSpecialtyAsync(moduloEspecialidades.deleteSpecialtyRequest request)
+        System.Threading.Tasks.Task<moduloEspecialidades.getAllSpecialtiesResponse> moduloEspecialidades.SpecialtyEndpoint.getAllSpecialtiesAsync(moduloEspecialidades.getAllSpecialtiesRequest request)
+        {
+            return base.Channel.getAllSpecialtiesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<moduloEspecialidades.getAllSpecialtiesResponse> getAllSpecialtiesAsync()
+        {
+            moduloEspecialidades.getAllSpecialtiesRequest inValue = new moduloEspecialidades.getAllSpecialtiesRequest();
+            return ((moduloEspecialidades.SpecialtyEndpoint)(this)).getAllSpecialtiesAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<moduloEspecialidades.deleteSpecialtyResponse> moduloEspecialidades.SpecialtyEndpoint.deleteSpecialtyAsync(moduloEspecialidades.deleteSpecialtyRequest request)
         {
             return base.Channel.deleteSpecialtyAsync(request);
         }
@@ -329,46 +338,34 @@ namespace moduloEspecialidades
         {
             moduloEspecialidades.deleteSpecialtyRequest inValue = new moduloEspecialidades.deleteSpecialtyRequest();
             inValue.arg0 = arg0;
-            return ((moduloEspecialidades.SpecialtyService)(this)).deleteSpecialtyAsync(inValue);
+            return ((moduloEspecialidades.SpecialtyEndpoint)(this)).deleteSpecialtyAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloEspecialidades.createSpecialtyResponse> moduloEspecialidades.SpecialtyService.createSpecialtyAsync(moduloEspecialidades.createSpecialtyRequest request)
-        {
-            return base.Channel.createSpecialtyAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<moduloEspecialidades.createSpecialtyResponse> createSpecialtyAsync(string arg0)
-        {
-            moduloEspecialidades.createSpecialtyRequest inValue = new moduloEspecialidades.createSpecialtyRequest();
-            inValue.arg0 = arg0;
-            return ((moduloEspecialidades.SpecialtyService)(this)).createSpecialtyAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloEspecialidades.updateSpecialtyResponse> moduloEspecialidades.SpecialtyService.updateSpecialtyAsync(moduloEspecialidades.updateSpecialtyRequest request)
+        System.Threading.Tasks.Task<moduloEspecialidades.updateSpecialtyResponse> moduloEspecialidades.SpecialtyEndpoint.updateSpecialtyAsync(moduloEspecialidades.updateSpecialtyRequest request)
         {
             return base.Channel.updateSpecialtyAsync(request);
         }
         
-        public System.Threading.Tasks.Task<moduloEspecialidades.updateSpecialtyResponse> updateSpecialtyAsync(int arg0, string arg1)
+        public System.Threading.Tasks.Task<moduloEspecialidades.updateSpecialtyResponse> updateSpecialtyAsync(int id, string name)
         {
             moduloEspecialidades.updateSpecialtyRequest inValue = new moduloEspecialidades.updateSpecialtyRequest();
-            inValue.arg0 = arg0;
-            inValue.arg1 = arg1;
-            return ((moduloEspecialidades.SpecialtyService)(this)).updateSpecialtyAsync(inValue);
+            inValue.id = id;
+            inValue.name = name;
+            return ((moduloEspecialidades.SpecialtyEndpoint)(this)).updateSpecialtyAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloEspecialidades.getAllSpecialtiesResponse> moduloEspecialidades.SpecialtyService.getAllSpecialtiesAsync(moduloEspecialidades.getAllSpecialtiesRequest request)
+        System.Threading.Tasks.Task<moduloEspecialidades.createSpecialtyResponse> moduloEspecialidades.SpecialtyEndpoint.createSpecialtyAsync(moduloEspecialidades.createSpecialtyRequest request)
         {
-            return base.Channel.getAllSpecialtiesAsync(request);
+            return base.Channel.createSpecialtyAsync(request);
         }
         
-        public System.Threading.Tasks.Task<moduloEspecialidades.getAllSpecialtiesResponse> getAllSpecialtiesAsync()
+        public System.Threading.Tasks.Task<moduloEspecialidades.createSpecialtyResponse> createSpecialtyAsync(string name)
         {
-            moduloEspecialidades.getAllSpecialtiesRequest inValue = new moduloEspecialidades.getAllSpecialtiesRequest();
-            return ((moduloEspecialidades.SpecialtyService)(this)).getAllSpecialtiesAsync(inValue);
+            moduloEspecialidades.createSpecialtyRequest inValue = new moduloEspecialidades.createSpecialtyRequest();
+            inValue.name = name;
+            return ((moduloEspecialidades.SpecialtyEndpoint)(this)).createSpecialtyAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -385,7 +382,7 @@ namespace moduloEspecialidades
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.SpecialtyServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.SpecialtyEndpointPort))
             {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
@@ -399,7 +396,7 @@ namespace moduloEspecialidades
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.SpecialtyServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.SpecialtyEndpointPort))
             {
                 return new System.ServiceModel.EndpointAddress("http://localhost:1520/ws/Specialty");
             }
@@ -408,18 +405,18 @@ namespace moduloEspecialidades
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding()
         {
-            return SpecialtyServiceClient.GetBindingForEndpoint(EndpointConfiguration.SpecialtyServiceImplPort);
+            return SpecialtyEndpointClient.GetBindingForEndpoint(EndpointConfiguration.SpecialtyEndpointPort);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress()
         {
-            return SpecialtyServiceClient.GetEndpointAddress(EndpointConfiguration.SpecialtyServiceImplPort);
+            return SpecialtyEndpointClient.GetEndpointAddress(EndpointConfiguration.SpecialtyEndpointPort);
         }
         
         public enum EndpointConfiguration
         {
             
-            SpecialtyServiceImplPort,
+            SpecialtyEndpointPort,
         }
     }
 }

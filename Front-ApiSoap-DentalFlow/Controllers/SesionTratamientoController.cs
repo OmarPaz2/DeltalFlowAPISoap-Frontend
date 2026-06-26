@@ -1,7 +1,7 @@
 ﻿using Front_ApiSoap_DentalFlow.Models.Tratamiento;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using moduloclinicalStaff;
+using moduloClinicalStaff;
 using servicioSesionTratamiento;
 using System.Globalization;
 using System.ServiceModel;
@@ -11,18 +11,18 @@ namespace Front_ApiSoap_DentalFlow.Controllers
     public class SesionTratamientoController : Controller
     {
        private readonly SesionTratamientoEndpoint _sesionTratamientoService;
-        private readonly ClinicalStaffService _clinicalStaffService;
+        private readonly ClinicalStaffEndpoint _clinicalStaffService;
 
-        public SesionTratamientoController(SesionTratamientoEndpoint sesionTratamientoService, ClinicalStaffService clinicalStaffService)
+        public SesionTratamientoController(SesionTratamientoEndpoint sesionTratamientoService, ClinicalStaffEndpoint clinicalStaffService)
         {
             _sesionTratamientoService = sesionTratamientoService;
             _clinicalStaffService = clinicalStaffService;
         }
-        public async Task<ActionResult> Index(Boolean asistencia,int idTratamiento)
+        public async Task<ActionResult> Index(bool? asistencia=null,int idTratamiento=0)
         {
             try
             {
-                if (idTratamiento !=null || idTratamiento !=0)
+                if (idTratamiento !=0)
                 {
                     var rq = new getAllSesionesByIdTratamientoRequest
                     {
@@ -45,7 +45,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
                         observaciones = s.observaciones
                     }).ToList();
 
-                    return View(sesionesVm);
+                    return View("Sesion",sesionesVm);
                 }
 
                 var parametros = new getByIdUserRequest
@@ -77,12 +77,12 @@ namespace Front_ApiSoap_DentalFlow.Controllers
                     observaciones = s.observaciones
                 }).ToList();
 
-                return View(sesionesVM);
+                return View("Sesion",sesionesVM);
             }
             catch (FaultException fault)
             {
                 TempData["ErrorMessage"] = fault.Reason.ToString();
-                return View(new List<SesionTratameintoVM>());
+                return View("Sesion",new List<SesionTratameintoVM>());
             }
         }
         // GET: SesionTratamientoController/Details/5
@@ -94,45 +94,142 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         // GET: SesionTratamientoController/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new SesionTratameintoVM());
         }
 
         // POST: SesionTratamientoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(SesionTratamientoRqVM sesion)
         {
             try
             {
+                var rq = new registrarSesionRequest
+                {
+                    request = new sesionTratamientoRegisterRequestDto { 
+                    costoParcial = sesion.costoParcial,
+                        costoParcialSpecified = true,
+                        tiempoDuracion = sesion.tiempoDuracion,
+                        idTratamiento = sesion.idTratamiento,
+                        fechaProgramada = sesion.fechaProgramada.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture)
+                    }
+                };
+
+                var response = await _sesionTratamientoService.registrarSesionAsync(rq);
+                var responseForClient = response.@return;
+                TempData["Success"] = responseForClient;
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (FaultException fault)
             {
-                return View();
+                {
+                    ViewBag.MensajeError = fault.Reason.ToString();
+                    return View(sesion);
+                }
             }
-        }
+            catch (Exception ex)
+            {
+                ViewBag.MensajeError = "Ocurrio un error inesperado al crear la sesión de tratamiento";
+                return View(sesion);
+            }
+            }
 
         // GET: SesionTratamientoController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            try
+            {
+                var response = await _sesionTratamientoService.getSesionAsync(new getSesionRequest { idSesion = id });
+
+                var responseVm = new SesionTratameintoVM
+                {
+                    idSesion = response.@return.idSesion,
+                    costoParcial = response.@return.costoParcial,
+                    apellidoPaciente = response.@return.apellidoPaciente,
+                    asistenciaPaciente = response.@return.asistenciaPaciente,
+                    dni = response.@return.dni,
+                    estado = response.@return.estado,
+                    fechaProgramada = DateTime.Parse(response.@return.fechaProgramada),
+                    fechaRealizada = DateTime.Parse(response.@return.fechaRealizada),
+                    nombrePaciente = response.@return.nombrePaciente,
+                    observaciones = response.@return.observaciones
+                };
+                return View(responseVm);
+            }
+            catch (FaultException fault)
+            {
+                TempData["ErrorMessage"] = fault.Reason.ToString();
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         // POST: SesionTratamientoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(DateTime fechaRealizada, string observaciones)
         {
             try
             {
+                var rq = new actualizarSesionRequest
+                {
+                    request = new sesionTratamientoUpdateRequestDto
+                    {
+                        fechaRealizada = fechaRealizada.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture),
+                        observaciones = observaciones
+                    }
+                };
+
+                var response = await _sesionTratamientoService.actualizarSesionAsync(rq);
+
+                TempData["Success"] = response.@return;
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(FaultException fault)
             {
+                TempData["ErrorMessage"] = fault.Reason.ToString();
                 return View();
             }
         }
 
-     
-    }
+        //metodo para marcar asistencia del paciente a la sesion de tratamiento
+        [HttpPost]
+        public async Task<ActionResult> MarcarAsistencia(int idSesion)
+        {
+            try
+            {
+                var request = new marcarAsistenciaPacienteRequest
+                {
+                    arg0 = idSesion,
+                };
+                var response = await _sesionTratamientoService.marcarAsistenciaPacienteAsync(request);
+                TempData["Success"] = response.@return ?? "Asistencia marcada correctamente";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (FaultException fault)
+            {
+                TempData["ErrorMessage"] = fault.Reason.ToString();
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        //metodo para cancelar sesion
+        public async Task<ActionResult> CancelarSesion(int idSesion)
+        {
+            try
+            {
+                var request = new cancelarSesionRequest
+                {
+                    idSesion = idSesion,
+                };
+                var response = await _sesionTratamientoService.cancelarSesionAsync(request);
+                TempData["Success"] = response.@return ?? "Sesión cancelada correctamente";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (FaultException fault)
+            {
+                TempData["ErrorMessage"] = fault.Reason.ToString();
+                return RedirectToAction(nameof(Index));
+            }
+        }
+        }
 }

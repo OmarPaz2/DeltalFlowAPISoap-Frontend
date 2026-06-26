@@ -12,9 +12,9 @@ namespace Front_ApiSoap_DentalFlow.Controllers
     public class AppointmentTypeController : Controller
     {
         
-        private readonly AppointmentTypeService _appointmentTypeService;
+        private readonly AppointmentTypeEndpoint _appointmentTypeService;
 
-        public AppointmentTypeController(AppointmentTypeService appointmentTypeService)
+        public AppointmentTypeController(AppointmentTypeEndpoint appointmentTypeService)
         {
             _appointmentTypeService = appointmentTypeService;
         }
@@ -35,7 +35,8 @@ namespace Front_ApiSoap_DentalFlow.Controllers
                 {
                     id = x.id,
                     minutos = x.durationMinutes,
-                    name = x.name
+                    name = x.name,
+                    price = x.price
                 }).ToList();
 
                 return View(tipos);
@@ -65,8 +66,10 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 
                 var request = new createAppointmentTypeRequest
                 {
-                    arg0 = rq.name,
-                    arg1 = rq.minutos
+                    name = rq.name,
+                    durationMinutes = rq.minutos,
+                    price = rq.price
+
                 };
                
                 var response = await _appointmentTypeService.createAppointmentTypeAsync(request);
@@ -98,7 +101,8 @@ namespace Front_ApiSoap_DentalFlow.Controllers
             {
                 id = seleccion.id,
                 name = seleccion.name,
-                minutos = seleccion.durationMinutes
+                minutos = seleccion.durationMinutes,
+                price = seleccion.price
             };
 
             return PartialView(vm);
@@ -118,6 +122,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
                        
                         name = model.name,
                         durationMinutes = model.minutos,
+                        price = model.price,
                         durationMinutesSpecified = true
                     }
                 };

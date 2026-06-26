@@ -6,9 +6,9 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 {
     public class TratamientoController : Controller
     {
-        private readonly TratamientoServiceImplClient _tratamientoService;
+        private readonly TratamientoEndpoint _tratamientoService;
 
-        public TratamientoController(TratamientoServiceImplClient tratamientoService)
+        public TratamientoController(TratamientoEndpoint tratamientoService)
         {
             _tratamientoService = tratamientoService;
         }
@@ -32,19 +32,23 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 
             try
             {
-                var request = new tratamientoRequestDto
+                var rq = new registrarTratamientoRequest
                 {
-                    pacienteId = model.PacienteId,
-                    odontologoId = model.OdontologoId,
-                    diagnostico = model.Diagnostico,
-                    tipoTratamiento = model.TipoTratamiento,
-                    costoEstimado = model.CostoEstimado,
-                    costoEstimadoSpecified = true,
-                    fechaInicio = model.FechaInicio.ToString("yyyy-MM-dd"),
-                    cant_sesiones = model.CantSesiones
+                   request = new tratamientoRequestDto
+                   {
+                      
+                       pacienteId = model.PacienteId,
+                       odontologoId = model.OdontologoId,
+                       diagnostico = model.Diagnostico,
+                       tipoTratamiento = model.TipoTratamiento,
+                       costoEstimado = model.CostoEstimado,
+                       fechaInicio = model.FechaInicio.ToString("yyyy-MM-dd"),
+                       cant_sesiones = model.CantSesiones
+                       
+                   }
                 };
 
-                var response = await _tratamientoService.registrarTratamientoAsync(request);
+                var response = await _tratamientoService.registrarTratamientoAsync(rq);
 
                 TempData["Success"] = response.@return ?? "Tratamiento registrado correctamente";
                 return RedirectToAction(nameof(Create));
@@ -66,7 +70,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         {
             try
             {
-                var response = await _tratamientoService.getTratamientoAsync(id);
+                var response = await _tratamientoService.getTratamientoAsync(new getTratamientoRequest(id));
                 var t = response.@return;
 
                 var model = new TratamientoViewModel
@@ -108,7 +112,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         {
             try
             {
-                await _tratamientoService.actualizarEstadoAsync(idTratamiento, estado);
+                await _tratamientoService.actualizarEstadoAsync(new actualizarEstadoRequest(idTratamiento, estado));
 
                 TempData["Success"] = "Estado actualizado correctamente";
                 return RedirectToAction(nameof(Details));

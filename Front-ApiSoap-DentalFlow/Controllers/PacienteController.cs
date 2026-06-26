@@ -12,9 +12,9 @@ namespace Front_ApiSoap_DentalFlow.Controllers
     public class PacienteController : Controller
     {
 
-        private readonly PatientService _patientService;
+        private readonly PatientEndpoint _patientService;
 
-        public PacienteController(PatientService patientService)
+        public PacienteController(PatientEndpoint patientService)
         {
             _patientService = patientService;
         }
@@ -30,9 +30,9 @@ namespace Front_ApiSoap_DentalFlow.Controllers
                     var parametros = new searchPatientRequest
                     {
 
-                        arg0 = dni,
-                        arg1 = nombre,
-                        arg2 = apellido
+                       nombre = nombre,
+                       apellido = apellido,
+                       dni = dni
                     };
                     searchPatientResponse paciente = await _patientService.searchPatientAsync(parametros);
 
@@ -77,17 +77,14 @@ namespace Front_ApiSoap_DentalFlow.Controllers
                 string fechaFormateada = requestClient.birthDate?.ToString("yyyy-MM-dd") ?? string.Empty;
                 createPatientRequest requestService = new createPatientRequest
                 {
-                    arg0 = new patientRequestDto
-                    {
-                        dni = requestClient.dni,
-                        address = requestClient.address,
-                        lastName = requestClient.lastName,
-                        firstName = requestClient.firstName,
-                        birthDate = fechaFormateada,
-                        email = requestClient.email,
-                        gender = requestClient.gender,
-                        phone = requestClient.phone
-                    }
+                   dni = requestClient.dni,
+                   address = requestClient.address,
+                    birthDate = fechaFormateada,
+                    email = requestClient.email,
+                    firstName = requestClient.firstName,
+                    gender = requestClient.gender,
+                    lastName = requestClient.lastName,
+                    phone = requestClient.phone
                 };
                 createPatientResponse response = await _patientService.createPatientAsync(requestService);
 
@@ -126,7 +123,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         {
             try
             {
-                var respose = _patientService.getPatientByIdAsync(new getPatientByIdRequest { arg0 = id }).Result;
+                var respose = _patientService.getPatientByIdAsync(new getPatientByIdRequest { id = id }).Result;
 
                 var paciente = new PacienteResponse
                 {
@@ -157,9 +154,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
             {
                 var repsonse = await _patientService.updatePatientAsync(new updatePatientRequest
                 {
-                    arg0 = new patientRequestDto
-                    {
-                        
+      
                         dni = rq.dni,
                         firstName = rq.firstName,
                         lastName = rq.lastName,
@@ -167,10 +162,10 @@ namespace Front_ApiSoap_DentalFlow.Controllers
                         address = rq.address,
                         email = rq.email,
                         gender = rq.gender,
-                        phone = rq.phone
-                    },
-
-                    arg1 = id
+                        phone = rq.phone,
+                        id = id
+                        
+   
                 });
 
                 var pacienteActualizado = new PacienteResponse
@@ -207,7 +202,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
             {
                 var deleteRq = new deletePatientRequest
                 {
-                    arg0 = id
+                    id = id
                 };
                 var response = await _patientService.deletePatientAsync(deleteRq);
 

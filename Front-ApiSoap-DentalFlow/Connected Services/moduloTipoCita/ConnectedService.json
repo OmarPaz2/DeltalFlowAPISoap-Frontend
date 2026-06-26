@@ -1,7 +1,7 @@
 {
   "ExtendedData": {
     "inputs": [
-      "http://localhost:1520/ws/AppointmentType?wsdl"
+      "http://localhost:1520/ws/appointmentType?wsdl"
     ],
     "collectionTypes": [
       "System.Array",

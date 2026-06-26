@@ -1,7 +1,7 @@
 {
   "ExtendedData": {
     "inputs": [
-      "http://localhost:1520/ws/Pago?wsdl"
+      "http://localhost:1520/ws/Payment?wsdl"
     ],
     "collectionTypes": [
       "System.Array",

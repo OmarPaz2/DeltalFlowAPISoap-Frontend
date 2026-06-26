@@ -12,33 +12,29 @@ namespace moduloPago
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://impl.service.payment.pe.dentalflow.com/", ConfigurationName="moduloPago.PagoServiceImpl")]
-    public interface PagoServiceImpl
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://soap.payment.pe.dentalflow.com/", ConfigurationName="moduloPago.PagoEndpoint")]
+    public interface PagoEndpoint
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://impl.service.payment.pe.dentalflow.com/PagoServiceImpl/registerPagoCitaReq" +
-            "uest", ReplyAction="http://impl.service.payment.pe.dentalflow.com/PagoServiceImpl/registerPagoCitaRes" +
-            "ponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<moduloPago.registerPagoCitaResponse> registerPagoCitaAsync(moduloPago.registerPagoCitaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://impl.service.payment.pe.dentalflow.com/PagoServiceImpl/findPagoByIdRequest" +
-            "", ReplyAction="http://impl.service.payment.pe.dentalflow.com/PagoServiceImpl/findPagoByIdRespons" +
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.payment.pe.dentalflow.com/PagoEndpoint/registerPagoTratamientoRequest" +
+            "", ReplyAction="http://soap.payment.pe.dentalflow.com/PagoEndpoint/registerPagoTratamientoRespons" +
             "e")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<moduloPago.registerPagoTratamientoResponse> registerPagoTratamientoAsync(moduloPago.registerPagoTratamientoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.payment.pe.dentalflow.com/PagoEndpoint/findPagoByIdRequest", ReplyAction="http://soap.payment.pe.dentalflow.com/PagoEndpoint/findPagoByIdResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloPago.findPagoByIdResponse> findPagoByIdAsync(moduloPago.findPagoByIdRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://impl.service.payment.pe.dentalflow.com/PagoServiceImpl/registerPagoTratami" +
-            "entoRequest", ReplyAction="http://impl.service.payment.pe.dentalflow.com/PagoServiceImpl/registerPagoTratami" +
-            "entoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.payment.pe.dentalflow.com/PagoEndpoint/registerPagoCitaRequest", ReplyAction="http://soap.payment.pe.dentalflow.com/PagoEndpoint/registerPagoCitaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<moduloPago.registerPagoTratamientoResponse> registerPagoTratamientoAsync(moduloPago.registerPagoTratamientoRequest request);
+        System.Threading.Tasks.Task<moduloPago.registerPagoCitaResponse> registerPagoCitaAsync(moduloPago.registerPagoCitaRequest request);
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://impl.service.payment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.payment.pe.dentalflow.com/")]
     public partial class pagoRequestDto
     {
         
@@ -94,7 +90,7 @@ namespace moduloPago
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://impl.service.payment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.payment.pe.dentalflow.com/")]
     public partial class pagoResponseDto
     {
         
@@ -246,45 +242,45 @@ namespace moduloPago
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="registerPagoCita", WrapperNamespace="http://impl.service.payment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class registerPagoCitaRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="registerPagoTratamiento", WrapperNamespace="http://soap.payment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class registerPagoTratamientoRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.payment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.payment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public moduloPago.pagoRequestDto arg0;
+        public moduloPago.pagoRequestDto pago;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.payment.pe.dentalflow.com/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.payment.pe.dentalflow.com/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg1;
+        public int idTratamiento;
         
-        public registerPagoCitaRequest()
+        public registerPagoTratamientoRequest()
         {
         }
         
-        public registerPagoCitaRequest(moduloPago.pagoRequestDto arg0, int arg1)
+        public registerPagoTratamientoRequest(moduloPago.pagoRequestDto pago, int idTratamiento)
         {
-            this.arg0 = arg0;
-            this.arg1 = arg1;
+            this.pago = pago;
+            this.idTratamiento = idTratamiento;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="registerPagoCitaResponse", WrapperNamespace="http://impl.service.payment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class registerPagoCitaResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="registerPagoTratamientoResponse", WrapperNamespace="http://soap.payment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class registerPagoTratamientoResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.payment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.payment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloPago.pagoResponseDto @return;
         
-        public registerPagoCitaResponse()
+        public registerPagoTratamientoResponse()
         {
         }
         
-        public registerPagoCitaResponse(moduloPago.pagoResponseDto @return)
+        public registerPagoTratamientoResponse(moduloPago.pagoResponseDto @return)
         {
             this.@return = @return;
         }
@@ -293,32 +289,32 @@ namespace moduloPago
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="findPagoById", WrapperNamespace="http://impl.service.payment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="findPagoById", WrapperNamespace="http://soap.payment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class findPagoByIdRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.payment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.payment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
+        public int idPago;
         
         public findPagoByIdRequest()
         {
         }
         
-        public findPagoByIdRequest(int arg0)
+        public findPagoByIdRequest(int idPago)
         {
-            this.arg0 = arg0;
+            this.idPago = idPago;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="findPagoByIdResponse", WrapperNamespace="http://impl.service.payment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="findPagoByIdResponse", WrapperNamespace="http://soap.payment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class findPagoByIdResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.payment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.payment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloPago.pagoResponseDto @return;
         
@@ -335,58 +331,58 @@ namespace moduloPago
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="registerPagoTratamiento", WrapperNamespace="http://impl.service.payment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class registerPagoTratamientoRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="registerPagoCita", WrapperNamespace="http://soap.payment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class registerPagoCitaRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.payment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.payment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public moduloPago.pagoRequestDto arg0;
+        public moduloPago.pagoRequestDto pago;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.payment.pe.dentalflow.com/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.payment.pe.dentalflow.com/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg1;
+        public int idCita;
         
-        public registerPagoTratamientoRequest()
+        public registerPagoCitaRequest()
         {
         }
         
-        public registerPagoTratamientoRequest(moduloPago.pagoRequestDto arg0, int arg1)
+        public registerPagoCitaRequest(moduloPago.pagoRequestDto pago, int idCita)
         {
-            this.arg0 = arg0;
-            this.arg1 = arg1;
+            this.pago = pago;
+            this.idCita = idCita;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="registerPagoTratamientoResponse", WrapperNamespace="http://impl.service.payment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class registerPagoTratamientoResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="registerPagoCitaResponse", WrapperNamespace="http://soap.payment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class registerPagoCitaResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.payment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.payment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloPago.pagoResponseDto @return;
         
-        public registerPagoTratamientoResponse()
+        public registerPagoCitaResponse()
         {
         }
         
-        public registerPagoTratamientoResponse(moduloPago.pagoResponseDto @return)
+        public registerPagoCitaResponse(moduloPago.pagoResponseDto @return)
         {
             this.@return = @return;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public interface PagoServiceImplChannel : moduloPago.PagoServiceImpl, System.ServiceModel.IClientChannel
+    public interface PagoEndpointChannel : moduloPago.PagoEndpoint, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public partial class PagoServiceImplClient : System.ServiceModel.ClientBase<moduloPago.PagoServiceImpl>, moduloPago.PagoServiceImpl
+    public partial class PagoEndpointClient : System.ServiceModel.ClientBase<moduloPago.PagoEndpoint>, moduloPago.PagoEndpoint
     {
         
         /// <summary>
@@ -396,78 +392,78 @@ namespace moduloPago
         /// <param name="clientCredentials">Credenciales de cliente</param>
         static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
         
-        public PagoServiceImplClient() : 
-                base(PagoServiceImplClient.GetDefaultBinding(), PagoServiceImplClient.GetDefaultEndpointAddress())
+        public PagoEndpointClient() : 
+                base(PagoEndpointClient.GetDefaultBinding(), PagoEndpointClient.GetDefaultEndpointAddress())
         {
-            this.Endpoint.Name = EndpointConfiguration.PagoServiceImplPort.ToString();
+            this.Endpoint.Name = EndpointConfiguration.PagoEndpointPort.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public PagoServiceImplClient(EndpointConfiguration endpointConfiguration) : 
-                base(PagoServiceImplClient.GetBindingForEndpoint(endpointConfiguration), PagoServiceImplClient.GetEndpointAddress(endpointConfiguration))
-        {
-            this.Endpoint.Name = endpointConfiguration.ToString();
-            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
-        }
-        
-        public PagoServiceImplClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
-                base(PagoServiceImplClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
+        public PagoEndpointClient(EndpointConfiguration endpointConfiguration) : 
+                base(PagoEndpointClient.GetBindingForEndpoint(endpointConfiguration), PagoEndpointClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public PagoServiceImplClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(PagoServiceImplClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        public PagoEndpointClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+                base(PagoEndpointClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public PagoServiceImplClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public PagoEndpointClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(PagoEndpointClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        {
+            this.Endpoint.Name = endpointConfiguration.ToString();
+            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
+        }
+        
+        public PagoEndpointClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloPago.registerPagoCitaResponse> moduloPago.PagoServiceImpl.registerPagoCitaAsync(moduloPago.registerPagoCitaRequest request)
-        {
-            return base.Channel.registerPagoCitaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<moduloPago.registerPagoCitaResponse> registerPagoCitaAsync(moduloPago.pagoRequestDto arg0, int arg1)
-        {
-            moduloPago.registerPagoCitaRequest inValue = new moduloPago.registerPagoCitaRequest();
-            inValue.arg0 = arg0;
-            inValue.arg1 = arg1;
-            return ((moduloPago.PagoServiceImpl)(this)).registerPagoCitaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloPago.findPagoByIdResponse> moduloPago.PagoServiceImpl.findPagoByIdAsync(moduloPago.findPagoByIdRequest request)
-        {
-            return base.Channel.findPagoByIdAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<moduloPago.findPagoByIdResponse> findPagoByIdAsync(int arg0)
-        {
-            moduloPago.findPagoByIdRequest inValue = new moduloPago.findPagoByIdRequest();
-            inValue.arg0 = arg0;
-            return ((moduloPago.PagoServiceImpl)(this)).findPagoByIdAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloPago.registerPagoTratamientoResponse> moduloPago.PagoServiceImpl.registerPagoTratamientoAsync(moduloPago.registerPagoTratamientoRequest request)
+        System.Threading.Tasks.Task<moduloPago.registerPagoTratamientoResponse> moduloPago.PagoEndpoint.registerPagoTratamientoAsync(moduloPago.registerPagoTratamientoRequest request)
         {
             return base.Channel.registerPagoTratamientoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<moduloPago.registerPagoTratamientoResponse> registerPagoTratamientoAsync(moduloPago.pagoRequestDto arg0, int arg1)
+        public System.Threading.Tasks.Task<moduloPago.registerPagoTratamientoResponse> registerPagoTratamientoAsync(moduloPago.pagoRequestDto pago, int idTratamiento)
         {
             moduloPago.registerPagoTratamientoRequest inValue = new moduloPago.registerPagoTratamientoRequest();
-            inValue.arg0 = arg0;
-            inValue.arg1 = arg1;
-            return ((moduloPago.PagoServiceImpl)(this)).registerPagoTratamientoAsync(inValue);
+            inValue.pago = pago;
+            inValue.idTratamiento = idTratamiento;
+            return ((moduloPago.PagoEndpoint)(this)).registerPagoTratamientoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<moduloPago.findPagoByIdResponse> moduloPago.PagoEndpoint.findPagoByIdAsync(moduloPago.findPagoByIdRequest request)
+        {
+            return base.Channel.findPagoByIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<moduloPago.findPagoByIdResponse> findPagoByIdAsync(int idPago)
+        {
+            moduloPago.findPagoByIdRequest inValue = new moduloPago.findPagoByIdRequest();
+            inValue.idPago = idPago;
+            return ((moduloPago.PagoEndpoint)(this)).findPagoByIdAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<moduloPago.registerPagoCitaResponse> moduloPago.PagoEndpoint.registerPagoCitaAsync(moduloPago.registerPagoCitaRequest request)
+        {
+            return base.Channel.registerPagoCitaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<moduloPago.registerPagoCitaResponse> registerPagoCitaAsync(moduloPago.pagoRequestDto pago, int idCita)
+        {
+            moduloPago.registerPagoCitaRequest inValue = new moduloPago.registerPagoCitaRequest();
+            inValue.pago = pago;
+            inValue.idCita = idCita;
+            return ((moduloPago.PagoEndpoint)(this)).registerPagoCitaAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -484,7 +480,7 @@ namespace moduloPago
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.PagoServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.PagoEndpointPort))
             {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
@@ -498,27 +494,27 @@ namespace moduloPago
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.PagoServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.PagoEndpointPort))
             {
-                return new System.ServiceModel.EndpointAddress("http://localhost:1520/ws/Pago");
+                return new System.ServiceModel.EndpointAddress("http://localhost:1520/ws/Payment");
             }
             throw new System.InvalidOperationException(string.Format("No se pudo encontrar un punto de conexión con el nombre \"{0}\".", endpointConfiguration));
         }
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding()
         {
-            return PagoServiceImplClient.GetBindingForEndpoint(EndpointConfiguration.PagoServiceImplPort);
+            return PagoEndpointClient.GetBindingForEndpoint(EndpointConfiguration.PagoEndpointPort);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress()
         {
-            return PagoServiceImplClient.GetEndpointAddress(EndpointConfiguration.PagoServiceImplPort);
+            return PagoEndpointClient.GetEndpointAddress(EndpointConfiguration.PagoEndpointPort);
         }
         
         public enum EndpointConfiguration
         {
             
-            PagoServiceImplPort,
+            PagoEndpointPort,
         }
     }
 }

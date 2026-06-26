@@ -12,19 +12,18 @@ namespace moduloDashboard
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://serviceImpl.dashboard.pe.dentalflow.com/", ConfigurationName="moduloDashboard.DashboardServiceImpl")]
-    public interface DashboardServiceImpl
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://soap.dashboard.pe.dentalflow.com/", ConfigurationName="moduloDashboard.DashboardEndpoint")]
+    public interface DashboardEndpoint
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://serviceImpl.dashboard.pe.dentalflow.com/DashboardServiceImpl/obtenerPagosT" +
-            "otalesUltimos5MesesRequest", ReplyAction="http://serviceImpl.dashboard.pe.dentalflow.com/DashboardServiceImpl/obtenerPagosT" +
-            "otalesUltimos5MesesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.dashboard.pe.dentalflow.com/DashboardEndpoint/obtenerPagosTotalesUlti" +
+            "mos5MesesRequest", ReplyAction="http://soap.dashboard.pe.dentalflow.com/DashboardEndpoint/obtenerPagosTotalesUlti" +
+            "mos5MesesResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloDashboard.obtenerPagosTotalesUltimos5MesesResponse> obtenerPagosTotalesUltimos5MesesAsync(moduloDashboard.obtenerPagosTotalesUltimos5MesesRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://serviceImpl.dashboard.pe.dentalflow.com/DashboardServiceImpl/obtenerMetric" +
-            "asRequest", ReplyAction="http://serviceImpl.dashboard.pe.dentalflow.com/DashboardServiceImpl/obtenerMetric" +
-            "asResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.dashboard.pe.dentalflow.com/DashboardEndpoint/obtenerMetricasRequest", ReplyAction="http://soap.dashboard.pe.dentalflow.com/DashboardEndpoint/obtenerMetricasResponse" +
+            "")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloDashboard.obtenerMetricasResponse> obtenerMetricasAsync(moduloDashboard.obtenerMetricasRequest request);
     }
@@ -32,7 +31,7 @@ namespace moduloDashboard
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://serviceImpl.dashboard.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.dashboard.pe.dentalflow.com/")]
     public partial class pagoTotalMesDto
     {
         
@@ -104,7 +103,7 @@ namespace moduloDashboard
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://serviceImpl.dashboard.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.dashboard.pe.dentalflow.com/")]
     public partial class dashboard
     {
         
@@ -240,7 +239,7 @@ namespace moduloDashboard
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerPagosTotalesUltimos5Meses", WrapperNamespace="http://serviceImpl.dashboard.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerPagosTotalesUltimos5Meses", WrapperNamespace="http://soap.dashboard.pe.dentalflow.com/", IsWrapped=true)]
     public partial class obtenerPagosTotalesUltimos5MesesRequest
     {
         
@@ -252,11 +251,11 @@ namespace moduloDashboard
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerPagosTotalesUltimos5MesesResponse", WrapperNamespace="http://serviceImpl.dashboard.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerPagosTotalesUltimos5MesesResponse", WrapperNamespace="http://soap.dashboard.pe.dentalflow.com/", IsWrapped=true)]
     public partial class obtenerPagosTotalesUltimos5MesesResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://serviceImpl.dashboard.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.dashboard.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloDashboard.pagoTotalMesDto[] @return;
         
@@ -273,7 +272,7 @@ namespace moduloDashboard
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerMetricas", WrapperNamespace="http://serviceImpl.dashboard.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerMetricas", WrapperNamespace="http://soap.dashboard.pe.dentalflow.com/", IsWrapped=true)]
     public partial class obtenerMetricasRequest
     {
         
@@ -285,11 +284,11 @@ namespace moduloDashboard
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerMetricasResponse", WrapperNamespace="http://serviceImpl.dashboard.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerMetricasResponse", WrapperNamespace="http://soap.dashboard.pe.dentalflow.com/", IsWrapped=true)]
     public partial class obtenerMetricasResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://serviceImpl.dashboard.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.dashboard.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloDashboard.dashboard @return;
         
@@ -304,13 +303,13 @@ namespace moduloDashboard
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public interface DashboardServiceImplChannel : moduloDashboard.DashboardServiceImpl, System.ServiceModel.IClientChannel
+    public interface DashboardEndpointChannel : moduloDashboard.DashboardEndpoint, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public partial class DashboardServiceImplClient : System.ServiceModel.ClientBase<moduloDashboard.DashboardServiceImpl>, moduloDashboard.DashboardServiceImpl
+    public partial class DashboardEndpointClient : System.ServiceModel.ClientBase<moduloDashboard.DashboardEndpoint>, moduloDashboard.DashboardEndpoint
     {
         
         /// <summary>
@@ -320,41 +319,41 @@ namespace moduloDashboard
         /// <param name="clientCredentials">Credenciales de cliente</param>
         static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
         
-        public DashboardServiceImplClient() : 
-                base(DashboardServiceImplClient.GetDefaultBinding(), DashboardServiceImplClient.GetDefaultEndpointAddress())
+        public DashboardEndpointClient() : 
+                base(DashboardEndpointClient.GetDefaultBinding(), DashboardEndpointClient.GetDefaultEndpointAddress())
         {
-            this.Endpoint.Name = EndpointConfiguration.DashboardServiceImplPort.ToString();
+            this.Endpoint.Name = EndpointConfiguration.DashboardEndpointPort.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public DashboardServiceImplClient(EndpointConfiguration endpointConfiguration) : 
-                base(DashboardServiceImplClient.GetBindingForEndpoint(endpointConfiguration), DashboardServiceImplClient.GetEndpointAddress(endpointConfiguration))
-        {
-            this.Endpoint.Name = endpointConfiguration.ToString();
-            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
-        }
-        
-        public DashboardServiceImplClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
-                base(DashboardServiceImplClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
+        public DashboardEndpointClient(EndpointConfiguration endpointConfiguration) : 
+                base(DashboardEndpointClient.GetBindingForEndpoint(endpointConfiguration), DashboardEndpointClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public DashboardServiceImplClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(DashboardServiceImplClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        public DashboardEndpointClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+                base(DashboardEndpointClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public DashboardServiceImplClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public DashboardEndpointClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(DashboardEndpointClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        {
+            this.Endpoint.Name = endpointConfiguration.ToString();
+            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
+        }
+        
+        public DashboardEndpointClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloDashboard.obtenerPagosTotalesUltimos5MesesResponse> moduloDashboard.DashboardServiceImpl.obtenerPagosTotalesUltimos5MesesAsync(moduloDashboard.obtenerPagosTotalesUltimos5MesesRequest request)
+        System.Threading.Tasks.Task<moduloDashboard.obtenerPagosTotalesUltimos5MesesResponse> moduloDashboard.DashboardEndpoint.obtenerPagosTotalesUltimos5MesesAsync(moduloDashboard.obtenerPagosTotalesUltimos5MesesRequest request)
         {
             return base.Channel.obtenerPagosTotalesUltimos5MesesAsync(request);
         }
@@ -362,11 +361,11 @@ namespace moduloDashboard
         public System.Threading.Tasks.Task<moduloDashboard.obtenerPagosTotalesUltimos5MesesResponse> obtenerPagosTotalesUltimos5MesesAsync()
         {
             moduloDashboard.obtenerPagosTotalesUltimos5MesesRequest inValue = new moduloDashboard.obtenerPagosTotalesUltimos5MesesRequest();
-            return ((moduloDashboard.DashboardServiceImpl)(this)).obtenerPagosTotalesUltimos5MesesAsync(inValue);
+            return ((moduloDashboard.DashboardEndpoint)(this)).obtenerPagosTotalesUltimos5MesesAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloDashboard.obtenerMetricasResponse> moduloDashboard.DashboardServiceImpl.obtenerMetricasAsync(moduloDashboard.obtenerMetricasRequest request)
+        System.Threading.Tasks.Task<moduloDashboard.obtenerMetricasResponse> moduloDashboard.DashboardEndpoint.obtenerMetricasAsync(moduloDashboard.obtenerMetricasRequest request)
         {
             return base.Channel.obtenerMetricasAsync(request);
         }
@@ -374,7 +373,7 @@ namespace moduloDashboard
         public System.Threading.Tasks.Task<moduloDashboard.obtenerMetricasResponse> obtenerMetricasAsync()
         {
             moduloDashboard.obtenerMetricasRequest inValue = new moduloDashboard.obtenerMetricasRequest();
-            return ((moduloDashboard.DashboardServiceImpl)(this)).obtenerMetricasAsync(inValue);
+            return ((moduloDashboard.DashboardEndpoint)(this)).obtenerMetricasAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -391,7 +390,7 @@ namespace moduloDashboard
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.DashboardServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.DashboardEndpointPort))
             {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
@@ -405,7 +404,7 @@ namespace moduloDashboard
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.DashboardServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.DashboardEndpointPort))
             {
                 return new System.ServiceModel.EndpointAddress("http://localhost:1520/ws/Dashboard");
             }
@@ -414,18 +413,18 @@ namespace moduloDashboard
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding()
         {
-            return DashboardServiceImplClient.GetBindingForEndpoint(EndpointConfiguration.DashboardServiceImplPort);
+            return DashboardEndpointClient.GetBindingForEndpoint(EndpointConfiguration.DashboardEndpointPort);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress()
         {
-            return DashboardServiceImplClient.GetEndpointAddress(EndpointConfiguration.DashboardServiceImplPort);
+            return DashboardEndpointClient.GetEndpointAddress(EndpointConfiguration.DashboardEndpointPort);
         }
         
         public enum EndpointConfiguration
         {
             
-            DashboardServiceImplPort,
+            DashboardEndpointPort,
         }
     }
 }

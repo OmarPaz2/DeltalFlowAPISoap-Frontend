@@ -2,17 +2,17 @@
 using Front_ApiSoap_DentalFlow.Models.Specialty;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using moduloclinicalStaff;
+using moduloClinicalStaff;
 using moduloEspecialidades;
 
 namespace Front_ApiSoap_DentalFlow.Controllers
 {
     public class ClinicalStaffController : Controller
     {
-        private readonly ClinicalStaffService _clinicalStaffService;
-        private readonly SpecialtyService _specialtyService;
+        private readonly ClinicalStaffEndpoint _clinicalStaffService;
+        private readonly SpecialtyEndpoint _specialtyService;
 
-        public ClinicalStaffController(ClinicalStaffService clinicalStaffService, SpecialtyService specialtyService)
+        public ClinicalStaffController(ClinicalStaffEndpoint clinicalStaffService, SpecialtyEndpoint specialtyService)
         {
             _clinicalStaffService = clinicalStaffService;
             _specialtyService = specialtyService;
@@ -77,12 +77,12 @@ namespace Front_ApiSoap_DentalFlow.Controllers
             {
                 var request = new createDentistRequest
                 {
-                    arg0 = model.usuario,
-                    arg1 = model.specialty,
-                    arg2 = model.licenseNumber,
-                    arg3 = model.firstName,
-                    arg4 = model.lastName,
-                    arg5 = model.phone
+                    userId = model.usuario,
+                    specialtyId = model.specialty,
+                    licenseNumber = model.licenseNumber,
+                    firstName = model.firstName,
+                    lastName = model.lastName,
+                    phone = model.phone
 
                 };
 
@@ -117,7 +117,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
             {
                 var request = new getDentistByIdRequest
                 {
-                    arg0 = id
+                    id = id
                 };
 
                 var rsp = await _clinicalStaffService.getDentistByIdAsync(request);

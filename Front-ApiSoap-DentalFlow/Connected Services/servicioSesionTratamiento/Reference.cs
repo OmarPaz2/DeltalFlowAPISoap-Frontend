@@ -581,7 +581,7 @@ namespace servicioSesionTratamiento
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool arg1;
+        public bool? arg1;
         
         public sesionesParahoyRequest()
         {

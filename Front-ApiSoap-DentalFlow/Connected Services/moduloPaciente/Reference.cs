@@ -12,39 +12,39 @@ namespace moduloPaciente
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://service.patient.pe.dentalflow.com/", ConfigurationName="moduloPaciente.PatientService")]
-    public interface PatientService
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", ConfigurationName="moduloPaciente.PatientEndpoint")]
+    public interface PatientEndpoint
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.patient.pe.dentalflow.com/PatientService/getPatientByIdRequest", ReplyAction="http://service.patient.pe.dentalflow.com/PatientService/getPatientByIdResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<moduloPaciente.getPatientByIdResponse> getPatientByIdAsync(moduloPaciente.getPatientByIdRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.patient.pe.dentalflow.com/PatientService/createPatientRequest", ReplyAction="http://service.patient.pe.dentalflow.com/PatientService/createPatientResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<moduloPaciente.createPatientResponse> createPatientAsync(moduloPaciente.createPatientRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.patient.pe.dentalflow.com/PatientService/getAllPatientsRequest", ReplyAction="http://service.patient.pe.dentalflow.com/PatientService/getAllPatientsResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<moduloPaciente.getAllPatientsResponse> getAllPatientsAsync(moduloPaciente.getAllPatientsRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.patient.pe.dentalflow.com/PatientService/searchPatientRequest", ReplyAction="http://service.patient.pe.dentalflow.com/PatientService/searchPatientResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.patient.pe.dentalflow.com/PatientEndpoint/searchPatientRequest", ReplyAction="http://soap.patient.pe.dentalflow.com/PatientEndpoint/searchPatientResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloPaciente.searchPatientResponse> searchPatientAsync(moduloPaciente.searchPatientRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.patient.pe.dentalflow.com/PatientService/updatePatientRequest", ReplyAction="http://service.patient.pe.dentalflow.com/PatientService/updatePatientResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.patient.pe.dentalflow.com/PatientEndpoint/updatePatientRequest", ReplyAction="http://soap.patient.pe.dentalflow.com/PatientEndpoint/updatePatientResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloPaciente.updatePatientResponse> updatePatientAsync(moduloPaciente.updatePatientRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service.patient.pe.dentalflow.com/PatientService/deletePatientRequest", ReplyAction="http://service.patient.pe.dentalflow.com/PatientService/deletePatientResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.patient.pe.dentalflow.com/PatientEndpoint/createPatientRequest", ReplyAction="http://soap.patient.pe.dentalflow.com/PatientEndpoint/createPatientResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<moduloPaciente.createPatientResponse> createPatientAsync(moduloPaciente.createPatientRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.patient.pe.dentalflow.com/PatientEndpoint/getAllPatientsRequest", ReplyAction="http://soap.patient.pe.dentalflow.com/PatientEndpoint/getAllPatientsResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<moduloPaciente.getAllPatientsResponse> getAllPatientsAsync(moduloPaciente.getAllPatientsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.patient.pe.dentalflow.com/PatientEndpoint/deletePatientRequest", ReplyAction="http://soap.patient.pe.dentalflow.com/PatientEndpoint/deletePatientResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<moduloPaciente.deletePatientResponse> deletePatientAsync(moduloPaciente.deletePatientRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.patient.pe.dentalflow.com/PatientEndpoint/getPatientByIdRequest", ReplyAction="http://soap.patient.pe.dentalflow.com/PatientEndpoint/getPatientByIdResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<moduloPaciente.getPatientByIdResponse> getPatientByIdAsync(moduloPaciente.getPatientByIdRequest request);
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.patient.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.patient.pe.dentalflow.com/")]
     public partial class patientResponseDto
     {
         
@@ -193,298 +193,45 @@ namespace moduloPaciente
         }
     }
     
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.patient.pe.dentalflow.com/")]
-    public partial class patientRequestDto
-    {
-        
-        private string dniField;
-        
-        private string firstNameField;
-        
-        private string lastNameField;
-        
-        private string birthDateField;
-        
-        private string genderField;
-        
-        private string phoneField;
-        
-        private string emailField;
-        
-        private string addressField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string dni
-        {
-            get
-            {
-                return this.dniField;
-            }
-            set
-            {
-                this.dniField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string firstName
-        {
-            get
-            {
-                return this.firstNameField;
-            }
-            set
-            {
-                this.firstNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public string lastName
-        {
-            get
-            {
-                return this.lastNameField;
-            }
-            set
-            {
-                this.lastNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public string birthDate
-        {
-            get
-            {
-                return this.birthDateField;
-            }
-            set
-            {
-                this.birthDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public string gender
-        {
-            get
-            {
-                return this.genderField;
-            }
-            set
-            {
-                this.genderField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public string phone
-        {
-            get
-            {
-                return this.phoneField;
-            }
-            set
-            {
-                this.phoneField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
-        public string email
-        {
-            get
-            {
-                return this.emailField;
-            }
-            set
-            {
-                this.emailField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
-        public string address
-        {
-            get
-            {
-                return this.addressField;
-            }
-            set
-            {
-                this.addressField = value;
-            }
-        }
-    }
-    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getPatientById", WrapperNamespace="http://service.patient.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class getPatientByIdRequest
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.patient.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
-        
-        public getPatientByIdRequest()
-        {
-        }
-        
-        public getPatientByIdRequest(int arg0)
-        {
-            this.arg0 = arg0;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getPatientByIdResponse", WrapperNamespace="http://service.patient.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class getPatientByIdResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.patient.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public moduloPaciente.patientResponseDto @return;
-        
-        public getPatientByIdResponse()
-        {
-        }
-        
-        public getPatientByIdResponse(moduloPaciente.patientResponseDto @return)
-        {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="createPatient", WrapperNamespace="http://service.patient.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class createPatientRequest
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.patient.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public moduloPaciente.patientRequestDto arg0;
-        
-        public createPatientRequest()
-        {
-        }
-        
-        public createPatientRequest(moduloPaciente.patientRequestDto arg0)
-        {
-            this.arg0 = arg0;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="createPatientResponse", WrapperNamespace="http://service.patient.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class createPatientResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.patient.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public moduloPaciente.patientResponseDto @return;
-        
-        public createPatientResponse()
-        {
-        }
-        
-        public createPatientResponse(moduloPaciente.patientResponseDto @return)
-        {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllPatients", WrapperNamespace="http://service.patient.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class getAllPatientsRequest
-    {
-        
-        public getAllPatientsRequest()
-        {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllPatientsResponse", WrapperNamespace="http://service.patient.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class getAllPatientsResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.patient.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public moduloPaciente.patientResponseDto[] @return;
-        
-        public getAllPatientsResponse()
-        {
-        }
-        
-        public getAllPatientsResponse(moduloPaciente.patientResponseDto[] @return)
-        {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="searchPatient", WrapperNamespace="http://service.patient.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="searchPatient", WrapperNamespace="http://soap.patient.pe.dentalflow.com/", IsWrapped=true)]
     public partial class searchPatientRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.patient.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string arg0;
+        public string dni;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.patient.pe.dentalflow.com/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string arg1;
+        public string nombre;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.patient.pe.dentalflow.com/", Order=2)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=2)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string arg2;
+        public string apellido;
         
         public searchPatientRequest()
         {
         }
         
-        public searchPatientRequest(string arg0, string arg1, string arg2)
+        public searchPatientRequest(string dni, string nombre, string apellido)
         {
-            this.arg0 = arg0;
-            this.arg1 = arg1;
-            this.arg2 = arg2;
+            this.dni = dni;
+            this.nombre = nombre;
+            this.apellido = apellido;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="searchPatientResponse", WrapperNamespace="http://service.patient.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="searchPatientResponse", WrapperNamespace="http://soap.patient.pe.dentalflow.com/", IsWrapped=true)]
     public partial class searchPatientResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.patient.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloPaciente.patientResponseDto[] @return;
         
@@ -501,37 +248,72 @@ namespace moduloPaciente
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="updatePatient", WrapperNamespace="http://service.patient.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="updatePatient", WrapperNamespace="http://soap.patient.pe.dentalflow.com/", IsWrapped=true)]
     public partial class updatePatientRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.patient.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public moduloPaciente.patientRequestDto arg0;
+        public int id;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.patient.pe.dentalflow.com/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg1;
+        public string dni;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string firstName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string lastName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string birthDate;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string gender;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string phone;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string email;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string address;
         
         public updatePatientRequest()
         {
         }
         
-        public updatePatientRequest(moduloPaciente.patientRequestDto arg0, int arg1)
+        public updatePatientRequest(int id, string dni, string firstName, string lastName, string birthDate, string gender, string phone, string email, string address)
         {
-            this.arg0 = arg0;
-            this.arg1 = arg1;
+            this.id = id;
+            this.dni = dni;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.birthDate = birthDate;
+            this.gender = gender;
+            this.phone = phone;
+            this.email = email;
+            this.address = address;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="updatePatientResponse", WrapperNamespace="http://service.patient.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="updatePatientResponse", WrapperNamespace="http://soap.patient.pe.dentalflow.com/", IsWrapped=true)]
     public partial class updatePatientResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.patient.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public moduloPaciente.patientResponseDto @return;
         
@@ -548,32 +330,142 @@ namespace moduloPaciente
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="deletePatient", WrapperNamespace="http://service.patient.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class deletePatientRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="createPatient", WrapperNamespace="http://soap.patient.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class createPatientRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.patient.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
+        public string dni;
         
-        public deletePatientRequest()
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string firstName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string lastName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string birthDate;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string gender;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string phone;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string email;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string address;
+        
+        public createPatientRequest()
         {
         }
         
-        public deletePatientRequest(int arg0)
+        public createPatientRequest(string dni, string firstName, string lastName, string birthDate, string gender, string phone, string email, string address)
         {
-            this.arg0 = arg0;
+            this.dni = dni;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.birthDate = birthDate;
+            this.gender = gender;
+            this.phone = phone;
+            this.email = email;
+            this.address = address;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="deletePatientResponse", WrapperNamespace="http://service.patient.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="createPatientResponse", WrapperNamespace="http://soap.patient.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class createPatientResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public moduloPaciente.patientResponseDto @return;
+        
+        public createPatientResponse()
+        {
+        }
+        
+        public createPatientResponse(moduloPaciente.patientResponseDto @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllPatients", WrapperNamespace="http://soap.patient.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getAllPatientsRequest
+    {
+        
+        public getAllPatientsRequest()
+        {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAllPatientsResponse", WrapperNamespace="http://soap.patient.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getAllPatientsResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public moduloPaciente.patientResponseDto[] @return;
+        
+        public getAllPatientsResponse()
+        {
+        }
+        
+        public getAllPatientsResponse(moduloPaciente.patientResponseDto[] @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="deletePatient", WrapperNamespace="http://soap.patient.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class deletePatientRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int id;
+        
+        public deletePatientRequest()
+        {
+        }
+        
+        public deletePatientRequest(int id)
+        {
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="deletePatientResponse", WrapperNamespace="http://soap.patient.pe.dentalflow.com/", IsWrapped=true)]
     public partial class deletePatientResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.patient.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string @return;
         
@@ -587,14 +479,56 @@ namespace moduloPaciente
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public interface PatientServiceChannel : moduloPaciente.PatientService, System.ServiceModel.IClientChannel
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getPatientById", WrapperNamespace="http://soap.patient.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getPatientByIdRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int id;
+        
+        public getPatientByIdRequest()
+        {
+        }
+        
+        public getPatientByIdRequest(int id)
+        {
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getPatientByIdResponse", WrapperNamespace="http://soap.patient.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getPatientByIdResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.patient.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public moduloPaciente.patientResponseDto @return;
+        
+        public getPatientByIdResponse()
+        {
+        }
+        
+        public getPatientByIdResponse(moduloPaciente.patientResponseDto @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    public interface PatientEndpointChannel : moduloPaciente.PatientEndpoint, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public partial class PatientServiceClient : System.ServiceModel.ClientBase<moduloPaciente.PatientService>, moduloPaciente.PatientService
+    public partial class PatientEndpointClient : System.ServiceModel.ClientBase<moduloPaciente.PatientEndpoint>, moduloPaciente.PatientEndpoint
     {
         
         /// <summary>
@@ -604,67 +538,97 @@ namespace moduloPaciente
         /// <param name="clientCredentials">Credenciales de cliente</param>
         static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
         
-        public PatientServiceClient() : 
-                base(PatientServiceClient.GetDefaultBinding(), PatientServiceClient.GetDefaultEndpointAddress())
+        public PatientEndpointClient() : 
+                base(PatientEndpointClient.GetDefaultBinding(), PatientEndpointClient.GetDefaultEndpointAddress())
         {
-            this.Endpoint.Name = EndpointConfiguration.PatientServiceImplPort.ToString();
+            this.Endpoint.Name = EndpointConfiguration.PatientEndpointPort.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public PatientServiceClient(EndpointConfiguration endpointConfiguration) : 
-                base(PatientServiceClient.GetBindingForEndpoint(endpointConfiguration), PatientServiceClient.GetEndpointAddress(endpointConfiguration))
-        {
-            this.Endpoint.Name = endpointConfiguration.ToString();
-            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
-        }
-        
-        public PatientServiceClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
-                base(PatientServiceClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
+        public PatientEndpointClient(EndpointConfiguration endpointConfiguration) : 
+                base(PatientEndpointClient.GetBindingForEndpoint(endpointConfiguration), PatientEndpointClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public PatientServiceClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(PatientServiceClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        public PatientEndpointClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+                base(PatientEndpointClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public PatientServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public PatientEndpointClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(PatientEndpointClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        {
+            this.Endpoint.Name = endpointConfiguration.ToString();
+            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
+        }
+        
+        public PatientEndpointClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloPaciente.getPatientByIdResponse> moduloPaciente.PatientService.getPatientByIdAsync(moduloPaciente.getPatientByIdRequest request)
+        System.Threading.Tasks.Task<moduloPaciente.searchPatientResponse> moduloPaciente.PatientEndpoint.searchPatientAsync(moduloPaciente.searchPatientRequest request)
         {
-            return base.Channel.getPatientByIdAsync(request);
+            return base.Channel.searchPatientAsync(request);
         }
         
-        public System.Threading.Tasks.Task<moduloPaciente.getPatientByIdResponse> getPatientByIdAsync(int arg0)
+        public System.Threading.Tasks.Task<moduloPaciente.searchPatientResponse> searchPatientAsync(string dni, string nombre, string apellido)
         {
-            moduloPaciente.getPatientByIdRequest inValue = new moduloPaciente.getPatientByIdRequest();
-            inValue.arg0 = arg0;
-            return ((moduloPaciente.PatientService)(this)).getPatientByIdAsync(inValue);
+            moduloPaciente.searchPatientRequest inValue = new moduloPaciente.searchPatientRequest();
+            inValue.dni = dni;
+            inValue.nombre = nombre;
+            inValue.apellido = apellido;
+            return ((moduloPaciente.PatientEndpoint)(this)).searchPatientAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloPaciente.createPatientResponse> moduloPaciente.PatientService.createPatientAsync(moduloPaciente.createPatientRequest request)
+        System.Threading.Tasks.Task<moduloPaciente.updatePatientResponse> moduloPaciente.PatientEndpoint.updatePatientAsync(moduloPaciente.updatePatientRequest request)
+        {
+            return base.Channel.updatePatientAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<moduloPaciente.updatePatientResponse> updatePatientAsync(int id, string dni, string firstName, string lastName, string birthDate, string gender, string phone, string email, string address)
+        {
+            moduloPaciente.updatePatientRequest inValue = new moduloPaciente.updatePatientRequest();
+            inValue.id = id;
+            inValue.dni = dni;
+            inValue.firstName = firstName;
+            inValue.lastName = lastName;
+            inValue.birthDate = birthDate;
+            inValue.gender = gender;
+            inValue.phone = phone;
+            inValue.email = email;
+            inValue.address = address;
+            return ((moduloPaciente.PatientEndpoint)(this)).updatePatientAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<moduloPaciente.createPatientResponse> moduloPaciente.PatientEndpoint.createPatientAsync(moduloPaciente.createPatientRequest request)
         {
             return base.Channel.createPatientAsync(request);
         }
         
-        public System.Threading.Tasks.Task<moduloPaciente.createPatientResponse> createPatientAsync(moduloPaciente.patientRequestDto arg0)
+        public System.Threading.Tasks.Task<moduloPaciente.createPatientResponse> createPatientAsync(string dni, string firstName, string lastName, string birthDate, string gender, string phone, string email, string address)
         {
             moduloPaciente.createPatientRequest inValue = new moduloPaciente.createPatientRequest();
-            inValue.arg0 = arg0;
-            return ((moduloPaciente.PatientService)(this)).createPatientAsync(inValue);
+            inValue.dni = dni;
+            inValue.firstName = firstName;
+            inValue.lastName = lastName;
+            inValue.birthDate = birthDate;
+            inValue.gender = gender;
+            inValue.phone = phone;
+            inValue.email = email;
+            inValue.address = address;
+            return ((moduloPaciente.PatientEndpoint)(this)).createPatientAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloPaciente.getAllPatientsResponse> moduloPaciente.PatientService.getAllPatientsAsync(moduloPaciente.getAllPatientsRequest request)
+        System.Threading.Tasks.Task<moduloPaciente.getAllPatientsResponse> moduloPaciente.PatientEndpoint.getAllPatientsAsync(moduloPaciente.getAllPatientsRequest request)
         {
             return base.Channel.getAllPatientsAsync(request);
         }
@@ -672,49 +636,33 @@ namespace moduloPaciente
         public System.Threading.Tasks.Task<moduloPaciente.getAllPatientsResponse> getAllPatientsAsync()
         {
             moduloPaciente.getAllPatientsRequest inValue = new moduloPaciente.getAllPatientsRequest();
-            return ((moduloPaciente.PatientService)(this)).getAllPatientsAsync(inValue);
+            return ((moduloPaciente.PatientEndpoint)(this)).getAllPatientsAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloPaciente.searchPatientResponse> moduloPaciente.PatientService.searchPatientAsync(moduloPaciente.searchPatientRequest request)
-        {
-            return base.Channel.searchPatientAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<moduloPaciente.searchPatientResponse> searchPatientAsync(string arg0, string arg1, string arg2)
-        {
-            moduloPaciente.searchPatientRequest inValue = new moduloPaciente.searchPatientRequest();
-            inValue.arg0 = arg0;
-            inValue.arg1 = arg1;
-            inValue.arg2 = arg2;
-            return ((moduloPaciente.PatientService)(this)).searchPatientAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloPaciente.updatePatientResponse> moduloPaciente.PatientService.updatePatientAsync(moduloPaciente.updatePatientRequest request)
-        {
-            return base.Channel.updatePatientAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<moduloPaciente.updatePatientResponse> updatePatientAsync(moduloPaciente.patientRequestDto arg0, int arg1)
-        {
-            moduloPaciente.updatePatientRequest inValue = new moduloPaciente.updatePatientRequest();
-            inValue.arg0 = arg0;
-            inValue.arg1 = arg1;
-            return ((moduloPaciente.PatientService)(this)).updatePatientAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<moduloPaciente.deletePatientResponse> moduloPaciente.PatientService.deletePatientAsync(moduloPaciente.deletePatientRequest request)
+        System.Threading.Tasks.Task<moduloPaciente.deletePatientResponse> moduloPaciente.PatientEndpoint.deletePatientAsync(moduloPaciente.deletePatientRequest request)
         {
             return base.Channel.deletePatientAsync(request);
         }
         
-        public System.Threading.Tasks.Task<moduloPaciente.deletePatientResponse> deletePatientAsync(int arg0)
+        public System.Threading.Tasks.Task<moduloPaciente.deletePatientResponse> deletePatientAsync(int id)
         {
             moduloPaciente.deletePatientRequest inValue = new moduloPaciente.deletePatientRequest();
-            inValue.arg0 = arg0;
-            return ((moduloPaciente.PatientService)(this)).deletePatientAsync(inValue);
+            inValue.id = id;
+            return ((moduloPaciente.PatientEndpoint)(this)).deletePatientAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<moduloPaciente.getPatientByIdResponse> moduloPaciente.PatientEndpoint.getPatientByIdAsync(moduloPaciente.getPatientByIdRequest request)
+        {
+            return base.Channel.getPatientByIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<moduloPaciente.getPatientByIdResponse> getPatientByIdAsync(int id)
+        {
+            moduloPaciente.getPatientByIdRequest inValue = new moduloPaciente.getPatientByIdRequest();
+            inValue.id = id;
+            return ((moduloPaciente.PatientEndpoint)(this)).getPatientByIdAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -731,7 +679,7 @@ namespace moduloPaciente
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.PatientServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.PatientEndpointPort))
             {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
@@ -745,7 +693,7 @@ namespace moduloPaciente
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.PatientServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.PatientEndpointPort))
             {
                 return new System.ServiceModel.EndpointAddress("http://localhost:1520/ws/Patient");
             }
@@ -754,18 +702,18 @@ namespace moduloPaciente
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding()
         {
-            return PatientServiceClient.GetBindingForEndpoint(EndpointConfiguration.PatientServiceImplPort);
+            return PatientEndpointClient.GetBindingForEndpoint(EndpointConfiguration.PatientEndpointPort);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress()
         {
-            return PatientServiceClient.GetEndpointAddress(EndpointConfiguration.PatientServiceImplPort);
+            return PatientEndpointClient.GetEndpointAddress(EndpointConfiguration.PatientEndpointPort);
         }
         
         public enum EndpointConfiguration
         {
             
-            PatientServiceImplPort,
+            PatientEndpointPort,
         }
     }
 }

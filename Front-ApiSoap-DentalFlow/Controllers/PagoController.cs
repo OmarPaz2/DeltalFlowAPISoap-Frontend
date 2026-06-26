@@ -6,9 +6,9 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 {
     public class PagoController : Controller
     {
-        private readonly PagoServiceImplClient _pagoService;
+        private readonly PagoEndpoint _pagoService;
 
-        public PagoController(PagoServiceImplClient pagoService)
+        public PagoController(PagoEndpoint pagoService)
         {
             _pagoService = pagoService;
         }
@@ -32,14 +32,20 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 
             try
             {
-                var pago = new pagoRequestDto
+
+                var pago = new registerPagoCitaRequest
                 {
-                    metodoPago = model.MetodoPago,
-                    monto = model.Monto,
-                    montoSpecified = true
+                    idCita = model.IdReferencia,
+                    pago = new pagoRequestDto
+                    {
+                        metodoPago = model.MetodoPago,
+                        monto = model.Monto,
+                        montoSpecified = true
+                    }
+
                 };
 
-                await _pagoService.registerPagoCitaAsync(pago, model.IdReferencia);
+                await _pagoService.registerPagoCitaAsync(pago);
 
                 TempData["Success"] = "Pago de cita registrado correctamente";
                 return RedirectToAction(nameof(Index));
@@ -65,14 +71,19 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 
             try
             {
-                var pago = new pagoRequestDto
+                var pago = new registerPagoTratamientoRequest
                 {
-                    metodoPago = model.MetodoPago,
-                    monto = model.Monto,
-                    montoSpecified = true
+                    idTratamiento = model.IdReferencia,
+                    pago = new pagoRequestDto
+                    {
+                        metodoPago = model.MetodoPago,
+                        monto = model.Monto,
+                        montoSpecified = true
+                    }
                 };
+     
 
-                await _pagoService.registerPagoTratamientoAsync(pago, model.IdReferencia);
+                await _pagoService.registerPagoTratamientoAsync(pago);
 
                 TempData["Success"] = "Pago de tratamiento registrado correctamente";
                 return RedirectToAction(nameof(Index));
@@ -94,7 +105,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         {
             try
             {
-                var response = await _pagoService.findPagoByIdAsync(idPago);
+                var response = await _pagoService.findPagoByIdAsync( new findPagoByIdRequest { idPago= idPago });
                 var p = response.@return;
 
                 var model = new PagoViewModel

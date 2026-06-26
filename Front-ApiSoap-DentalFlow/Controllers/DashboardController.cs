@@ -6,9 +6,9 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 {
     public class DashboardController : Controller
     {
-        private readonly DashboardServiceImplClient _dashboardService;
+        private readonly DashboardEndpoint _dashboardService;
 
-        public DashboardController(DashboardServiceImplClient dashboardService)
+        public DashboardController(DashboardEndpoint dashboardService)
         {
             _dashboardService = dashboardService;
         }
@@ -17,7 +17,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         {
             try
             {
-                var response = await _dashboardService.obtenerMetricasAsync();
+                var response = await _dashboardService.obtenerMetricasAsync(new obtenerMetricasRequest());
                 var d = response.@return;
 
                 var model = new DashboardViewModel
@@ -41,7 +41,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         {
             try
             {
-                var response = await _dashboardService.obtenerPagosTotalesUltimos5MesesAsync();
+                var response = await _dashboardService.obtenerPagosTotalesUltimos5MesesAsync(new obtenerPagosTotalesUltimos5MesesRequest ());
 
                 var pagosUltimos5Meses = response.@return.Select(p => new PagosUltimos5MesesVM
                 {

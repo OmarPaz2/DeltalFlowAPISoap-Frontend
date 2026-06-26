@@ -12,39 +12,175 @@ namespace servicioTratamiento
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", ConfigurationName="servicioTratamiento.TratamientoServiceImpl")]
-    public interface TratamientoServiceImpl
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", ConfigurationName="servicioTratamiento.TratamientoEndpoint")]
+    public interface TratamientoEndpoint
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://impl.service.treatment.pe.dentalflow.com/TratamientoServiceImpl/getTratami" +
-            "entoRequest", ReplyAction="http://impl.service.treatment.pe.dentalflow.com/TratamientoServiceImpl/getTratami" +
-            "entoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.treatment.pe.dentalflow.com/TratamientoEndpoint/registrarTratamientoR" +
+            "equest", ReplyAction="http://soap.treatment.pe.dentalflow.com/TratamientoEndpoint/registrarTratamientoR" +
+            "esponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<servicioTratamiento.getTratamientoResponse> getTratamientoAsync(servicioTratamiento.getTratamientoRequest request);
+        System.Threading.Tasks.Task<servicioTratamiento.registrarTratamientoResponse> registrarTratamientoAsync(servicioTratamiento.registrarTratamientoRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://impl.service.treatment.pe.dentalflow.com/TratamientoServiceImpl/actualizar" +
-            "EstadoRequest", ReplyAction="http://impl.service.treatment.pe.dentalflow.com/TratamientoServiceImpl/actualizar" +
-            "EstadoResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<servicioTratamiento.actualizarEstadoResponse> actualizarEstadoAsync(servicioTratamiento.actualizarEstadoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://impl.service.treatment.pe.dentalflow.com/TratamientoServiceImpl/aumentarCo" +
-            "stoTratamientoRequest", ReplyAction="http://impl.service.treatment.pe.dentalflow.com/TratamientoServiceImpl/aumentarCo" +
-            "stoTratamientoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.treatment.pe.dentalflow.com/TratamientoEndpoint/aumentarCostoTratamie" +
+            "ntoRequest", ReplyAction="http://soap.treatment.pe.dentalflow.com/TratamientoEndpoint/aumentarCostoTratamie" +
+            "ntoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<servicioTratamiento.aumentarCostoTratamientoResponse> aumentarCostoTratamientoAsync(servicioTratamiento.aumentarCostoTratamientoRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://impl.service.treatment.pe.dentalflow.com/TratamientoServiceImpl/registrarT" +
-            "ratamientoRequest", ReplyAction="http://impl.service.treatment.pe.dentalflow.com/TratamientoServiceImpl/registrarT" +
-            "ratamientoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.treatment.pe.dentalflow.com/TratamientoEndpoint/getTratamientoRequest" +
+            "", ReplyAction="http://soap.treatment.pe.dentalflow.com/TratamientoEndpoint/getTratamientoRespons" +
+            "e")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<servicioTratamiento.registrarTratamientoResponse> registrarTratamientoAsync(servicioTratamiento.registrarTratamientoRequest request);
+        System.Threading.Tasks.Task<servicioTratamiento.getTratamientoResponse> getTratamientoAsync(servicioTratamiento.getTratamientoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://soap.treatment.pe.dentalflow.com/TratamientoEndpoint/actualizarEstadoReque" +
+            "st", ReplyAction="http://soap.treatment.pe.dentalflow.com/TratamientoEndpoint/actualizarEstadoRespo" +
+            "nse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<servicioTratamiento.actualizarEstadoResponse> actualizarEstadoAsync(servicioTratamiento.actualizarEstadoRequest request);
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/")]
+    public partial class tratamientoRequestDto
+    {
+        
+        private int pacienteIdField;
+        
+        private int odontologoIdField;
+        
+        private string diagnosticoField;
+        
+        private string tipoTratamientoField;
+        
+        private decimal costoEstimadoField;
+        
+        private bool costoEstimadoFieldSpecified;
+        
+        private string fechaInicioField;
+        
+        private int cant_sesionesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public int pacienteId
+        {
+            get
+            {
+                return this.pacienteIdField;
+            }
+            set
+            {
+                this.pacienteIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public int odontologoId
+        {
+            get
+            {
+                return this.odontologoIdField;
+            }
+            set
+            {
+                this.odontologoIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public string diagnostico
+        {
+            get
+            {
+                return this.diagnosticoField;
+            }
+            set
+            {
+                this.diagnosticoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public string tipoTratamiento
+        {
+            get
+            {
+                return this.tipoTratamientoField;
+            }
+            set
+            {
+                this.tipoTratamientoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public decimal costoEstimado
+        {
+            get
+            {
+                return this.costoEstimadoField;
+            }
+            set
+            {
+                this.costoEstimadoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool costoEstimadoSpecified
+        {
+            get
+            {
+                return this.costoEstimadoFieldSpecified;
+            }
+            set
+            {
+                this.costoEstimadoFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public string fechaInicio
+        {
+            get
+            {
+                return this.fechaInicioField;
+            }
+            set
+            {
+                this.fechaInicioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        public int cant_sesiones
+        {
+            get
+            {
+                return this.cant_sesionesField;
+            }
+            set
+            {
+                this.cant_sesionesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/")]
     public partial class tratamientoResponseDto
     {
         
@@ -337,179 +473,43 @@ namespace servicioTratamiento
         }
     }
     
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/")]
-    public partial class tratamientoRequestDto
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarTratamiento", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class registrarTratamientoRequest
     {
         
-        private int pacienteIdField;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public servicioTratamiento.tratamientoRequestDto request;
         
-        private int odontologoIdField;
-        
-        private string diagnosticoField;
-        
-        private string tipoTratamientoField;
-        
-        private decimal costoEstimadoField;
-        
-        private bool costoEstimadoFieldSpecified;
-        
-        private string fechaInicioField;
-        
-        private int cant_sesionesField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public int pacienteId
+        public registrarTratamientoRequest()
         {
-            get
-            {
-                return this.pacienteIdField;
-            }
-            set
-            {
-                this.pacienteIdField = value;
-            }
         }
         
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public int odontologoId
+        public registrarTratamientoRequest(servicioTratamiento.tratamientoRequestDto request)
         {
-            get
-            {
-                return this.odontologoIdField;
-            }
-            set
-            {
-                this.odontologoIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public string diagnostico
-        {
-            get
-            {
-                return this.diagnosticoField;
-            }
-            set
-            {
-                this.diagnosticoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public string tipoTratamiento
-        {
-            get
-            {
-                return this.tipoTratamientoField;
-            }
-            set
-            {
-                this.tipoTratamientoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public decimal costoEstimado
-        {
-            get
-            {
-                return this.costoEstimadoField;
-            }
-            set
-            {
-                this.costoEstimadoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool costoEstimadoSpecified
-        {
-            get
-            {
-                return this.costoEstimadoFieldSpecified;
-            }
-            set
-            {
-                this.costoEstimadoFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public string fechaInicio
-        {
-            get
-            {
-                return this.fechaInicioField;
-            }
-            set
-            {
-                this.fechaInicioField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
-        public int cant_sesiones
-        {
-            get
-            {
-                return this.cant_sesionesField;
-            }
-            set
-            {
-                this.cant_sesionesField = value;
-            }
+            this.request = request;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getTratamiento", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class getTratamientoRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarTratamientoResponse", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class registrarTratamientoResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string arg0;
+        public string @return;
         
-        public getTratamientoRequest()
+        public registrarTratamientoResponse()
         {
         }
         
-        public getTratamientoRequest(string arg0)
-        {
-            this.arg0 = arg0;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getTratamientoResponse", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class getTratamientoResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public servicioTratamiento.tratamientoResponseDto @return;
-        
-        public getTratamientoResponse()
-        {
-        }
-        
-        public getTratamientoResponse(servicioTratamiento.tratamientoResponseDto @return)
+        public registrarTratamientoResponse(string @return)
         {
             this.@return = @return;
         }
@@ -518,75 +518,37 @@ namespace servicioTratamiento
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarEstado", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class actualizarEstadoRequest
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string arg1;
-        
-        public actualizarEstadoRequest()
-        {
-        }
-        
-        public actualizarEstadoRequest(int arg0, string arg1)
-        {
-            this.arg0 = arg0;
-            this.arg1 = arg1;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarEstadoResponse", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class actualizarEstadoResponse
-    {
-        
-        public actualizarEstadoResponse()
-        {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="aumentarCostoTratamiento", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="aumentarCostoTratamiento", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class aumentarCostoTratamientoRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
+        public int idTratamiento;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public decimal arg1;
+        public decimal monto;
         
         public aumentarCostoTratamientoRequest()
         {
         }
         
-        public aumentarCostoTratamientoRequest(int arg0, decimal arg1)
+        public aumentarCostoTratamientoRequest(int idTratamiento, decimal monto)
         {
-            this.arg0 = arg0;
-            this.arg1 = arg1;
+            this.idTratamiento = idTratamiento;
+            this.monto = monto;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="aumentarCostoTratamientoResponse", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="aumentarCostoTratamientoResponse", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
     public partial class aumentarCostoTratamientoResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string @return;
         
@@ -603,53 +565,91 @@ namespace servicioTratamiento
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarTratamiento", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class registrarTratamientoRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getTratamiento", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getTratamientoRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public servicioTratamiento.tratamientoRequestDto arg0;
+        public string dniPaciente;
         
-        public registrarTratamientoRequest()
+        public getTratamientoRequest()
         {
         }
         
-        public registrarTratamientoRequest(servicioTratamiento.tratamientoRequestDto arg0)
+        public getTratamientoRequest(string dniPaciente)
         {
-            this.arg0 = arg0;
+            this.dniPaciente = dniPaciente;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarTratamientoResponse", WrapperNamespace="http://impl.service.treatment.pe.dentalflow.com/", IsWrapped=true)]
-    public partial class registrarTratamientoResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getTratamientoResponse", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class getTratamientoResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://impl.service.treatment.pe.dentalflow.com/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string @return;
+        public servicioTratamiento.tratamientoResponseDto @return;
         
-        public registrarTratamientoResponse()
+        public getTratamientoResponse()
         {
         }
         
-        public registrarTratamientoResponse(string @return)
+        public getTratamientoResponse(servicioTratamiento.tratamientoResponseDto @return)
         {
             this.@return = @return;
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public interface TratamientoServiceImplChannel : servicioTratamiento.TratamientoServiceImpl, System.ServiceModel.IClientChannel
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarEstado", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class actualizarEstadoRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idTratamiento;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://soap.treatment.pe.dentalflow.com/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string estado;
+        
+        public actualizarEstadoRequest()
+        {
+        }
+        
+        public actualizarEstadoRequest(int idTratamiento, string estado)
+        {
+            this.idTratamiento = idTratamiento;
+            this.estado = estado;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarEstadoResponse", WrapperNamespace="http://soap.treatment.pe.dentalflow.com/", IsWrapped=true)]
+    public partial class actualizarEstadoResponse
+    {
+        
+        public actualizarEstadoResponse()
+        {
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
+    public interface TratamientoEndpointChannel : servicioTratamiento.TratamientoEndpoint, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "8.0.0")]
-    public partial class TratamientoServiceImplClient : System.ServiceModel.ClientBase<servicioTratamiento.TratamientoServiceImpl>, servicioTratamiento.TratamientoServiceImpl
+    public partial class TratamientoEndpointClient : System.ServiceModel.ClientBase<servicioTratamiento.TratamientoEndpoint>, servicioTratamiento.TratamientoEndpoint
     {
         
         /// <summary>
@@ -659,91 +659,91 @@ namespace servicioTratamiento
         /// <param name="clientCredentials">Credenciales de cliente</param>
         static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
         
-        public TratamientoServiceImplClient() : 
-                base(TratamientoServiceImplClient.GetDefaultBinding(), TratamientoServiceImplClient.GetDefaultEndpointAddress())
+        public TratamientoEndpointClient() : 
+                base(TratamientoEndpointClient.GetDefaultBinding(), TratamientoEndpointClient.GetDefaultEndpointAddress())
         {
-            this.Endpoint.Name = EndpointConfiguration.TratamientoServiceImplPort.ToString();
+            this.Endpoint.Name = EndpointConfiguration.TratamientoEndpointPort.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public TratamientoServiceImplClient(EndpointConfiguration endpointConfiguration) : 
-                base(TratamientoServiceImplClient.GetBindingForEndpoint(endpointConfiguration), TratamientoServiceImplClient.GetEndpointAddress(endpointConfiguration))
-        {
-            this.Endpoint.Name = endpointConfiguration.ToString();
-            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
-        }
-        
-        public TratamientoServiceImplClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
-                base(TratamientoServiceImplClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
+        public TratamientoEndpointClient(EndpointConfiguration endpointConfiguration) : 
+                base(TratamientoEndpointClient.GetBindingForEndpoint(endpointConfiguration), TratamientoEndpointClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public TratamientoServiceImplClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(TratamientoServiceImplClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        public TratamientoEndpointClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+                base(TratamientoEndpointClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public TratamientoServiceImplClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public TratamientoEndpointClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(TratamientoEndpointClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        {
+            this.Endpoint.Name = endpointConfiguration.ToString();
+            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
+        }
+        
+        public TratamientoEndpointClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<servicioTratamiento.getTratamientoResponse> servicioTratamiento.TratamientoServiceImpl.getTratamientoAsync(servicioTratamiento.getTratamientoRequest request)
-        {
-            return base.Channel.getTratamientoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<servicioTratamiento.getTratamientoResponse> getTratamientoAsync(string arg0)
-        {
-            servicioTratamiento.getTratamientoRequest inValue = new servicioTratamiento.getTratamientoRequest();
-            inValue.arg0 = arg0;
-            return ((servicioTratamiento.TratamientoServiceImpl)(this)).getTratamientoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<servicioTratamiento.actualizarEstadoResponse> servicioTratamiento.TratamientoServiceImpl.actualizarEstadoAsync(servicioTratamiento.actualizarEstadoRequest request)
-        {
-            return base.Channel.actualizarEstadoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<servicioTratamiento.actualizarEstadoResponse> actualizarEstadoAsync(int arg0, string arg1)
-        {
-            servicioTratamiento.actualizarEstadoRequest inValue = new servicioTratamiento.actualizarEstadoRequest();
-            inValue.arg0 = arg0;
-            inValue.arg1 = arg1;
-            return ((servicioTratamiento.TratamientoServiceImpl)(this)).actualizarEstadoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<servicioTratamiento.aumentarCostoTratamientoResponse> servicioTratamiento.TratamientoServiceImpl.aumentarCostoTratamientoAsync(servicioTratamiento.aumentarCostoTratamientoRequest request)
-        {
-            return base.Channel.aumentarCostoTratamientoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<servicioTratamiento.aumentarCostoTratamientoResponse> aumentarCostoTratamientoAsync(int arg0, decimal arg1)
-        {
-            servicioTratamiento.aumentarCostoTratamientoRequest inValue = new servicioTratamiento.aumentarCostoTratamientoRequest();
-            inValue.arg0 = arg0;
-            inValue.arg1 = arg1;
-            return ((servicioTratamiento.TratamientoServiceImpl)(this)).aumentarCostoTratamientoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<servicioTratamiento.registrarTratamientoResponse> servicioTratamiento.TratamientoServiceImpl.registrarTratamientoAsync(servicioTratamiento.registrarTratamientoRequest request)
+        System.Threading.Tasks.Task<servicioTratamiento.registrarTratamientoResponse> servicioTratamiento.TratamientoEndpoint.registrarTratamientoAsync(servicioTratamiento.registrarTratamientoRequest request)
         {
             return base.Channel.registrarTratamientoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<servicioTratamiento.registrarTratamientoResponse> registrarTratamientoAsync(servicioTratamiento.tratamientoRequestDto arg0)
+        public System.Threading.Tasks.Task<servicioTratamiento.registrarTratamientoResponse> registrarTratamientoAsync(servicioTratamiento.tratamientoRequestDto request)
         {
             servicioTratamiento.registrarTratamientoRequest inValue = new servicioTratamiento.registrarTratamientoRequest();
-            inValue.arg0 = arg0;
-            return ((servicioTratamiento.TratamientoServiceImpl)(this)).registrarTratamientoAsync(inValue);
+            inValue.request = request;
+            return ((servicioTratamiento.TratamientoEndpoint)(this)).registrarTratamientoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<servicioTratamiento.aumentarCostoTratamientoResponse> servicioTratamiento.TratamientoEndpoint.aumentarCostoTratamientoAsync(servicioTratamiento.aumentarCostoTratamientoRequest request)
+        {
+            return base.Channel.aumentarCostoTratamientoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<servicioTratamiento.aumentarCostoTratamientoResponse> aumentarCostoTratamientoAsync(int idTratamiento, decimal monto)
+        {
+            servicioTratamiento.aumentarCostoTratamientoRequest inValue = new servicioTratamiento.aumentarCostoTratamientoRequest();
+            inValue.idTratamiento = idTratamiento;
+            inValue.monto = monto;
+            return ((servicioTratamiento.TratamientoEndpoint)(this)).aumentarCostoTratamientoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<servicioTratamiento.getTratamientoResponse> servicioTratamiento.TratamientoEndpoint.getTratamientoAsync(servicioTratamiento.getTratamientoRequest request)
+        {
+            return base.Channel.getTratamientoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<servicioTratamiento.getTratamientoResponse> getTratamientoAsync(string dniPaciente)
+        {
+            servicioTratamiento.getTratamientoRequest inValue = new servicioTratamiento.getTratamientoRequest();
+            inValue.dniPaciente = dniPaciente;
+            return ((servicioTratamiento.TratamientoEndpoint)(this)).getTratamientoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<servicioTratamiento.actualizarEstadoResponse> servicioTratamiento.TratamientoEndpoint.actualizarEstadoAsync(servicioTratamiento.actualizarEstadoRequest request)
+        {
+            return base.Channel.actualizarEstadoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<servicioTratamiento.actualizarEstadoResponse> actualizarEstadoAsync(int idTratamiento, string estado)
+        {
+            servicioTratamiento.actualizarEstadoRequest inValue = new servicioTratamiento.actualizarEstadoRequest();
+            inValue.idTratamiento = idTratamiento;
+            inValue.estado = estado;
+            return ((servicioTratamiento.TratamientoEndpoint)(this)).actualizarEstadoAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -760,7 +760,7 @@ namespace servicioTratamiento
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.TratamientoServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.TratamientoEndpointPort))
             {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
@@ -774,27 +774,27 @@ namespace servicioTratamiento
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.TratamientoServiceImplPort))
+            if ((endpointConfiguration == EndpointConfiguration.TratamientoEndpointPort))
             {
-                return new System.ServiceModel.EndpointAddress("http://localhost:1520/ws/tratamiento");
+                return new System.ServiceModel.EndpointAddress("http://localhost:1520/ws/Treatment");
             }
             throw new System.InvalidOperationException(string.Format("No se pudo encontrar un punto de conexión con el nombre \"{0}\".", endpointConfiguration));
         }
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding()
         {
-            return TratamientoServiceImplClient.GetBindingForEndpoint(EndpointConfiguration.TratamientoServiceImplPort);
+            return TratamientoEndpointClient.GetBindingForEndpoint(EndpointConfiguration.TratamientoEndpointPort);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress()
         {
-            return TratamientoServiceImplClient.GetEndpointAddress(EndpointConfiguration.TratamientoServiceImplPort);
+            return TratamientoEndpointClient.GetEndpointAddress(EndpointConfiguration.TratamientoEndpointPort);
         }
         
         public enum EndpointConfiguration
         {
             
-            TratamientoServiceImplPort,
+            TratamientoEndpointPort,
         }
     }
 }
