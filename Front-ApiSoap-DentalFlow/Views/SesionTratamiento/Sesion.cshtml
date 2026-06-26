@@ -1,1 +1,162 @@
 ﻿@model IEnumerable<Front_ApiSoap_DentalFlow.Models.Tratamiento.SesionTratameintoVM>
+
+@{
+    ViewData["Title"] = "Sesiones de Tratamiento";
+    int index = 0;
+}
+
+<h1>Sesiones de Tratamiento</h1>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger bg-danger bg-opacity-10 text-danger border-0 p-3 rounded-4 mb-3 d-flex align-items-center shadow-sm" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+        <div><span class="fw-bold">Error:</span> @TempData["ErrorMessage"]</div>
+    </div>
+}
+
+@if (TempData["MensajeSuccess"] != null)
+{
+    <div class="alert alert-info bg-info bg-opacity-25 border-0 p-3 rounded-4 mb-3 d-flex align-items-center shadow-sm" role="alert">
+        <i class="bi bi-info-circle-fill me-2 fs-5" style="color: #002d62 !important;"></i>
+        <div class="text-dark"><span class="fw-bold" style="color: #002d62 !important;">Éxito:</span> @TempData["MensajeSuccess"]</div>
+    </div>
+}
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
+    @if (Model == null || !Model.Any())
+    {
+        <div class="col-12 text-center text-muted py-4">No se encontraron sesiones registradas para hoy.</div>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            string claseFondo = (index % 2 == 0) 
+                ? "bg-info bg-opacity-50 p-4 rounded-4 h-100 border-0 shadow-sm d-flex flex-column justify-content-between" 
+                : "bg-info bg-opacity-25 p-4 rounded-4 h-100 border-0 shadow-sm d-flex flex-column justify-content-between";
+            index++;
+
+            <div class="col">
+                <div class="card @claseFondo">
+                    <div class="card-body p-0 mb-3">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <div class="text-muted small fw-bold" style="color: #002d62 !important; opacity: 0.7;">ID Sesión: @item.idSesion</div>
+                            <span class="badge @(item.asistenciaPaciente ? "bg-success" : "bg-secondary") bg-opacity-25 text-dark rounded-pill px-2 py-1 small fw-bold">
+                                <i class="bi @(item.asistenciaPaciente ? "bi-check-circle-fill text-success" : "bi-x-circle-fill text-secondary") me-1"></i>
+                                @(item.asistenciaPaciente ? "Asistió" : "Pendiente/Faltó")
+                            </span>
+                        </div>
+                        
+                        <h4 class="card-title fw-bold text-dark mb-3">@item.nombrePaciente @item.apellidoPaciente</h4>
+                        
+                        <div class="d-flex flex-column gap-2 small text-dark">
+                            <div><i class="bi bi-card-text me-2"></i><strong>DNI:</strong> @item.dni</div>
+                            <div><i class="bi bi-calendar-event me-2"></i><strong>Prog:</strong> @item.fechaProgramada.ToString("dd/MM/yyyy HH:mm")</div>
+                            @if(item.fechaRealizada != DateTime.MinValue)
+                            {
+                                <div><i class="bi bi-calendar-check me-2"></i><strong>Realizada:</strong> @item.fechaRealizada.ToString("dd/MM/yyyy HH:mm")</div>
+                            }
+                            <div><i class="bi bi-cash-coin me-2"></i><strong>Costo Parcial:</strong> <span class="fw-bold text-success">S/ @item.costoParcial.ToString("F2")</span></div>
+                            <div><i class="bi bi-activity me-2"></i><strong>Estado:</strong> @item.estado</div>
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(item.observaciones))
+                        {
+                            <div class="mt-3 pt-2 border-top border-dark border-opacity-10 small text-muted">
+                                <strong>Obs:</strong> <span class="fst-italic">"@item.observaciones"</span>
+                            </div>
+                        }
+                    </div>
+                    
+                    <div class="d-flex gap-2 pt-2 border-top border-dark border-opacity-10">
+                        @if (User.IsInRole("ODONTOLOGO"))
+                        {
+                            <button onclick="abrirFinalizarSesion('@item.idSesion', '@item.nombrePaciente @item.apellidoPaciente')" 
+                                    class="btn bg-white py-2 px-3 rounded-3 text-dark btn-sm fw-bold shadow-sm flex-grow-1 text-center border-0">
+                                <i class="bi bi-stop-circle text-danger me-1"></i> Finalizar Sesión
+                            </button>
+                        }
+                        else
+                        {
+                            <button onclick="abrirMarcarAsistencia('@item.idSesion', '@item.nombrePaciente @item.apellidoPaciente')" 
+                                    class="btn bg-dark bg-opacity-10 py-2 px-3 rounded-3 text-dark btn-sm fw-bold shadow-sm flex-grow-1 text-center border-0">
+                                <i class="bi bi-calendar-check-fill me-1"></i> Marcar Asistencia
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<div class="modal fade" id="modalFinalizarSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4 rounded-4 border-0 shadow-lg" style="background-color: white">
+            <div class="modal-header border-0 pb-2 justify-content-center">
+                <h5 class="modal-title fw-bold text-dark text-center">Finalizar Sesión Clínica</h5>
+            </div>
+            <form asp-action="FinalizarSesion" method="post">
+                <div class="modal-body pt-2 text-center">
+                    <p class="text-muted">Vas a dar por terminada la sesión del paciente:</p>
+                    <h6 id="txtPacienteFinalizar" class="fw-bold" style="color: #002d62 !important;"></h6>
+                    <input type="hidden" id="idSesionFinalizar" name="idSesion" value="" />
+                    
+                    <div class="text-start mt-3">
+                        <label class="form-label small fw-bold">Observaciones de la consulta:</label>
+                        <textarea name="observaciones" class="form-control rounded-3" rows="3" placeholder="Escribe la evolución del tratamiento..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 justify-content-center gap-2 pt-3">
+                    <button type="button" class="btn bg-secondary bg-opacity-20 p-3 rounded-4 fw-bold text-dark flex-grow-1 border-0" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn bg-success bg-opacity-75 p-3 rounded-4 fw-bold text-white flex-grow-1 border-0">Guardar y Finalizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalMarcarAsistencia" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4 rounded-4 border-0 shadow-lg" style="background-color: white">
+            <div class="modal-header border-0 pb-0 justify-content-center">
+                <h5 class="modal-title fw-bold text-primary text-center">¿Confirmar Asistencia?</h5>
+            </div>
+            <div class="modal-body text-dark text-center fs-6 pt-3">
+                <p class="mb-0">¿Deseas registrar la asistencia del paciente?<br />
+                    <strong id="txtPacienteAsistencia" class="fw-bold" style="color: #002d62 !important;"></strong>
+                </p>
+            </div>
+            <form asp-action="MarcarAsistencia" method="post">
+                <input type="hidden" id="idSesionAsistencia" name="idSesion" value="" />
+                <div class="modal-footer border-0 justify-content-center gap-2 pt-4">
+                    <button type="button" class="btn bg-secondary bg-opacity-20 p-3 rounded-4 fw-bold text-dark flex-grow-1 text-center border-0" data-bs-dismiss="modal">No, cancelar</button>
+                    <button type="submit" class="btn bg-info bg-opacity-75 p-3 rounded-4 fw-bold text-dark flex-grow-1 text-center border-0">Sí, marcar presente</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function abrirFinalizarSesion(id, paciente) {
+            document.getElementById('idSesionFinalizar').value = id;
+            document.getElementById('txtPacienteFinalizar').textContent = paciente;
+            
+            var modalElement = document.getElementById('modalFinalizarSesion');
+            var myModal = bootstrap.Modal.getOrCreateInstance(modalElement);
+            myModal.show();
+        }
+
+        function abrirMarcarAsistencia(id, paciente) {
+            document.getElementById('idSesionAsistencia').value = id;
+            document.getElementById('txtPacienteAsistencia').textContent = paciente;
+
+            var modalElement = document.getElementById('modalMarcarAsistencia');
+            var myModal = bootstrap.Modal.getOrCreateInstance(modalElement);
+            myModal.show();
+        }
+    </script>
+}

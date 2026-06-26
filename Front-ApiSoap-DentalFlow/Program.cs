@@ -1,17 +1,42 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Registrar el servicio de autenticación por Cookies
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
+builder.Services.AddAuthentication(options =>
+{
+    // Establecemos que el esquema por defecto sea JWT Bearer
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
     {
-        options.Cookie.Name = "jwt_token"; // El mismo nombre que usaste al crearla
-        options.ExpireTimeSpan = TimeSpan.FromHours(8);
-        options.LoginPath = "/Login"; // Ruta si el usuario no está autenticado
-    });
+        ValidateIssuerSigningKey = true,
+        // Usa la misma clave secreta con la que firmaste el JWT al crearlo
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+        ValidateIssuer = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidateAudience = true,
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.Zero // Elimina el tiempo de gracia de 5 min por defecto
+    };
 
-builder.Services.AddControllers();
+    // Interceptamos la petición para decirle a .NET que busque el token en la cookie "jwt_token"
+    options.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = context =>
+        {
+            if (context.Request.Cookies.ContainsKey("jwt_token"))
+            {
+                context.Token = context.Request.Cookies["jwt_token"];
+            }
+            return Task.CompletedTask;
+        }
+    };
+});
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
