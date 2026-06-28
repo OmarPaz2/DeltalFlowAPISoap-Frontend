@@ -3,6 +3,7 @@ using Front_ApiSoap_DentalFlow.Models.Specialty;
 using Microsoft.AspNetCore.Mvc;
 using moduloClinicalStaff;
 using moduloEspecialidades;
+using System.Security.Claims;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 
@@ -22,14 +23,14 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         private void AddSoapAuth()
         {
             var token = Request.Cookies["jwt_token"];
-            if (string.IsNullOrEmpty(token)) return;
+           if (string.IsNullOrEmpty(token)) return;
 
-            var httpRequest = new HttpRequestMessageProperty();
-            httpRequest.Headers["Authorization"] = $"Bearer {token}";
+           var httpRequest = new HttpRequestMessageProperty();
+          httpRequest.Headers["Authorization"] = $"Bearer {token}";
 
             OperationContext.Current.OutgoingMessageProperties[
-                HttpRequestMessageProperty.Name
-            ] = httpRequest;
+              HttpRequestMessageProperty.Name
+           ] = httpRequest;
         }
 
         private IDisposable CreateClinicalStaffScope()
@@ -102,11 +103,12 @@ namespace Front_ApiSoap_DentalFlow.Controllers
             {
                 using (CreateClinicalStaffScope())
                 {
+                    
                     AddSoapAuth();
 
                     var request = new createDentistRequest
                     {
-                        userId =int.TryParse(User.FindFirst("sub")?.Value, out var id) ? id : 0,
+                        userId =int.TryParse(User.FindFirstValue("userId"), out var id) ? id : 0,
                         specialtyId = model.specialty,
                         licenseNumber = model.licenseNumber,
                         firstName = model.firstName,
@@ -231,6 +233,7 @@ namespace Front_ApiSoap_DentalFlow.Controllers
         {
             using (CreateSpecialtyScope())
             {
+                
                 AddSoapAuth();
 
                 var especialidades = await _specialtyService.getAllSpecialtiesAsync(

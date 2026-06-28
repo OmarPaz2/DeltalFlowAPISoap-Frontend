@@ -1,0 +1,69 @@
+﻿@model Front_ApiSoap_DentalFlow.Models.Tratamiento.SesionTratamientoRqVM
+
+@{
+    ViewData["Title"] = "Programar Sesión";
+}
+
+<h1>Registro de Sesiones</h1>
+
+<div class="container mt-4">
+    @if (ViewBag.MensajeError != null)
+    {
+        <div class="alert alert-danger bg-danger bg-opacity-10 text-danger border-0 p-3 rounded-4 mb-3 d-flex align-items-center shadow-sm" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+            <div>
+                <span class="fw-bold">Error:</span> @ViewBag.MensajeError
+            </div>
+        </div>
+    }
+
+    <div class="bg-info bg-opacity-25 p-4 rounded-4 shadow-sm">
+        <h2 class="mb-4 text-dark text-center fw-bold">Programar Nueva Sesión de Tratamiento</h2>
+
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label asp-for="idTratamiento" class="form-label fw-semibold">ID del Tratamiento</label>
+                    <input asp-for="idTratamiento" type="number" class="form-control rounded-3" placeholder="Ej: 1024" required />
+                    <span asp-validation-for="idTratamiento" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="fechaProgramada" class="form-label fw-semibold">Fecha y Hora Programada</label>
+                    <input asp-for="fechaProgramada" type="datetime-local" class="form-control rounded-3" required />
+                    <span asp-validation-for="fechaProgramada" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="costoParcial" class="form-label fw-semibold">Costo Parcial (S/.)</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0 rounded-start-3 text-muted">S/.</span>
+                        <input asp-for="costoParcial" type="number" step="0.01" class="form-control border-start-0 rounded-end-3" placeholder="0.00" required />
+                    </div>
+                    <span asp-validation-for="costoParcial" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="tiempoDuracion" class="form-label fw-semibold">Tiempo de Duración (Minutos)</label>
+                    <input asp-for="tiempoDuracion" type="number" class="form-control rounded-3" placeholder="Ej: 45" required />
+                    <span asp-validation-for="tiempoDuracion" class="text-danger small"></span>
+                </div>
+            </div>
+
+            <div class="mt-4 d-flex gap-2 justify-content-end">
+                <a asp-action="Index" class="btn btn-secondary px-4 py-2 rounded-4">Cancelar</a>
+                <button type="submit" class="btn bg-info bg-opacity-50 text-dark fw-bold px-4 py-2 rounded-4 border-0 shadow-sm">
+                    Guardar Sesión
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

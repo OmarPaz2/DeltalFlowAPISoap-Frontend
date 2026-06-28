@@ -1,6 +1,10 @@
-﻿using Front_ApiSoap_DentalFlow.Models;
+﻿
+
+
+using Front_ApiSoap_DentalFlow.Models;
 using Microsoft.AspNetCore.Mvc;
 using moduloPaciente;
+using servicioAuth;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 
@@ -8,17 +12,20 @@ namespace Front_ApiSoap_DentalFlow.Controllers
 {
     public class PacienteController : Controller
     {
-        private readonly PatientEndpoint _patientService;
-
-        public PacienteController(PatientEndpoint patientService)
+        private readonly PatientEndpoint  _patientService;
+        private readonly AuthEndpoint _authEndpoint;
+      public PacienteController(PatientEndpoint patientService, AuthEndpoint authEndpoint)
         {
             _patientService = patientService;
+            _authEndpoint = authEndpoint;
         }
 
         private void AddSoapAuth()
         {
             var token = Request.Cookies["jwt_token"];
-            if (string.IsNullOrEmpty(token)) return;
+
+            if (string.IsNullOrEmpty(token))
+                return;
 
             var httpRequest = new HttpRequestMessageProperty();
             httpRequest.Headers["Authorization"] = $"Bearer {token}";
